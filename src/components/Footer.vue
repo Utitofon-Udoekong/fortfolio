@@ -1,0 +1,91 @@
+<template>
+    <footer id="footer">
+        <div
+            class="bg-brand-blue bg-footer-texture bg-center bg-cover bg-blend-overlay p-8 sm:py-20 text-white"
+        >
+            <div class="md:flex justify-around items-start">
+                <div class="max-w-xs">
+                    <div class="image w-28 h-auto mb-3">
+                        <img src="@/assets/images/logo.png" class="w-full h-full" alt="LOGO" />
+                    </div>
+                    <p>We are keen on demistyfying the mode of operation in the cryptocurrency market by leveraging the knowledge, experience and expertise of industry professionals</p>
+                    <span class="flex mt-3">
+                        <a href="#"> <Icon icon="cib:facebook-f" color="white" width="25" height="25" class="mr-4" /> </a>
+                        <a href="#"> <Icon icon="la:instagram" color="white" width="25" height="25" class="mr-4" /> </a>
+                        <a href="#"> <Icon icon="carbon:logo-twitter" color="white" width="25" height="25" class="mr-4" /> </a>
+                        <a href="#"> <Icon icon="cib:whatsapp" color="white" width="25" height="25" class="mr-4" /> </a>
+                    </span>
+                </div>
+                <div class="w-40 my-10 sm:my-0">
+                    <h1 class="font-semibold text-xl pb-4">COMPANY</h1>
+                    <ul class="text-md leading-8">
+                        <li>
+                            <a href="#about">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#plans">Services</a>
+                        </li>
+                        <li>
+                            <a href="#footer">Contact Us</a>
+                        </li>
+                        <li>
+                            <a href="#faq">FAQs</a>
+                        </li>
+                        <li>
+                            <a href="/termsAndConditions">Terms and Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w-40 mb-10 sm:mb-0">
+                    <h1 class="font-semibold text-xl pb-4">CONTACT</h1>
+                    <ul class="text-md leading-8">
+                        <li>support@fortfolio.info</li>
+                        <li>+2348120912268</li>
+                        <li>Lagos, Nigeria</li>
+                    </ul>
+                </div>
+                <div class="max-w-xs">
+                    <h1 class="font-semibold text-xl pb-4">Get Latest Updates & Offers</h1>
+                    <div>
+                        <form class="w-full">
+                            <div class="flex items-center border-b border-teal-500">
+                                <input
+                                    class="text-sm appearance-none bg-transparent border-none w-full mr-3 py-1 px-2 leading-tight focus:outline-none text-white" type="text" placeholder="Enter your email" aria-label="Email" />
+                                <button class="flex-shrink-0 text-sm text-white" type="button" >Subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                    <p
+                        class="pt-6"
+                    >Signup for our newsletter to get free update, promotion, news & insight about Finance</p>
+                </div>
+            </div>
+            <hr class="border-none h-1 bg-white w-full my-6" />
+            <p
+                class="text-left sm:text-center py-3"
+            >Disclaimer: Trading of leveraged products carries a high level ofrisk, and may not be suitable for all investors.</p>
+            <p class="text-left sm:text-center">© 2020 Fortfolio . All rights reserved</p>
+        </div>
+    </footer>
+</template>
+
+<script>
+import { Icon } from '@iconify/vue';
+export default {
+    components: {
+        Icon,
+    },
+    setup() {
+        return {
+
+        }
+    }
+}
+</script>
+
+<style scoped>
+.bg-brand-blue {
+    --tw-bg-opacity: 1;
+    background-color: rgba(1, 29, 48, var(--tw-bg-opacity))!important;
+}
+</style>
