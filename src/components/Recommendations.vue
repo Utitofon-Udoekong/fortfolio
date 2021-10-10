@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <p class="text-center text-3xl underline font-bold">RECOMMENDATIONS</p>
+    <div class="mt-8 px-6">
+        <p class="text-center text-3xl font-bold pb-10">RECOMMENDATIONS</p>
         <!-- <div class="p-5 sm:flex hidden justify-around items-center">
             <div
                 v-for="(testimonial, i) in testimonials"
@@ -17,35 +17,38 @@
                     class="absolute left-0 bottom-0 w-20"
                 />
             </div>
-        </div> -->
-        <carousel :items-to-show="2" class="container max-w-5xl mx-auto h-80">
-            <slide v-for="(testimonial, i) in testimonials" :key="i" class="bg-brand-blue h-80 shadow-lg relative ">
-                <div class="w-full p-8 h-44">
-                <p class="text-white text-xs">{{testimonial.text}}</p>
-                </div>
-                    <p class="text-white text-lg absolute bottom-4 left-4 right-3">{{testimonial.name}}</p>
-                <img :src="require(`@/assets/images/${testimonial.image}`)" alt="testifiers" class="absolute left-0 bottom-0 w-20">
-            </slide>
+        </div>-->
 
-            <template #addons>
-                <navigation />
-            </template>
-        </carousel>
-        <!-- <swiper :slides-per-view="1" :space-between="10" :centered-slides="true" class="p-5 block sm:hidden">
-        <swiper-slide v-for="(testimonial, i) in testimonials" :key="i" class="bg-brand-blue h-64 shadow-lg relative w-full max-w-xs">
-            <div class="w-full p-8 overflow-y-scroll h-44">
-                <p class="text-white text-xs">{{testimonial.text}}</p>
-            </div>
-                <p class="text-white text-lg absolute bottom-0 right-3">{{testimonial.name}}</p>
-            <img :src="require(`@/assets/images/${testimonial.image}`)" alt="testifiers" class="absolute left-0 bottom-0 w-20">
-        </swiper-slide>
-        </swiper>-->
+        <vueper-slides
+            class="no-shadow container mx-auto max-w-screen-lg"
+            :visible-slides="2"
+            :slide-ratio="1 / 3"
+            :gap="5"
+            :arrows-outside="true"
+            :breakpoints="breakpoints"
+        >
+            <vueper-slide
+                v-for="(testimonial, i) in testimonials"
+                :key="i"
+                class="bg-brand-blue h-76 shadow-lg relative p-8"
+            >
+                <template #content>
+                    <p class="text-white text-md">{{ testimonial.text }}</p>
+                    <p class="text-white text-lg absolute bottom-10 right-10">{{ testimonial.name }}</p>
+                    <img
+                        :src="require(`@/assets/images/${testimonial.image}`)"
+                        alt="testifiers"
+                        class="absolute left-0 bottom-0 w-20"
+                    />
+                </template>
+            </vueper-slide>
+        </vueper-slides>
     </div>
 </template>
 
 <script>
-import "vue3-carousel/dist/carousel.css"
-import { Carousel, Slide, Navigation } from 'vue3-carousel';
+import { VueperSlides, VueperSlide } from 'vueperslides'
+import 'vueperslides/dist/vueperslides.css'
 const testimonials = [
     {
         name: "Solomon Akintola",
@@ -70,14 +73,30 @@ const testimonials = [
 ]
 export default {
     components: {
-        Carousel,
-        Slide,
-        Navigation
+        VueperSlides, VueperSlide
     },
     setup() {
+        const breakpoints = {
+            
+            700: {
+                slideRatio: 1,
+                arrows: false,
+                bulletsOutside: true,
+                visibleSlides: 1
+            }
+            // The order you list breakpoints does not matter, Vueper Slides will sort them for you.
+        }
         return {
-            testimonials
+            testimonials,
+            breakpoints
         }
     }
 }
 </script>
+
+<style lang="scss" scoped>
+div.vueperslide__title {
+    text-decoration: underline !important;
+    font-size: 40px !important;
+}
+</style>

@@ -1,6 +1,5 @@
 <template>
-<!-- md:grid-cols-4 -->
-  <div class="container py-4 grid grid-flow-col grid-rows-4 md:grid-rows-1 justify-evenly">
+  <div class="container py-4 introbanner justify-evenly">
       <div class="column flex w-full p-3 items-center" v-for="(intro, i) in intros" :key="i">
           <div class="w-32 h-auto">
               <img class="w-full" :src="require(`@/assets/images/intro/${intro.image}`)" :alt="intro.alt">
@@ -50,5 +49,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.introbanner{
+    display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 2rem;
+}
 </style>

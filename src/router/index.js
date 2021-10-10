@@ -22,62 +22,62 @@ const routes = [
     name: 'TermsAndConditions',
     component: () => import('../views/TermsAndConditions.vue')
   },
-  {
-    path: '/dashboard/:user',
-    name: 'dashboard-user-account',
-    component: () => import('../views/dashboard/_user/index.vue'),
-    meta: {
-      layout: 'DashboardLayout'
-    }
-  },
-  {
-    path: '/dashboard/:user/profile',
-    name: 'dashboard-user-profile',
-    component: () => import('../views/dashboard/_user/profile.vue'),
-    meta: {
-      layout: 'DashboardLayout'
-    }
-  },
-  {
-    path: '/dashboard/:user/investment',
-    name: 'dashboard-user-investment',
-    component: () => import('../views/dashboard/_user/investment.vue'),
-    meta: {
-      layout: 'DashboardLayout'
-    }
-  },
-  {
-    path: '/dashboard/:user/plans',
-    name: 'dashboard-user-plans',
-    component: () => import('../views/dashboard/_user/plans.vue'),
-    meta: {
-      layout: 'DashboardLayout'
-    }
-  },
-  {
-    path: '/dashboard/:user/deposit',
-    name: 'dashboard-user-deposit',
-    component: () => import('../views/dashboard/_user/deposit.vue'),
-    meta: {
-      layout: 'DashboardLayout'
-    }
-  },
-  {
-    path: '/dashboard/:user/withdraw',
-    name: 'dashboard-user-withdraw',
-    component: () => import('../views/dashboard/_user/withdraw.vue'),
-    meta: {
-      layout: 'DashboardLayout'
-    }
-  },
-  {
-    path: '/dashboard/:user/transactions',
-    name: 'dashboard-user-transactions',
-    component: () => import('../views/dashboard/_user/transactions.vue'),
-    meta: {
-      layout: 'DashboardLayout'
-    }
-  },
+  // {
+  //   path: '/dashboard/:user',
+  //   name: 'dashboard-user-account',
+  //   component: () => import('../views/dashboard/_user/index.vue'),
+  //   meta: {
+  //     layout: 'DashboardLayout'
+  //   }
+  // },
+  // {
+  //   path: '/dashboard/:user/profile',
+  //   name: 'dashboard-user-profile',
+  //   component: () => import('../views/dashboard/_user/profile.vue'),
+  //   meta: {
+  //     layout: 'DashboardLayout'
+  //   }
+  // },
+  // {
+  //   path: '/dashboard/:user/investment',
+  //   name: 'dashboard-user-investment',
+  //   component: () => import('../views/dashboard/_user/investment.vue'),
+  //   meta: {
+  //     layout: 'DashboardLayout'
+  //   }
+  // },
+  // {
+  //   path: '/dashboard/:user/plans',
+  //   name: 'dashboard-user-plans',
+  //   component: () => import('../views/dashboard/_user/plans.vue'),
+  //   meta: {
+  //     layout: 'DashboardLayout'
+  //   }
+  // },
+  // {
+  //   path: '/dashboard/:user/deposit',
+  //   name: 'dashboard-user-deposit',
+  //   component: () => import('../views/dashboard/_user/deposit.vue'),
+  //   meta: {
+  //     layout: 'DashboardLayout'
+  //   }
+  // },
+  // {
+  //   path: '/dashboard/:user/withdraw',
+  //   name: 'dashboard-user-withdraw',
+  //   component: () => import('../views/dashboard/_user/withdraw.vue'),
+  //   meta: {
+  //     layout: 'DashboardLayout'
+  //   }
+  // },
+  // {
+  //   path: '/dashboard/:user/transactions',
+  //   name: 'dashboard-user-transactions',
+  //   component: () => import('../views/dashboard/_user/transactions.vue'),
+  //   meta: {
+  //     layout: 'DashboardLayout'
+  //   }
+  // },
 ]
 
 const router = createRouter({

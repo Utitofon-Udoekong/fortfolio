@@ -61,7 +61,8 @@
                             <a
                                 href="/signup"
                                 class="text-brand-lightblue"
-                            >Sign up</a>
+                            >Sign up</a> or go
+                            <a href="/" class="text-brand-lightblue">Home</a>
                         </p>
                     </form>
                 </div>

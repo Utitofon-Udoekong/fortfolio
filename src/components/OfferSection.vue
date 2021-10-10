@@ -1,42 +1,27 @@
 <template>
   <div class="grid md:grid-rows-1 overflow-x-hidden">
-    <Carousel :items-to-show="2.5" :wrap-around="true">
-    <Slide class="bg-brand-lightblue max-w-sm md:h-80 h-52"
-        v-for="(plan,i) in plans"
-        :key="i">
-      <div class="carousel__item">{{ slide }}</div>
-    </Slide>
-
-    <template #addons>
-      <Navigation />
-    </template>
-  </Carousel>
-    <!-- <swiper
-    :slides-per-view="2"
-    :space-between="10"
-      :centered-slides="true"
+    <vueper-slides
+      class="no-shadow container mx-auto max-w-screen-lg md:h-80 h-96"
+      :visible-slides="3"
+      :slide-ratio="1 / 4"
+      :gap="5"
+      :arrows-outside="true"
+      :breakpoints="breakpoints"
+      autoplay
     >
-      <swiper-slide
-        class="bg-brand-lightblue max-w-sm md:h-80 h-52"
-        v-for="(plan,i) in plans"
+      <vueper-slide
+        v-for="(plan, i) in plans"
         :key="i"
-      >
-        <img
-          class="w-full h-full shadow-xl"
-          :src="require(`@/assets/images/${plan.img}`)"
-          :alt="plan.alt"
-        />
-      </swiper-slide>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-    </swiper> -->
+        class="w-full shadow-xl h-full"
+        :image="require(`@/assets/images/${plan.img}`)"
+      />
+    </vueper-slides>
   </div>
 </template>
 
 <script>
-import "vue3-carousel/dist/carousel.css"
-import { Carousel, Slide, Navigation } from 'vue3-carousel';
-
+import { VueperSlides, VueperSlide } from 'vueperslides'
+import 'vueperslides/dist/vueperslides.css'
 const plans = [
   {
     img: "fortspecial.png",
@@ -61,17 +46,28 @@ const plans = [
 ]
 export default {
   components: {
-    Carousel,
-        Slide,
-        Navigation
+    VueperSlides, VueperSlide
   },
   setup() {
+    const breakpoints = {
+
+      700: {
+        slideRatio: 1,
+        arrows: false,
+        bulletsOutside: true,
+        visibleSlides: 1
+      }
+    }
     return {
-      plans
+      plans,
+      breakpoints
     }
   },
 }
 </script>
 
 <style>
+.h-84{
+  height: 325px;
+}
 </style>

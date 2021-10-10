@@ -47,7 +47,8 @@
             </div>
             <p class="text-center text-gray-600 pb-10">
                 Already have an account?
-                <a href="/login" class="text-brand-lightblue">Login</a>
+                <a href="/login" class="text-brand-lightblue">Login</a> or go
+                <a href="/" class="text-brand-lightblue">Home</a>
             </p>
         </div>
     </div>

@@ -48,5 +48,6 @@ export default {
 <style>
 *{
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 </style>

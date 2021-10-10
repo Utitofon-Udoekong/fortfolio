@@ -1,6 +1,6 @@
 <template>
     <nav
-        class="flex w-full items-center justify-between md:justify-around text-gray-700"
+        class="flex w-full items-center justify-between md:justify-around text-gray-700 z-10 shadow-xl sm:shadow-none fixed sm:static top-0 inset-x-0 bg-white sm:bg-transparent"
     >
         <div class="flex items-center">
             <div class="logo w-20 h-20 sm:w-32 sm:h-32">
@@ -24,7 +24,7 @@
         <button class="mr-2 block md:hidden" aria-label="Open Menu" @click="drawer">
             <svg
                 fill="none"
-                stroke="#fff"
+                stroke="#000"
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
@@ -58,12 +58,13 @@
             class="transform top-0 left-0 w-full sm:w-72 bg-white fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30"
             :class="isOpen ? 'translate-x-0' : '-translate-x-full'"
         >
-            <span @click="isOpen = false" class="flex w-full items-center p-4 border-b">
-                <img src="@/assets/images/logo.png" class="h-auto w-20 sm:w-32 mx-auto" alt="logo" />
+            <span  class="flex w-full justify-between items-center p-4 border-b">
+                <img src="@/assets/images/logo.png" class="h-auto w-20 sm:w-32 " alt="logo" />
+                <span class="text-2xl" @click="isOpen = false">X</span>
             </span>
             <span
                 @click="isOpen = false"
-                class="flex items-center p-4 hover:bg-brand-lightblue hover:text-white"
+                class="flex justify-center items-center p-4 hover:bg-brand-lightblue hover:text-white"
                 v-for="(link, i) in navigation" 
                 :key="i"
             >
@@ -71,7 +72,7 @@
             </span>
             <div class="fixed bottom-0 w-full">
                 <button
-                    class="flex items-center p-4 text-white bg-brand-lightblue hover:bg-blue-600 w-full"
+                    class="flex justify-center items-center p-4 text-white bg-brand-lightblue hover:bg-blue-600 w-full"
                 >
                     <span><a href="/login">Login</a></span>
                 </button>

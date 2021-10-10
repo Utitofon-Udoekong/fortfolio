@@ -1,47 +1,71 @@
 <template>
   <div class="text-center my-28 px-6" id="plans">
     <p class="text-brand-lightblue text-lg md:text-xl">Get Started Now</p>
-    <h1 class="text-brand-blue text-4xl font-extrabold py-4">OUR INVESTMENT PLANS</h1>
+    <h1 class="text-brand-blue text-2xl md:text-4xl font-extrabold py-4">OUR INVESTMENT PLANS</h1>
     <p
-      class="text-brand-lightblue text-lg md:text-xl max-w-2xl mx-auto pb-8"
+      class="text-brand-lightblue text-md md:text-xl max-w-2xl mx-auto pb-8"
     >Get started now with us to earn every day and forever in your business. We accept Investment from all over the world</p>
     <div class="md:flex hidden justify-center items-center">
-      <div :class="plan.active ? 'bg-brand-blue w-64 h-96 shadow-xl' : 'bg-white w-56 h-84 shadow-lg'" class="plan p-8 py-5 rounded-md mx-1.5" v-for="(plan, i) in plans" :key="i" >
+      <div
+        :class="plan.active ? 'bg-brand-blue w-64 h-96 shadow-xl' : 'bg-white w-56 h-84 shadow-inner border-2 border-solid border-brand-blue'"
+        class="plan p-8 py-5 rounded-md mx-1.5"
+        v-for="(plan, i) in plans"
+        :key="i"
+      >
+        <div class="relative h-full">
+          <h1
+            :class="plan.active ? 'text-white text-4xl pb-5' : 'text-brand-blue text-3xl pb-3'"
+            class="text-center font-bold"
+          >{{ plan.title }}</h1>
+          <p
+            v-html="plan.text"
+            :class="plan.active ? 'text-white' : 'text-gray-900'"
+            class="text-center text-sm"
+          ></p>
+          <button
+            :class="plan.active ? 'text-white text-md border-white' : 'text-brand-blue text-sm border-brand-blue'"
+            class="w-full absolute inset-x-0 bottom-0 rounded-md border-2 border-solid p-2"
+          >INVEST NOW</button>
+        </div>
+      </div>
+    </div>
+
+    <vueper-slides
+      class="md:hidden block no-shadow container mx-auto max-w-screen-lg h-full"
+      :visible-slides="3"
+      :slide-ratio="1 / 4"
+      :gap="5"
+      :arrows-outside="true"
+      :breakpoints="breakpoints"
+      
+    >
+      <vueper-slide
+        v-for="(plan, i) in plans"
+        :key="i"
+        :class="plan.active ? 'bg-brand-blue shadow-xl' : 'bg-white shadow-inner border-2 border-solid border-brand-blue'"
+        class="w-full plan p-8 py-5 rounded-md h-96"
+      >
+      <template #content>
         <div class="relative h-full">
           <h1 :class="plan.active ? 'text-white text-4xl pb-5' : 'text-brand-blue text-3xl pb-3'" class="text-center font-bold" >{{ plan.title }}</h1>
           <p v-html="plan.text" :class="plan.active ? 'text-white' : 'text-gray-900'" class="text-center text-sm" ></p>
           <button :class="plan.active ? 'text-white text-md border-white' : 'text-brand-blue text-sm border-brand-blue'" class="w-full absolute inset-x-0 bottom-0 rounded-md border-2 border-solid p-2" >INVEST NOW</button>
         </div>
-      </div>
-    </div>
-    <carousel :items-to-show="2" :wrap-around="true">
-    <slide :class="plan.active ? 'bg-brand-blue h-96 shadow-xl' : 'bg-white h-96 shadow-lg'" class="w-full plan p-8 py-5 rounded-md mx-1.5" v-for="(plan, i) in plans" :key="i">
-      <div class="relative h-full">
-          <h1 :class="plan.active ? 'text-white text-4xl pb-5' : 'text-brand-blue text-3xl pb-3'" class="text-center font-bold" >{{ plan.title }}</h1>
-          <p v-html="plan.text" :class="plan.active ? 'text-white' : 'text-gray-900'" class="text-center text-sm" ></p>
-          <button :class="plan.active ? 'text-white text-md border-white' : 'text-brand-blue text-sm border-brand-blue'" class="w-full absolute inset-x-0 bottom-0 rounded-md border-2 border-solid p-2" >INVEST NOW</button>
-        </div>
-    </slide>
-
-    <template #addons>
-      <navigation />
-    </template>
-  </carousel>
-      <!-- <swiper :slides-per-view="1" :space-between="10"  class="md:hidden block" >
-        <swiper-slide :class="plan.active ? 'bg-brand-blue h-96 shadow-xl' : 'bg-white h-96 shadow-lg'" class="w-full plan p-8 py-5 rounded-md mx-1.5" v-for="(plan, i) in plans" :key="i" >
-          <div class="relative h-full">
-          <h1 :class="plan.active ? 'text-white text-4xl pb-5' : 'text-brand-blue text-3xl pb-3'" class="text-center font-bold" >{{ plan.title }}</h1>
-          <p v-html="plan.text" :class="plan.active ? 'text-white' : 'text-gray-900'" class="text-center text-sm" ></p>
-          <button :class="plan.active ? 'text-white text-md border-white' : 'text-brand-blue text-sm border-brand-blue'" class="w-full absolute inset-x-0 bottom-0 rounded-md border-2 border-solid p-2" >INVEST NOW</button>
-        </div>
-        </swiper-slide>
-      </swiper> -->
+      </template>
+      </vueper-slide>
+      <!-- <vueper-slide
+          v-for="(plan, i) in plans"
+          :key="i"
+          class="w-full shadow-xl h-full"
+          :image="require(`@/assets/images/${plan.img}`)"
+      />-->
+    </vueper-slides>
   </div>
 </template>
 
 <script>
-import "vue3-carousel/dist/carousel.css"
-import { Carousel, Slide, Navigation } from 'vue3-carousel';
+import { VueperSlides, VueperSlide } from 'vueperslides'
+import 'vueperslides/dist/vueperslides.css'
 const plans = [
   {
     title: "FORT DOLLAR",
@@ -86,13 +110,22 @@ const plans = [
 ]
 export default {
   components: {
-    Carousel,
-        Slide,
-        Navigation
+    VueperSlides, VueperSlide
   },
   setup() {
+    const breakpoints = {
+
+      700: {
+        slideRatio: 1,
+        arrows: false,
+        bulletsOutside: true,
+        visibleSlides: 1,
+        gap: 1
+      }
+    }
     return {
-      plans
+      plans,
+      breakpoints
     }
   }
 }
@@ -102,22 +135,11 @@ export default {
 .h-84 {
   height: 22rem;
 }
-.carousel__slide > .carousel__item {
-  transform: scale(1);
-  opacity: 0.5;
-  transition: 0.5s;
+
+#plans > div.vueperslides.vueperslides--ready.vueperslides--touchable.vueperslides--bullets-outside.no-shadow.container.mx-auto.max-w-screen-lg.h-full > div.vueperslides__inner{
+  height: 28rem;
 }
-.carousel__slide--visible > .carousel__item {
-  opacity: 1;
-  transform: rotateY(0);
-}
-.carousel__slide--next > .carousel__item {
-  transform: scale(0.9) translate(-10px);
-}
-.carousel__slide--prev > .carousel__item {
-  transform: scale(0.9) translate(10px);
-}
-.carousel__slide--active > .carousel__item {
-  transform: scale(1.1);
+#plans > div.vueperslides.vueperslides--ready.vueperslides--touchable.vueperslides--bullets-outside.no-shadow.container.mx-auto.max-w-screen-lg.h-full > div.vueperslides__inner > div{
+  position: static;
 }
 </style>

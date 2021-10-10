@@ -1,5 +1,5 @@
 <template>
-    <div class="md:flex justify-center items-center px-12 md:px-20 md:flex-row flex-col" id="faq">
+    <div class="md:flex justify-center items-center px-12 md:px-28 md:flex-row flex-col" id="faq">
         <div class="md:p-8 pb-8">
             <h1
                 class="text-3xl font-semibold text-brand-lightblue pb-2"
