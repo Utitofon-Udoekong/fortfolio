@@ -1,6 +1,6 @@
 <template>
   <div class="mb-14" id="about">
-    <div class="titlebar h-32 bg-brand-lightblue px-8 sm:px-28 flex items-center">
+    <!-- <div class="titlebar h-32 bg-brand-lightblue px-8 sm:px-28 flex items-center">
       <h1 class="text-4xl md:text-6xl text-white inline-block font-extrabold">ABOUT US</h1>
     </div>
     <div class="content md:flex justify-center items-center">
@@ -24,7 +24,7 @@
         </div>
         <button class="font-semibold w-9/12 shadow-lg h-12 absolute -bottom-4 bg-white left-1/2 transform -translate-x-1/2">GET A FREE CONSULTATION</button>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

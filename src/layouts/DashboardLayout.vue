@@ -1,44 +1,36 @@
 <template>
   <div class="flex w-full h-screen">
-    <div class="w-1/4 h-full bg-gray-600">
-      <!-- <router-link to="/dashboard/moses" class="text-white">
-      <a href="">Main</a>
-      </router-link>
-      <router-link to="/dashboard/moses/payment">payment</router-link>-->
-      <span class="flex w-full items-center p-4 border-b">
-        <img src="@/assets/images/logo.png" class="h-auto w-20 sm:w-32 mx-auto" alt="logo" />
+    <div class="h-full bg-white ease-linear transition-all duration-300" :class="showSideBar ? 'w-2/12' : 'w-0'">
+      <span class="flex w-full items-center p-8 border-b">
+        <img src="@/assets/images/logo-text.png" class="h-auto w-20 sm:w-32" alt="logo" />
       </span>
       <div class="w-full pl-4">
         <div v-for="(menu,i) in menus" :key="i" class="w-full">
-          <router-link :to="menu.path" class="w-full flex items-center text-white text-md p-3 hover:bg-gray-900" >
-            <div class="icon mr-4">
-              <svg viewBox="0 0 24 24" width="25" height="25" fill="#fff" class="inline-block">
-                <path :d="menu.icon" />
-              </svg>
-            </div>
-            <p>{{ menu.name }}</p>
-          </router-link>
+          <router-link :to="menu.path" :class="$route.path === menu.path ? 'bg-brand-blue text-white' : 'text-brand-blue' " class="w-full flex items-center text-md p-3 hover:bg-brand-blue hover:text-white" > <div class="icon mr-4"> <svg viewBox="0 0 24 24" width="25" height="25" class="inline-block fill-current"> <path :d="menu.icon" /> </svg> </div> <p>{{ menu.name }}</p> </router-link>
         </div>
         <div class="w-full">
-          <router-link to="/dashboard/moses" class="w-full flex items-center text-white text-md p-3 hover:bg-gray-900">
-            <div class="icon mr-4">
-              <svg viewBox="0 0 24 24" width="25" height="25" fill="#fff" class="inline-block">
-                <path :d="mdiArrowULeftTop" />
-              </svg>
-            </div>
-            <p>Logout</p>
-          </router-link>
+          <router-link to="/login" class="w-full flex items-center text-brand-blue text-md p-3 hover:bg-brand-blue hover:text-white" > <div class="icon mr-4"> <svg viewBox="0 0 24 24" width="25" height="25" class="inline-block fill-current"> <path :d="mdiArrowULeftTop" /> </svg> </div> <p>Logout</p> </router-link>
         </div>
       </div>
     </div>
-    <div class="w-3/4 h-full bg-gray-900">
+    <div class="h-full bg-gray-200 ease-linear transition-all duration-300" :class="showSideBar ? 'w-10/12' : 'w-full'">
+      <div class="flex justify-between items-center p-4 border-b border-gray-300 h-1/6">
+        <div class="flex">
+          <svg @click="showSideBar = !showSideBar" viewBox="0 0 24 24" width="25" height="25" class="cursor-pointer inline-block fill-current mr-3">
+            <path :d="mdiSegment" />
+          </svg>
+          <p class="text-brand-blue text-xl font-semibold">Dashboard</p>
+        </div>
+        <button class="p-3 bg-brand-blue text-white text-sm rounded-md">Hello {{ $route.params.user }}</button>
+      </div>
       <slot />
     </div>
   </div>
 </template>
 
 <script>
-import { mdiAlphaDBox, mdiAccountCircleOutline, mdiCashLock, mdiCashPlus, mdiCartPlus, mdiCashMinus, mdiCellphoneWireless, mdiArrowULeftTop } from '@mdi/js'
+import { mdiSegment, mdiAlphaDBox, mdiAccountCircleOutline, mdiCashLock, mdiCashPlus, mdiCartPlus, mdiCashMinus, mdiCellphoneWireless, mdiArrowULeftTop } from '@mdi/js'
+import { ref } from '@vue/reactivity'
 const user = "moses"
 const menus = [
   {
@@ -80,9 +72,13 @@ const menus = [
 export default {
   name: "DashboardLayout",
   setup() {
+    const showSideBar = ref(true)
     return {
       menus,
-      mdiArrowULeftTop
+      mdiArrowULeftTop,
+      mdiSegment,
+      user,
+      showSideBar
     }
   }
 }

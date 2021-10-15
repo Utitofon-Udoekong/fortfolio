@@ -1,8 +1,7 @@
 <template>
-  <!-- <AppLayout>
+  <AppLayout>
     <router-view></router-view>
-  </AppLayout> -->
-  <router-view></router-view>
+  </AppLayout>
 </template>
 
 <script>

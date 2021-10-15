@@ -1,16 +1,16 @@
 <template>
   <div class="home">
-    <HeadSection/>
-    <IntroBanner/>
-    <AboutSection/>
-    <HowToInvest/>
-    <OfferSection/>
-    <InvestmentPlans/>
-    <Recommendations/>
-    <WhyChooseUs/>
-    <FAQs/>
-    <CallUsSection/>
-    <Footer/>
+    <HeadSection />
+    <IntroBanner />
+    <AboutSection />
+    <HowToInvest />
+    <OfferSection />
+    <InvestmentPlans />
+    <Recommendations />
+    <WhyChooseUs />
+    <FAQs />
+    <CallUsSection />
+    <Footer />
   </div>
 </template>
 
@@ -26,7 +26,6 @@ import WhyChooseUs from "../components/WhyChooseUs.vue";
 import FAQs from '../components/FAQs.vue';
 import CallUsSection from '../components/CallUsSection.vue';
 import Footer from '../components/Footer.vue';
-
 export default {
   name: 'Home',
   components: {
@@ -41,12 +40,13 @@ export default {
     FAQs,
     CallUsSection,
     Footer
-  }
+  },
+
 }
 </script>
 
 <style>
-*{
+* {
   scroll-behavior: smooth;
   box-sizing: border-box;
 }
