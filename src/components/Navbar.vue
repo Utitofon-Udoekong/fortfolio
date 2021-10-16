@@ -3,8 +3,8 @@
         class="flex w-full items-center justify-between md:justify-around text-gray-700 py-2 px-4 z-10 shadow-xl fixed top-0 inset-x-0 bg-white"
     >
         <div class="flex items-center">
-            <div class="logo sm:w-20 sm:h-20 w-16 h-16">
-                <img src="@/assets/images/logo.svg" class="w-full h-full" alt="logo" />
+            <div class="logo sm:w-24 sm:h-24 w-16 h-16">
+                <img src="@/assets/images/logo.png" class="w-full h-full" alt="logo" />
             </div>
         </div>
         <div class="flex">
