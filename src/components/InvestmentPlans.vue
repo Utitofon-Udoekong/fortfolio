@@ -1,10 +1,10 @@
 <template>
   <div class="text-center my-28 px-6" id="plans">
     <p class="text-brand-lightblue text-lg md:text-xl">Get Started Now</p>
-    <h1 class="text-brand-blue text-2xl md:text-4xl font-extrabold py-4">OUR INVESTMENT PLANS</h1>
+    <h1 class="text-brand-blue text-3xl md:text-5xl font-extrabold py-4">OUR INVESTMENT PLANS</h1>
     <p
       class="text-brand-lightblue text-md md:text-xl max-w-2xl mx-auto pb-8"
-    >Get started now with us to earn every day and forever in your business. We accept Investment from all over the world</p>
+    >Start your journey with us to earn huge interests every day in your business. We accept Investment from all over the world</p>
     <div class="md:flex hidden justify-center items-center">
       <div
         :class="plan.active ? 'bg-brand-blue w-64 h-96 shadow-xl' : 'bg-white w-56 h-84 shadow-inner border-2 border-solid border-brand-blue'"
@@ -23,8 +23,8 @@
             class="text-center text-sm"
           ></p>
           <button
-            :class="plan.active ? 'text-white text-md border-white' : 'text-brand-blue text-sm border-brand-blue'"
-            class="w-full absolute inset-x-0 bottom-0 rounded-md border-2 border-solid p-2"
+            :class="plan.active ? 'text-white text-md border-white hover:bg-white hover:text-black' : 'text-brand-blue text-sm border-brand-blue hover:bg-brand-blue hover:text-white'"
+            class="w-full absolute inset-x-0 bottom-0 rounded-md border-2 border-solid p-2 ease-linear transition-all duration-150"
           >INVEST NOW</button>
         </div>
       </div>

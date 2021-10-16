@@ -3,12 +3,12 @@
     <p class="text-brand-lightblue text-xl font-light text-center">
       HOW TO INVEST WITH US
     </p>
-    <h1 class="text-brand-lightblue text-4xl md:text-5xl font-extrabold text-center pb-6">
+    <h1 class="text-brand-lightblue text-3xl md:text-5xl font-extrabold text-center pb-6">
       IN THREE EASY STEPS
     </h1>
     <div class="steps grid grid-cols-1 md:grid-cols-3">
       <div
-        class="bg-brand-lightblue w-full p-9 px-28 text-center shadow-2xl"
+        class="bg-brand-lightblue w-full p-9 px-10 sm:px-28 text-center shadow-2xl"
         v-for="(step, i) in steps"
         :key="i"
       >

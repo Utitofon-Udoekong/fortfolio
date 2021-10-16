@@ -1,6 +1,6 @@
 <template>
-  <div class="container py-4 introbanner justify-evenly">
-      <div class="column flex w-full p-3 items-center" v-for="(intro, i) in intros" :key="i">
+  <div class="container py-4 introbanner mx-auto">
+      <div class="column flex w-full p-3 items-center shadow-lg rounded-md hover:shadow-2xl" v-for="(intro, i) in intros" :key="i">
           <div class="w-32 h-auto">
               <img class="w-full" :src="require(`@/assets/images/intro/${intro.image}`)" :alt="intro.alt">
           </div>

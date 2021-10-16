@@ -72,7 +72,7 @@
                                 href="/signup"
                                 class="text-brand-lightblue"
                             >Sign up</a> or go
-                            <a href="/dashboard/moses" class="text-brand-lightblue">Home</a>
+                            <a href="/" class="text-brand-lightblue">Home</a>
                         </p>
                     </form>
                 </div>

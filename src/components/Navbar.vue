@@ -1,26 +1,37 @@
 <template>
     <nav
-        class="flex w-full items-center justify-between md:justify-around text-gray-700 z-10 shadow-xl sm:shadow-none fixed sm:static top-0 inset-x-0 bg-white sm:bg-transparent"
+        class="flex w-full items-center justify-between md:justify-around text-gray-700 py-2 px-4 z-10 shadow-xl fixed top-0 inset-x-0 bg-white"
     >
         <div class="flex items-center">
-            <div class="logo w-20 h-20 sm:w-32 sm:h-32">
-                <img src="@/assets/images/logo.png" class="w-full h-full" alt="logo" />
+            <div class="logo sm:w-20 sm:h-20 w-16 h-16">
+                <img src="@/assets/images/logo.svg" class="w-full h-full" alt="logo" />
             </div>
         </div>
-        <div class="flex items-center">
-            <div class="hidden md:flex md:justify-between items-center md:bg-transparent">
-                <ul class="inline-flex">
-                    <li
-                        class="text-white text-md mx-4"
-                        v-for="(link, i) in navigation"
-                        :key="i"
-                    ><a :href="link.href">{{ link.name }}</a></li>
-                </ul>
+        <div class="flex">
+            <div class="flex items-center mr-3">
+                <div class="hidden md:flex md:justify-between items-center md:bg-transparent">
+                    <ul class="inline-flex">
+                        <li
+                            class="text-black text-md mx-4"
+                            v-for="(link, i) in navigation"
+                            :key="i"
+                        >
+                            <a :href="link.href">{{ link.name }}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
+            <button
+                class="ease-linear transition-all duration-150 hover:bg-brand-blue hidden md:block bg-transparent bg-brand-lightblue text-white rounded-md text-md px-6 p-3 mr-2"
+            >
+                <a href="/login">Log in</a>
+            </button>
+            <button
+                class="ease-linear transition-all duration-150 hover:bg-brand-lightblue hidden md:block bg-transparent bg-brand-blue text-white rounded-md text-md px-8 p-3"
+            >
+                <a href="/signup">Sign Up</a>
+            </button>
         </div>
-        <button
-            class="hidden md:block bg-transparent text-white rounded-md text-lg font-bold"
-        ><a href="/login">SIGNUP | LOGIN</a></button>
         <button class="mr-2 block md:hidden" aria-label="Open Menu" @click="drawer">
             <svg
                 fill="none"
@@ -58,23 +69,34 @@
             class="transform top-0 left-0 w-full sm:w-72 bg-white fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30"
             :class="isOpen ? 'translate-x-0' : '-translate-x-full'"
         >
-            <span  class="flex w-full justify-between items-center p-4 border-b">
-                <img src="@/assets/images/logo.png" class="h-auto w-20 sm:w-32 " alt="logo" />
+            <span class="flex w-full justify-between items-center p-4 border-b">
+                <img src="@/assets/images/logo.png" class="h-auto w-20 sm:w-32" alt="logo" />
                 <span class="text-2xl" @click="isOpen = false">X</span>
             </span>
             <span
                 @click="isOpen = false"
                 class="flex justify-center items-center p-4 hover:bg-brand-lightblue hover:text-white"
-                v-for="(link, i) in navigation" 
+                v-for="(link, i) in navigation"
                 :key="i"
             >
-                <span><a :href="link.href">{{link.name}}</a></span>
+                <span>
+                    <a :href="link.href">{{ link.name }}</a>
+                </span>
             </span>
-            <div class="fixed bottom-0 w-full">
+            <div class="w-full">
                 <button
-                    class="flex justify-center items-center p-4 text-white bg-brand-lightblue hover:bg-blue-600 w-full"
+                    class="flex justify-center items-center p-4 text-white bg-brand-lightblue mb-1 hover:bg-brand-blue w-full"
                 >
-                    <span><a href="/login">Login</a></span>
+                    <span>
+                        <a href="/login">Login</a>
+                    </span>
+                </button>
+                <button
+                    class="flex justify-center items-center p-4 text-white bg-brand-blue hover:bg-brand-lightblue w-full"
+                >
+                    <span>
+                        <a href="/signup">Sign Up</a>
+                    </span>
                 </button>
             </div>
         </aside>

@@ -2,14 +2,14 @@
     <div class="my-24 p-8 py-12 choice">
         <p class="text-center text-brand-blue text-lg pb-3">WHY CHOOSE US</p>
         <h1
-            class="text-brand-lightblue text-4xl text-center font-extrabold pb-10"
+            class="text-brand-lightblue text-3xl md:text-5xl text-center font-extrabold pb-10"
         >SMART INVESTING WITH SMART IDEAS</h1>
         <div class="flex md:flex-row items-center flex-col justify-center md:items-start">
-            <div v-for="(choice, i) in choices" :key="i" class="text-center w-56 md:mx-1.5 mx-0" :class="choice[choice.length-1] ? 'mb-0' : 'mb-10'">
+            <div v-for="(choice, i) in choices" :key="i" class="text-center w-56 md:mx-1.5 mx-0" :class="choice[choice.length-1] ? 'mb-0' : 'mb-12'">
                 <div class="image mx-auto flex items-center justify-center bg-brand-blue w-24 h-24 rounded-full">
                     <img class="w-2/4 h-2/4 object-center" :src="require(`@/assets/images/chooseus/${choice.image}`)" :alt="choice.alt">
                 </div>
-                <h2 class="font-semibold text-xl text-brand-blue py-3">{{ choice.title }}</h2>
+                <h2 class="font-semibold text-xl text-brand-blue py-2">{{ choice.title }}</h2>
                 <p class="text-sm">{{ choice.text }}</p>
             </div>
         </div>

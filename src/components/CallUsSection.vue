@@ -1,9 +1,9 @@
 <template>
-  <div class="w-auto text-center sm:text-unset bg-headphones bg-brand-blue bg-blend-overlay bg-bottom bg-cover bg-fixed my-24 flex items-center md:justify-around justify-center md:flex-row flex-col h-60">
+  <div class="w-auto text-center sm:text-unset bg-headphones bg-no-repeat bg-brand-blue bg-blend-overlay bg-bottom bg-cover bg-fixed my-24 flex items-center md:justify-around justify-center md:flex-row flex-col h-60">
       <div class="max-w-full md:max-w-xl">
-          <h1 class="text-white text-xl md:text-2xl font-semibold">LOOKING FOR PROFESSIONAL APPROACH AND QUALITY SERVICES ?</h1>
+          <h1 class="text-white text-lg md:text-2xl font-semibold">LOOKING FOR PROFESSIONAL APPROACH AND QUALITY SERVICES ?</h1>
       </div>
-      <button class="text-brand-blue bg-white p-4 mt-6 sm:mt-0 shadow-lg">CONTACT US TODAY</button>
+      <button class="text-brand-blue rounded-md bg-white p-4 font-semibold hover:bg-brand-lightblue hover:text-white mt-6 sm:mt-0 shadow-lg">CONTACT US TODAY</button>
   </div>
 </template>
 
