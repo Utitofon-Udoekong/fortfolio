@@ -40,7 +40,7 @@
                     <h1 class="font-semibold text-xl pb-4">CONTACT</h1>
                     <ul class="text-md leading-8">
                         <li>support@fortfolio.info</li>
-                        <li>+2348120912268</li>
+                        <li>+2348070738825</li>
                         <li>Lagos, Nigeria</li>
                     </ul>
                 </div>

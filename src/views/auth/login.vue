@@ -110,7 +110,7 @@ export default {
     methods:{
         async submitForm(){
             await this.v$.$validate()
-            if(!this.v$.$error) this.$router.push("/comingsoon")
+            if(!this.v$.$error) this.$router.push("/constructionpage")
             else console.log("error")
         }
     }

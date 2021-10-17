@@ -1,5 +1,5 @@
 <template>
-    <div class="my-24 px-3 sm:px-6">
+    <div class="my-24 mb-32 px-3 sm:px-6">
         <p class="text-center text-3xl font-bold pb-10 text-brand-blue">RECOMMENDATIONS</p>
 
         <vueper-slides

@@ -4,7 +4,9 @@
     >
         <div class="flex items-center">
             <div class="logo sm:w-24 sm:h-24 w-16 h-16">
-                <img src="@/assets/images/logo.png" class="w-full h-full" alt="logo" />
+                <a href="/" class="w-full h-full">
+                    <img src="@/assets/images/logo.png" class="w-full h-full" alt="logo" />
+                </a>
             </div>
         </div>
         <div class="flex">

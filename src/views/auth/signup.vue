@@ -9,12 +9,12 @@
                 </a>
             </div>
         </div>
-        <div class="md:w-1/2 w-full h-full p-8 overflow-y-scroll">
+        <div class="md:w-1/2 w-full h-full p-6 sm:p-8 overflow-y-scroll">
             <h1 class="text-brand-lightblue text-4xl font-semibold">Welcome to Fortfolio</h1>
             <p
                 class="text-gray-600 tracking-wide pb-4"
-            >Sign up For an investment by entering your information below</p>
-            <form @submit.prevent="submitForm" class="w-full grid grid-cols-2 auto-rows-auto gap-2">
+            >Sign up For an investment account by entering your information below</p>
+            <form @submit.prevent="submitForm" class="w-full grid grid-cols-1 sm:grid-cols-2 auto-rows-auto gap-2">
                 <div class="mb-4">
                     <label for="first" class="text-gray-700 font-semibold text-md">First Name</label>
                     <div
@@ -93,48 +93,6 @@
                     >Confirm Password</label>
                     <div class=" relative border-2 focus-within:border-brand-lightblue hover:border-brand-lightblue rounded-md" > <input class="text-md border-gray-300 appearance-none bg-transparent border-none w-full mr-3 py-3 px-2 leading-tight focus:outline-none" :type="showPassword ? 'text' : 'password'" id="confirm" v-model="state.password.confirm" /> <div> <svg viewBox="0 0 24 24" width="25" height="25" fill="#333" class="inline-block absolute right-2 top-2 cursor-pointer" @click="showPassword = !showPassword" > <path :d="showPassword ? mdiEye : mdiEyeOff" /> </svg> </div> </div>
                     <small v-if="v$.password.confirm.$error" class="text-red-600">{{v$.password.confirm.$errors[0].$message}}</small>
-                </div>
-                <div class="mb-4">
-                    <label for="bankName" class="text-gray-700 font-semibold text-md">Bank Name</label>
-                    <div
-                        class="border-2 focus-within:border-brand-lightblue hover:border-brand-lightblue rounded-md"
-                    >
-                        <input
-                            class="text-md border-gray-300 appearance-none bg-transparent border-none w-full mr-3 py-3 px-2 leading-tight focus:outline-none"
-                            type="text"
-                            id="bankName"
-                            v-model="state.bankName"
-                        />
-                    </div>
-                    <small v-if="v$.bankName.$error" class="text-red-600">{{v$.bankName.$errors[0].$message}}</small>
-                </div>
-                <div class="mb-4">
-                    <label for="bankAccountName" class="text-gray-700 font-semibold text-md">Bank Account Name</label>
-                    <div
-                        class="border-2 focus-within:border-brand-lightblue hover:border-brand-lightblue rounded-md"
-                    >
-                        <input
-                            class="text-md border-gray-300 appearance-none bg-transparent border-none w-full mr-3 py-3 px-2 leading-tight focus:outline-none"
-                            type="text"
-                            id="bankAccountName"
-                            v-model="state.bankAccountName"
-                        />
-                    </div>
-                    <small v-if="v$.bankAccountName.$error" class="text-red-600">{{v$.bankAccountName.$errors[0].$message}}</small>
-                </div>
-                <div class="mb-4">
-                    <label for="bankAccountNumber" class="text-gray-700 font-semibold text-md">Bank Account Number</label>
-                    <div
-                        class="border-2 focus-within:border-brand-lightblue hover:border-brand-lightblue rounded-md"
-                    >
-                        <input
-                            class="text-md border-gray-300 appearance-none bg-transparent border-none w-full mr-3 py-3 px-2 leading-tight focus:outline-none"
-                            type="text"
-                            id="bankAccountNumber"
-                            v-model="state.bankAccountNumber"
-                        />
-                    </div>
-                    <small v-if="v$.bankAccountNumber.$error" class="text-red-600">{{v$.bankAccountNumber.$errors[0].$message}}</small>
                 </div>
                 <div class="mb-4">
                     <label for="refCode" class="text-gray-700 font-semibold text-md">Referral Code(optional)</label>
@@ -231,7 +189,7 @@ export default {
     methods: {
         submitForm() {
             this.v$.$validate()
-            if (!this.v$.$error) this.$router.push("/comingsoon")
+            if (!this.v$.$error) this.$router.push("/constructionpage")
             else console.log("error")
         }
     }
