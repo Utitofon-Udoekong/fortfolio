@@ -29,13 +29,13 @@ const intros = [
     {
         image: "stacks.png",
         title: "DIVERSE APPROACH",
-        text: "We don’t believe in the sales culture, but instead we believe in the service culture. ",
+        text: "We embrace diversity to foster innovations and find better solutions to your various financial problems. ",
         alt: "DIVERSE APPROACH"
     },
     {
         image: "clipboard.png",
         title: "DETAILED REPORT",
-        text: "We don’t believe in the sales culture, but instead we believe in the service culture. Our experts are always available over the phone and online.",
+        text: "Regular and detailed client reporting is an essential component of our service.",
         alt: "DETAILED REPORT"
     },
 ]

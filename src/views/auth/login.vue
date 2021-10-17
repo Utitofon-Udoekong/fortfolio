@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="bg-white md:w-1/3 w-11/12 p-8 shadow-xl">
-                <p class="text-brand-lightblue text-3xl">Welcome to Fort-Folio</p>
+                <p class="text-brand-lightblue text-3xl">Welcome to Fortfolio</p>
                 <p class="text-gray-600 pb-4">Sign In by entering your information below</p>
                 <div>
                     <form class="w-full" @submit.prevent="submitForm">
@@ -110,7 +110,7 @@ export default {
     methods:{
         async submitForm(){
             await this.v$.$validate()
-            if(!this.v$.$error) this.$router.push("/dashboard/moses")
+            if(!this.v$.$error) this.$router.push("/comingsoon")
             else console.log("error")
         }
     }

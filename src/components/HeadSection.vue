@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen w-auto bg-hero-pattern bg-brand-blue bg-blend-overlay md:bg-fixed sm:pt-24">
+  <div class="h-screen w-auto bg-hero-pattern bg-brand-blue bg-no-repeat bg-blend-overlay md:bg-fixed sm:pt-24">
       <Navbar/>
       <main class="flex items-center justify-center text-center h-3/4 mt-20">
         <div class="container mx-auto max-w-3xl px-4 sm:px-1">
@@ -15,8 +15,6 @@
 
 <script>
 import Navbar from "./Navbar.vue"
-
-
 export default {
   components: {
     Navbar

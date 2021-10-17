@@ -1,5 +1,5 @@
 <template>
-    <div class="my-24 px-6">
+    <div class="my-24 px-3 sm:px-6">
         <p class="text-center text-3xl font-bold pb-10 text-brand-blue">RECOMMENDATIONS</p>
 
         <vueper-slides
@@ -10,11 +10,12 @@
             :arrows-outside="true"
             :breakpoints="breakpoints"
             autoplay
+            fixed-height="300px"
         >
             <vueper-slide
                 v-for="(testimonial, i) in testimonials"
                 :key="i"
-                class="bg-brand-blue h-76 shadow-lg relative p-8"
+                class="bg-brand-blue shadow-lg relative p-8"
             >
                 <template #content>
                     <p class="text-white text-md">{{ testimonial.text }}</p>
@@ -66,7 +67,8 @@ export default {
                 slideRatio: 1,
                 arrows: false,
                 bulletsOutside: true,
-                visibleSlides: 1
+                visibleSlides: 1,
+                fixedHeight: '350px'
             }
             // The order you list breakpoints does not matter, Vueper Slides will sort them for you.
         }

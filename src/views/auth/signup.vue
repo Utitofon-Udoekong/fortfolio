@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="md:w-1/2 w-full h-full p-8 overflow-y-scroll">
-            <h1 class="text-brand-lightblue text-4xl font-semibold">Welcome to Fort-Folio</h1>
+            <h1 class="text-brand-lightblue text-4xl font-semibold">Welcome to Fortfolio</h1>
             <p
                 class="text-gray-600 tracking-wide pb-4"
             >Sign up For an investment by entering your information below</p>
@@ -231,7 +231,7 @@ export default {
     methods: {
         submitForm() {
             this.v$.$validate()
-            if (!this.v$.$error) console.log("okay")
+            if (!this.v$.$error) this.$router.push("/comingsoon")
             else console.log("error")
         }
     }

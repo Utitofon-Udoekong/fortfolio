@@ -1,17 +1,26 @@
 <template>
-  <div class="my-14 md:my-24" id="steps">
-    <p class="text-brand-lightblue text-xl font-light text-center">
-      HOW TO INVEST WITH US
-    </p>
-    <h1 class="text-brand-lightblue text-3xl md:text-5xl font-extrabold text-center pb-6">
-      IN THREE EASY STEPS
-    </h1>
+  <div class="mt-24 md:my-24" id="steps">
+    <div class="px-1">
+      <p class="text-brand-lightblue text-xl font-light text-center">HOW TO INVEST WITH US</p>
+      <h1
+        class="text-brand-lightblue text-3xl md:text-5xl font-extrabold text-center pb-6"
+      >IN THREE EASY STEPS</h1>
+    </div>
     <div class="mt-6 sm:mt-10 p-6 sm:px-16 md:px-24">
-      <div v-for="(step, i) in steps" :key="i" class="mb-10 flex flex-col justify-around items-center" :class="i === 1 ? 'md:flex-row-reverse' : 'md:flex-row'">
-        <div class="w-full sm:w-6/12 p-4">
-          <img class="w-full h-full" :src="require(`@/assets/images/${step.image}`)" :alt="step.alt">
+      <div
+        v-for="(step, i) in steps"
+        :key="i"
+        class="mb-14 flex flex-col justify-around items-center"
+        :class="i === 1 ? 'md:flex-row-reverse' : 'md:flex-row'"
+      >
+        <div class="w-full sm:w-6/12 p-1 sm:p-4">
+          <img
+            class="w-full h-full"
+            :src="require(`@/assets/images/${step.image}`)"
+            :alt="step.alt"
+          />
         </div>
-        <div class="w-full sm:w-6/12 px-6 sm:px-20">
+        <div class="w-full sm:w-6/12 px-2 sm:px-20">
           <h1 class="py-4 text-2xl text-brand-lightblue font-semibold">{{ step.title }}</h1>
           <p class="text-black">{{ step.text }}</p>
         </div>
@@ -26,7 +35,7 @@ const steps = [
     image: "createaccount.svg",
     title: "CREATE AN ACCOUNT",
     alt: "CREATE AN ACCOUNT",
-    text: "Begin by signing up on Fort-Folio by clicking the sign up button and filling the sign up form",
+    text: "Begin by signing up on Fortfolio by clicking the sign up button and filling the sign up form",
   },
   {
     image: "selectplan.svg",
@@ -52,8 +61,9 @@ export default {
 </script>
 
 <style scoped>
-.shadow-2xl{
---tw-shadow: 0 0 50px rgba(0, 0, 0, 0.25);
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+.shadow-2xl {
+  --tw-shadow: 0 0 50px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 </style>

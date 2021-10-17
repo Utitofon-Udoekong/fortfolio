@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-14" id="about">
+  <div class="sm:mb-14" id="about">
     <div class="titlebar h-32 bg-brand-lightblue px-6 sm:px-28 flex items-center">
       <h1 class="text-4xl md:text-6xl text-white inline-block font-extrabold">ABOUT US</h1>
     </div>
@@ -22,7 +22,7 @@
                 <p class="text-center text-sm font-semibold text-gray-600">{{investment.title}}</p>
             </div>
         </div>
-        <button class="hover:bg-brand-lightblue hover:text-white ease-linear transition-all duration-150 font-semibold w-9/12 border-2 border-brand-lightblue h-12 absolute rounded-2xl -bottom-4 bg-white left-1/2 transform -translate-x-1/2">GET A FREE CONSULTATION</button>
+        <button class="hover:bg-white hover:text-brand-blue text-white border-brand-lightblue ease-linear transition-all duration-150 font-semibold w-9/12 border-2 h-12 absolute rounded-2xl -bottom-4 bg-brand-lightblue left-1/2 transform -translate-x-1/2">GET A FREE CONSULTATION</button>
       </div>
     </div>
   </div>

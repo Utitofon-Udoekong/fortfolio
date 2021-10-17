@@ -1,5 +1,5 @@
 <template>
-  <div class="px-6 overflow-x-hidden">
+  <div class="px-3 sm:px-6 overflow-x-hidden">
     <p class="text-center text-3xl font-bold pb-10 text-brand-blue">OUR OFFERS</p>
     <vueper-slides
       class="no-shadow container mx-auto max-w-screen-lg"
@@ -29,7 +29,7 @@ const plans = [
     alt: "fortspecial"
   },
   {
-    img: "fortdollar.jpeg",
+    img: "fortdollar.jpg",
     alt: "fortdollar"
   },
   {
@@ -37,11 +37,11 @@ const plans = [
     alt: "fortbonus"
   },
   {
-    img: "fortshield.jpeg",
+    img: "fortshield.jpg",
     alt: "fortshield"
   },
   {
-    img: "fortsocial.png",
+    img: "fortsocial.jpg",
     alt: "fortsocial"
   },
 ]

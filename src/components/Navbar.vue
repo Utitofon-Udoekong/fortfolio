@@ -22,12 +22,12 @@
                 </div>
             </div>
             <button
-                class="ease-linear transition-all duration-150 hover:bg-brand-blue hidden md:block bg-transparent bg-brand-lightblue text-white rounded-md text-md px-6 p-3 mr-2"
+                class="ease-linear transition-all duration-150 hover:bg-blue-600 hidden md:block bg-transparent bg-brand-lightblue text-white rounded-md text-md px-6 p-3 mr-2"
             >
                 <a href="/login">Log in</a>
             </button>
             <button
-                class="ease-linear transition-all duration-150 hover:bg-brand-lightblue hidden md:block bg-transparent bg-brand-blue text-white rounded-md text-md px-8 p-3"
+                class="ease-linear transition-all duration-150 hover:bg-blue-400 hidden md:block bg-transparent bg-brand-blue text-white rounded-md text-md px-8 p-3"
             >
                 <a href="/signup">Sign Up</a>
             </button>
