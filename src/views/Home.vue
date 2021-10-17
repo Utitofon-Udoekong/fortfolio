@@ -4,10 +4,10 @@
     <IntroBanner />
     <AboutSection />
     <HowToInvest />
-    <OfferSection />
     <InvestmentPlans />
-    <Recommendations />
+    <OfferSection />
     <WhyChooseUs />
+    <Recommendations />
     <FAQs />
     <CallUsSection />
     <Footer />
@@ -46,8 +46,5 @@ export default {
 </script>
 
 <style>
-* {
-  scroll-behavior: smooth;
-  box-sizing: border-box;
-}
+
 </style>

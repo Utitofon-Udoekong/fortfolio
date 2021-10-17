@@ -1,23 +1,6 @@
 <template>
-    <div class="mt-8 px-6">
-        <p class="text-center text-3xl font-bold pb-10">RECOMMENDATIONS</p>
-        <!-- <div class="p-5 sm:flex hidden justify-around items-center">
-            <div
-                v-for="(testimonial, i) in testimonials"
-                :key="i"
-                class="bg-brand-blue h-72 shadow-lg relative max-w-sm"
-            >
-                <div class="w-full p-8 overflow-y-scroll h-56">
-                    <p class="text-white text-xs">{{ testimonial.text }}</p>
-                </div>
-                <p class="text-white text-lg absolute bottom-0 right-3">{{ testimonial.name }}</p>
-                <img
-                    :src="require(`@/assets/images/${testimonial.image}`)"
-                    alt="testifiers"
-                    class="absolute left-0 bottom-0 w-20"
-                />
-            </div>
-        </div>-->
+    <div class="my-24 px-6">
+        <p class="text-center text-3xl font-bold pb-10 text-brand-blue">RECOMMENDATIONS</p>
 
         <vueper-slides
             class="no-shadow container mx-auto max-w-screen-lg"
@@ -26,6 +9,7 @@
             :gap="5"
             :arrows-outside="true"
             :breakpoints="breakpoints"
+            autoplay
         >
             <vueper-slide
                 v-for="(testimonial, i) in testimonials"

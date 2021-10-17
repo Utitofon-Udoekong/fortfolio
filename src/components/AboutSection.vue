@@ -22,7 +22,7 @@
                 <p class="text-center text-sm font-semibold text-gray-600">{{investment.title}}</p>
             </div>
         </div>
-        <button class="hover:bg-brand-lightblue hover:text-white ease-linear transition-all duration-150 font-semibold w-9/12 border-2 border-brand-lightblue h-12 absolute rounded-md -bottom-4 bg-white left-1/2 transform -translate-x-1/2">GET A FREE CONSULTATION</button>
+        <button class="hover:bg-brand-lightblue hover:text-white ease-linear transition-all duration-150 font-semibold w-9/12 border-2 border-brand-lightblue h-12 absolute rounded-2xl -bottom-4 bg-white left-1/2 transform -translate-x-1/2">GET A FREE CONSULTATION</button>
       </div>
     </div>
   </div>

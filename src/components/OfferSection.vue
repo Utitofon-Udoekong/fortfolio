@@ -1,18 +1,19 @@
 <template>
-  <div class="grid md:grid-rows-1 overflow-x-hidden">
+  <div class="px-6 overflow-x-hidden">
+    <p class="text-center text-3xl font-bold pb-10 text-brand-blue">OUR OFFERS</p>
     <vueper-slides
-      class="no-shadow container mx-auto max-w-screen-lg md:h-80 h-96"
+      class="no-shadow container mx-auto max-w-screen-lg"
       :visible-slides="3"
-      :slide-ratio="1 / 4"
-      :gap="5"
+      :slide-ratio="1/2"
       :arrows-outside="true"
       :breakpoints="breakpoints"
+      fixed-height="300px"
       autoplay
     >
       <vueper-slide
         v-for="(plan, i) in plans"
         :key="i"
-        class="w-full shadow-xl h-full"
+        class="w-full shadow-xl "
         :image="require(`@/assets/images/${plan.img}`)"
       />
     </vueper-slides>
@@ -24,7 +25,7 @@ import { VueperSlides, VueperSlide } from 'vueperslides'
 import 'vueperslides/dist/vueperslides.css'
 const plans = [
   {
-    img: "fortspecial.png",
+    img: "fortspecial.jpg",
     alt: "fortspecial"
   },
   {
@@ -32,7 +33,7 @@ const plans = [
     alt: "fortdollar"
   },
   {
-    img: "fortbonus.png",
+    img: "fortbonus.jpg",
     alt: "fortbonus"
   },
   {
@@ -55,7 +56,8 @@ export default {
         slideRatio: 1,
         arrows: false,
         bulletsOutside: true,
-        visibleSlides: 1
+        visibleSlides: 1,
+        fixedHeight: '350px'
       }
     }
     return {
@@ -66,8 +68,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .h-84{
-  height: 325px;
+  height: 26rem !important;
 }
+
 </style>
