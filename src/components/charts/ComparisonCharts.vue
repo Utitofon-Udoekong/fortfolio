@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col w-full h-full md:w-auto bg-white p-4 rounded-md">
+  <div class="flex flex-col w-full h-full bg-white p-4 rounded-md">
     <vue3-chart-js
         :id="lineChart.id"
         :type="lineChart.type"
@@ -37,7 +37,7 @@ export default {
             fill: false,
             borderColor: "black",
             backgroundColor: "black",
-            padding: 6
+            padding: 3
           },
         ],
       },

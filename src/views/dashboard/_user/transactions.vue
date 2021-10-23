@@ -2,7 +2,7 @@
   <div class="p-4">
     <div class="table-form">
       <div class="flex flex-col">
-        <div class=" overflow-x-hidden">
+        <div class="overflow-x-scroll md:overflow-x-hidden">
           <div class="py-2 align-middle inline-block min-w-full ">
             <div class="overflow-hidden border-b border-gray-200 sm:rounded-lg">
               <table class="min-w-full divide-y divide-gray-200">

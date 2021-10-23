@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="overflow-y-scroll h-5/6">
     <form class="p-4">
       <div class="flex justify-between mb-4">
         <div class="text-brand-blue flex items-center">
@@ -13,21 +13,21 @@
           @click.prevent="toggleModal = !toggleModal"
         >Edit Details</button>
       </div>
-      <div class="mb-4 flex w-full items-center">
-        <label for="first" class="w-2/12 text-gray-700 font-semibold text-md">First Name</label>
-        <div class="border-2 rounded-md w-10/12">
+      <div class="mb-4 flex flex-col sm:flex-row w-full items-start sm:items-center">
+        <label for="first" class="w-full sm:w-2/12 text-gray-700 font-semibold text-md">First Name</label>
+        <div class="border-2 rounded-md w-full sm:w-10/12">
           <input
           id="first"
-            class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2 focus:outline-none"
+            class="text-md appearance-none text-black bg-white border-none w-full sm:w-full py-1 px-2 focus:outline-none"
             type="text"
             disabled
             v-model="state.name.firstName"
           />
         </div>
       </div>
-      <div class="mb-4 flex w-full items-center">
-        <label for="last" class="w-2/12 text-gray-700 font-semibold text-md">Last Name</label>
-        <div class="border-2 rounded-md w-10/12">
+      <div class="mb-4 flex flex-col sm:flex-row w-full items-start sm:items-center">
+        <label for="last" class="w-full sm:w-2/12 text-gray-700 font-semibold text-md">Last Name</label>
+        <div class="border-2 rounded-md w-full sm:w-10/12">
           <input
           id="last"
             class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2 focus:outline-none"
@@ -37,9 +37,9 @@
           />
         </div>
       </div>
-      <div class="mb-4 flex w-full items-center">
-        <label for="phone" class="w-2/12 text-gray-700 font-semibold text-md">Phone Number</label>
-        <div class="border-2 rounded-md w-10/12">
+      <div class="mb-4 flex flex-col sm:flex-row w-full items-start sm:items-center">
+        <label for="phone" class="w-full sm:w-2/12 text-gray-700 font-semibold text-md">Phone Number</label>
+        <div class="border-2 rounded-md w-full sm:w-10/12">
           <input
           id="phone"
             class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2 focus:outline-none"
@@ -49,9 +49,9 @@
           />
         </div>
       </div>
-      <div class="mb-4 flex w-full items-center">
-        <label for="email" class="w-2/12 text-gray-700 font-semibold text-md">Email</label>
-        <div class="border-2 rounded-md w-10/12">
+      <div class="mb-4 flex flex-col sm:flex-row w-full items-start sm:items-center">
+        <label for="email" class="w-full sm:w-2/12 text-gray-700 font-semibold text-md">Email</label>
+        <div class="border-2 rounded-md w-full sm:w-10/12">
           <input
           id="email"
             class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2 focus:outline-none"
@@ -61,9 +61,9 @@
           />
         </div>
       </div>
-      <div class="mb-4 flex w-full items-center">
-        <label for="bankname" class="w-2/12 text-gray-700 font-semibold text-md">Bank Name</label>
-        <div class="border-2 rounded-md w-10/12">
+      <div class="mb-4 flex flex-col sm:flex-row w-full items-start sm:items-center">
+        <label for="bankname" class="w-full sm:w-2/12 text-gray-700 font-semibold text-md">Bank Name</label>
+        <div class="border-2 rounded-md w-full sm:w-10/12">
           <input
           id="bankname"
             class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2 focus:outline-none"
@@ -73,9 +73,9 @@
           />
         </div>
       </div>
-      <div class="mb-4 flex w-full items-center">
-        <label for="accname" class="w-2/12 text-gray-700 font-semibold text-md">Account Name</label>
-        <div class="border-2 rounded-md w-10/12">
+      <div class="mb-4 flex flex-col sm:flex-row w-full items-start sm:items-center">
+        <label for="accname" class="w-full sm:w-2/12 text-gray-700 font-semibold text-md">Account Name</label>
+        <div class="border-2 rounded-md w-full sm:w-10/12">
           <input
           id="accname"
             class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2 focus:outline-none"
@@ -85,9 +85,9 @@
           />
         </div>
       </div>
-      <div class="mb-4 flex w-full items-center">
-        <label for="accnum" class="w-2/12 text-gray-700 font-semibold text-md">Account Number</label>
-        <div class="border-2 rounded-md w-10/12">
+      <div class="mb-4 flex flex-col sm:flex-row w-full items-start sm:items-center">
+        <label for="accnum" class="w-full sm:w-2/12 text-gray-700 font-semibold text-md">Account Number</label>
+        <div class="border-2 rounded-md w-full sm:w-10/12">
           <input
           id="accnum"
             class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2 focus:outline-none"
@@ -98,13 +98,19 @@
         </div>
       </div>
     </form>
+    <!-- edit card -->
     <div
       v-if="toggleModal"
       class="fixed overflow-x-hidden z-50 overflow-y-scroll inset-0 flex justify-center items-center"
     >
-      <div class="max-w-2xl relative mx-auto w-96">
-        <form class="p-4 bg-white w-full">
-          <p class="font-bold text-black text-2xl pb-4">Edit Details</p>
+      <div class="max-w-3xl w-100 relative mx-auto h-100">
+        <form class="p-4 bg-white w-full h-full overflow-y-scroll">
+          <div class="flex items-center justify-between">
+            <p class="font-bold text-black text-2xl pb-4">Edit Details</p>
+            <svg @click="toggleModal = !toggleModal" viewBox="0 0 24 24" width="25" height="25" class="cursor-pointer inline-block fill-current mr-3">
+              <path :d="mdiClose" />
+            </svg>
+          </div>
           <div class="mb-4">
             <label for="first" class="text-gray-700 font-semibold text-md">First Name</label>
             <div class="border-2 rounded-md">
@@ -182,8 +188,8 @@
               />
             </div>
           </div>
-          <button class="bg-green-600 rounded-md mr-3 text-white p-3" @click="toggleModal = !toggleModal">SAVE</button>
-          <button class="bg-red-500 rounded-md text-white p-3" @click="toggleModal = !toggleModal">CANCEL</button>
+          <button class="bg-green-600 rounded-md mr-3 text-sm text-white p-3" @click="toggleModal = !toggleModal">SAVE</button>
+          <button class="bg-red-500 rounded-md text-sm text-white p-3" @click="toggleModal = !toggleModal">CANCEL</button>
         </form>
       </div>
     </div>
@@ -193,7 +199,7 @@
 
 <script>
 import { computed, reactive, ref } from '@vue/reactivity'
-import { mdiAccountCircleOutline } from '@mdi/js';
+import { mdiClose,mdiAccountCircleOutline } from '@mdi/js';
 export default {
   setup() {
     const state = computed(() => {
@@ -231,11 +237,17 @@ export default {
     const toggleModal = ref(false)
 
     return {
-      state, toggleModal, edit, mdiAccountCircleOutline
+      state, toggleModal, edit, mdiAccountCircleOutline, mdiClose
     }
   }
 }
 </script>
 
 <style>
+.w-100{
+  width: 30rem;
+}
+.h-100{
+  height: 28rem;
+}
 </style>

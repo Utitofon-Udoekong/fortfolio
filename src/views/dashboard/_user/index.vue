@@ -1,36 +1,36 @@
 <template>
   <div class="p-4 overflow-y-scroll h-5/6">
-    <div class="flex justify-between items-center h-20">
-      <div class="bg-white text-brand-blue text-sm h-full p-4 rounded-md">
+    <div class="flex flex-col md:flex-row justify-center md:justify-between items-center h-auto gap-5">
+      <div class="bg-white w-full md:w-1/4 text-brand-blue text-sm h-full p-4 rounded-md">
         <p>Total Revenue</p>
         <p class="text-xl font-semibold">
           <span class="line-through">N</span>500,000,000
         </p>
       </div>
-      <div class="bg-white text-brand-blue text-sm flex h-full rounded-md">
+      <div class="bg-white w-full md:w-1/4 text-brand-blue text-sm block h-auto rounded-md">
         <div class="p-4">
           <p>Account Balance</p>
-          <p class="text-xl font-semibold">
+          <p class="text-xl pb-3 font-semibold">
             <span class="line-through">N</span>500
           </p>
+          <button @click="$router.push({name: 'dashboard-user-deposit' })" class="bg-brand-blue text-white p-3 rounded-md w-full">DEPOSIT</button>
         </div>
-        <button class="h-full bg-brand-blue text-white p-2 rounded-md w-24">DEPOSIT</button>
       </div>
-      <div class="bg-white text-brand-blue text-sm flex h-full rounded-md">
+      <div class="bg-white w-full md:w-1/4 text-brand-blue text-sm block h-auto rounded-md">
         <div class="p-4">
           <p>Active Investments</p>
-          <p class="text-xl font-semibold">2 TIERS</p>
+          <p class="text-xl pb-3 font-semibold">2 TIERS</p>
+          <button @click="$router.push({name: 'dashboard-user-investment' })" class="bg-brand-blue text-white p-3 rounded-md w-full">INVEST</button>
         </div>
-        <button class="h-full bg-brand-blue text-white p-2 rounded-md w-24">INVEST</button>
       </div>
-      <div class="bg-white text-brand-blue text-sm flex h-full rounded-md">
+      <div class="bg-white w-full md:w-1/4 text-brand-blue text-sm block h-auto rounded-md">
         <div class="p-4">
-          <p>Withdraw</p>
-          <p class="text-xl font-semibold">
+          <p>Withdrawal Balance</p>
+          <p class="text-xl pb-3 font-semibold">
             <span class="line-through">N</span>500
           </p>
+          <button @click="$router.push({name: 'dashboard-user-withdraw' })" class="bg-brand-blue text-white p-3 rounded-md w-full">WITHDRAW</button>
         </div>
-        <button class="h-full bg-brand-blue text-white p-2 rounded-md w-24">WITHDRAW</button>
       </div>
     </div>
     <div class="chart-form">
@@ -38,7 +38,7 @@
     </div>
     <div class="table-form">
       <div class="flex flex-col">
-        <div class=" overflow-x-hidden">
+        <div class="overflow-x-scroll md:overflow-x-hidden">
           <div class="py-2 align-middle inline-block min-w-full ">
             <div class="overflow-hidden border-b border-gray-200 sm:rounded-lg">
               <table class="min-w-full divide-y divide-gray-200">

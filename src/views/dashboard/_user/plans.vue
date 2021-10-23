@@ -1,9 +1,9 @@
 <template>
-  <div class="text-center p-4" id="plans">
-    <div class="md:flex hidden justify-center items-center">
+  <div class="overflow-y-scroll h-5/6 text-center p-4" id="plans">
+    <div class="flex flex-col sm:flex-row justify-center items-center">
       <div
-        :class="plan.active ? 'bg-brand-blue w-64 h-101 shadow-xl' : 'bg-white w-56 h-96'"
-        class="plan p-8 py-5 rounded-md mx-1.5"
+        :class="plan.active ? 'bg-brand-blue w-full sm:w-56 md:w-64 h-96 md:h-101 shadow-xl' : 'bg-white w-full sm:w-56 h-96'"
+        class="plan p-8 py-5 rounded-md mx-1.5 mb-4"
         v-for="(plan, i) in plans"
         :key="i"
       >

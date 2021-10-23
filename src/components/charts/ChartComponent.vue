@@ -1,13 +1,13 @@
 <template>
-  <div class="flex flex-col w-50 h-50 md:w-auto  my-7 mb-11 bg-white p-4 rounded-md">
+  <div class="flex flex-col w-auto my-7 mb-11 bg-white p-4 rounded-md">
     <vue3-chart-js
         :id="lineChart.id"
         :type="lineChart.type"
         :data="lineChart.data"
         :options="lineChart.options"
+        class=""
     ></vue3-chart-js>
     <p class="text-center font-extrabold tracking-wide py-4">INVESTMENT STATISTICS</p>
-    <!-- <button @click="updateChart" class="m-8 bg-blue-800 p-8 text-white">Update Chart</button> -->
   </div>
 </template>
 
@@ -93,6 +93,7 @@ export default {
   },
 }
 </script>
+
 
             // backgroundColor: [
             //   '#000091',
