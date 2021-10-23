@@ -1,23 +1,6 @@
 <template>
-<div class="flex items-center justify-center h-screen">
-        <div class="text-center text-black max-w-full px-2 sm:px-0 sm:max-w-3xl">
-            <h1
-                class="text-2xl sm:text-5xl font-bold pb-3"
-            >Oops, sorry this feature is not yet available on the website.</h1>
-            <p class="text-lg pb-10">
-                Contact
-                <a href="tel:+234 807 073 8825" class="text-brand-blue">+234 807 073 8825</a> to process your request.
-            </p>
-            <button class="text-white p-4 rounded-md">
-                <a href="https://wa.link/rpdo9m" target="_blank">Chat us on WhatsApp</a>
-            </button>
-            <p class="pt-10 flex justify-center items-center">
-                <Icon icon="cil:arrow-left" class="pr-2" width="25" />Go back
-                <a href="/" class="text-brand-blue pl-2">home</a>
-            </p>
-        </div>
-    </div>
-    <!-- <div class="h-screen w-full flex">
+
+    <div class="h-screen w-full flex">
         <div class="hidden md:block bg-login-texture-f bg-cover bg-center w-1/2 h-full relative">
             <div
                 class="logo bg-white w-1/3 h-24 shadow-lg flex items-center justify-center absolute"
@@ -149,72 +132,72 @@
                 <a href="/" class="text-brand-lightblue">Home</a>
             </p>
         </div>
-    </div> -->
+    </div>
 </template>
 
 <script>
 import { Icon } from '@iconify/vue';
-// import { computed, reactive, ref } from '@vue/reactivity'
-// import useVuelidate from '@vuelidate/core'
-// import { required, email, helpers, sameAs } from '@vuelidate/validators'
-// import { mdiEye, mdiEyeOff } from '@mdi/js';
+import { computed, reactive, ref } from '@vue/reactivity'
+import useVuelidate from '@vuelidate/core'
+import { required, email, helpers, sameAs } from '@vuelidate/validators'
+import { mdiEye, mdiEyeOff } from '@mdi/js';
 
 export default {
     components: {
         Icon,
     },
-    // setup() {
-    //     const state = reactive({
-    //         name: {
-    //             firstName: "",
-    //             lastName: ""
-    //         },
-    //         phone: "",
-    //         email: "",
-    //         password: {
-    //             password: "",
-    //             confirm: ""
-    //         },
-    //         bankName: "",
-    //         bankAccountName: "",
-    //         bankAccountNumber: "",
-    //         refCode: ""
-    //     })
-    //     const rules = computed(() => {
-    //         return {
-    //             name: {
-    //                 firstName: { required },
-    //                 lastName: { required }
-    //             },
-    //             phone: { required },
-    //             email: { required, email },
-    //             password: {
-    //                 password: { required, alpha: helpers.withMessage(incorrectPasswordMessage, alpha) },
-    //                 confirm: { required, sameAs: sameAs(state.password.password) }
-    //             },
-    //             bankName: { required },
-    //             bankAccountName: { required },
-    //             bankAccountNumber: { required },
-    //             refCode: ""
-    //         }
-    //     })
+    setup() {
+        const state = reactive({
+            name: {
+                firstName: "",
+                lastName: ""
+            },
+            phone: "",
+            email: "",
+            password: {
+                password: "",
+                confirm: ""
+            },
+            bankName: "",
+            bankAccountName: "",
+            bankAccountNumber: "",
+            refCode: ""
+        })
+        const rules = computed(() => {
+            return {
+                name: {
+                    firstName: { required },
+                    lastName: { required }
+                },
+                phone: { required },
+                email: { required, email },
+                password: {
+                    password: { required, alpha: helpers.withMessage(incorrectPasswordMessage, alpha) },
+                    confirm: { required, sameAs: sameAs(state.password.password) }
+                },
+                bankName: { required },
+                bankAccountName: { required },
+                bankAccountNumber: { required },
+                refCode: ""
+            }
+        })
         
-    //     const alpha = helpers.regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/)
-    //     const incorrectPasswordMessage = "Password must be atleast 8 characters, contain a number, a special character, and an uppercase letter."
-    //     const showPassword = ref(false)
+        const alpha = helpers.regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/)
+        const incorrectPasswordMessage = "Password must be atleast 8 characters, contain a number, a special character, and an uppercase letter."
+        const showPassword = ref(false)
 
-    //     const v$ = useVuelidate(rules, state)
-    //     return {
-    //         state, v$, mdiEye, mdiEyeOff, showPassword
-    //     }
-    // },
-    // methods: {
-    //     submitForm() {
-    //         this.v$.$validate()
-    //         if (!this.v$.$error) this.$router.push("/constructionpage")
-    //         else console.log("error")
-    //     }
-    // }
+        const v$ = useVuelidate(rules, state)
+        return {
+            state, v$, mdiEye, mdiEyeOff, showPassword
+        }
+    },
+    methods: {
+        submitForm() {
+            this.v$.$validate()
+            if (!this.v$.$error) this.$router.push("/constructionpage")
+            else console.log("error")
+        }
+    }
 }
 </script>
 
