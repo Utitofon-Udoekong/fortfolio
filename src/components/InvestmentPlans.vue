@@ -25,43 +25,51 @@
           <button
             :class="plan.active ? 'hover:text-white text-md border-white hover:bg-transparent bg-white text-black' : 'hover:text-brand-blue text-sm border-brand-blue bg-brand-blue hover:bg-white text-white'"
             class="w-full absolute inset-x-0 bottom-0 rounded-md border-2 border-solid p-2 ease-linear transition-all duration-150"
-          ><a :href="plan.path">INVEST NOW</a></button>
+          >
+            <a :href="plan.path">INVEST NOW</a>
+          </button>
         </div>
       </div>
     </div>
-
-    <vueper-slides
-      class="md:hidden block no-shadow container mx-auto max-w-screen-lg h-full"
-      :visible-slides="3"
-      :slide-ratio="1 / 3"
-      :arrows-outside="true"
-      :breakpoints="breakpoints"
-      
-    >
-      <vueper-slide
-        v-for="(plan, i) in plans"
-        :key="i"
-        :class="plan.active ? 'bg-brand-blue shadow-xl' : 'bg-white shadow-inner border-2 border-solid border-brand-blue'"
-        class="w-full plan p-8 py-5 rounded-md h-96"
+    <div class="md:hidden block no-shadow container mx-auto max-w-screen-lg h-auto">
+      <swiper
+        :slides-per-view="1"
+        class="w-full h-full"
+        :space-between="3"
+        :speed="500"
+        :autoplay="true"
+        :breakpoints="swiperOptions.breakpoints"
+        :centered-slides="true"
+        :loop="true"
       >
-      <template #content>
-        <div class="relative h-full">
-          <h1 :class="plan.active ? 'text-white text-4xl pb-5' : 'text-brand-blue text-3xl pb-3'" class="text-center font-bold" >{{ plan.title }}</h1>
-          <p v-html="plan.text" :class="plan.active ? 'text-white' : 'text-gray-900'" class="text-center text-sm" ></p>
-          <button
-            :class="plan.active ? 'hover:text-white text-md border-white hover:bg-transparent bg-white text-black' : 'hover:text-brand-blue text-sm border-brand-blue bg-brand-blue hover:bg-white text-white'"
-            class="w-full absolute inset-x-0 bottom-0 rounded-md border-2 border-solid p-2 ease-linear transition-all duration-150"
-           >INVEST NOW</button>
-        </div>
-      </template>
-      </vueper-slide>
-    </vueper-slides>
+        <swiper-slide
+          v-for="(plan, i) in plans"
+          :key="i"
+          :class="plan.active ? 'bg-brand-blue shadow-xl' : 'bg-white shadow-inner border-2 border-solid border-brand-blue'"
+          class="w-full plan p-8 py-5 rounded-md h-96"
+        >
+          <div class="relative h-full">
+            <h1
+              :class="plan.active ? 'text-white text-4xl pb-5' : 'text-brand-blue text-3xl pb-3'"
+              class="text-center font-bold"
+            >{{ plan.title }}</h1>
+            <p
+              v-html="plan.text"
+              :class="plan.active ? 'text-white' : 'text-gray-900'"
+              class="text-center text-sm"
+            ></p>
+            <button
+              :class="plan.active ? 'hover:text-white text-md border-white hover:bg-transparent bg-white text-black' : 'hover:text-brand-blue text-sm border-brand-blue bg-brand-blue hover:bg-white text-white'"
+              class="w-full absolute inset-x-0 bottom-0 rounded-md border-2 border-solid p-2 ease-linear transition-all duration-150"
+            >INVEST NOW</button>
+          </div>
+        </swiper-slide>
+      </swiper>
+    </div>
   </div>
 </template>
 
 <script>
-import { VueperSlides, VueperSlide } from 'vueperslides'
-import 'vueperslides/dist/vueperslides.css'
 const plans = [
   {
     title: "FORT DOLLAR",
@@ -109,24 +117,38 @@ const plans = [
     path: '/signup'
   },
 ]
+import SwiperCore, { Autoplay } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import "swiper/swiper.scss"
+SwiperCore.use([Autoplay]);
+
 export default {
   components: {
-    VueperSlides, VueperSlide
+    Swiper,
+    SwiperSlide,
   },
   setup() {
-    const breakpoints = {
-
-      700: {
-        slideRatio: 1/2,
-        arrows: false,
-        bulletsOutside: true,
-        visibleSlides: 1,
-        gap: 1
+    
+    const swiperOptions = {
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 3
+        },
+        480: {
+          slidesPerView: 1,
+          spaceBetween: 3
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 30
+        },
+        
       }
     }
     return {
       plans,
-      breakpoints
+      swiperOptions
     }
   }
 }
@@ -137,11 +159,16 @@ export default {
   height: 22rem;
 }
 
-#plans > div.vueperslides.vueperslides--ready.vueperslides--touchable.vueperslides--bullets-outside.no-shadow.container.mx-auto.max-w-screen-lg.h-full > div.vueperslides__inner{
+#plans
+  > div.vueperslides.vueperslides--ready.vueperslides--touchable.vueperslides--bullets-outside.no-shadow.container.mx-auto.max-w-screen-lg.h-full
+  > div.vueperslides__inner {
   height: 24rem;
 }
 
-#plans > div.vueperslides.vueperslides--ready.vueperslides--touchable.vueperslides--bullets-outside.no-shadow.container.mx-auto.max-w-screen-lg.h-full > div.vueperslides__inner > div{
+#plans
+  > div.vueperslides.vueperslides--ready.vueperslides--touchable.vueperslides--bullets-outside.no-shadow.container.mx-auto.max-w-screen-lg.h-full
+  > div.vueperslides__inner
+  > div {
   position: static;
 }
 .h-101 {
