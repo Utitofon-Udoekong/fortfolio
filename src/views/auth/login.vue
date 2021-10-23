@@ -82,14 +82,12 @@
 </template>
 
 <script>
-import { Icon } from '@iconify/vue';
 import { computed, reactive, ref } from '@vue/reactivity'
 import useVuelidate from '@vuelidate/core'
 import { required, email, helpers } from '@vuelidate/validators'
 import { mdiEye, mdiEyeOff } from '@mdi/js';
 export default {
     components: {
-        Icon,
     },
     setup() {
         const state = reactive({
@@ -114,7 +112,7 @@ export default {
     methods:{
         async submitForm(){
             await this.v$.$validate()
-            if(!this.v$.$error) this.$router.push("/constructionpage")
+            if(!this.v$.$error) this.$router.push("/dashboard/user")
             else console.log("error")
         }
     }

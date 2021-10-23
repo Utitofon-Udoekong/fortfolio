@@ -194,7 +194,7 @@ export default {
     methods: {
         submitForm() {
             this.v$.$validate()
-            if (!this.v$.$error) this.$router.push("/constructionpage")
+            if (!this.v$.$error) this.$router.push(`/dashboard/${this.state.name}`);
             else console.log("error")
         }
     }
