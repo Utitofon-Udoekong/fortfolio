@@ -43,7 +43,6 @@
             <div class="overflow-hidden border-b border-gray-200 sm:rounded-lg">
               <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
-                  <!-- <p class="text-lg text-brand-blue font-semibold p-2 px-6">My Transactions</p> -->
                   <tr>
                     <th
                       scope="col"

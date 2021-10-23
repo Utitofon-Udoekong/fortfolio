@@ -19,7 +19,7 @@
           <svg @click="showSideBar = !showSideBar" viewBox="0 0 24 24" width="25" height="25" class="cursor-pointer inline-block fill-current mr-3">
             <path :d="mdiSegment" />
           </svg>
-          <p class="text-brand-blue text-xl font-semibold">Dashboard</p>
+          <p class="text-brand-blue text-xl font-semibold">{{breadcrumb}}</p>
         </div>
         <button class="p-3 bg-brand-blue text-white text-sm rounded-md">Hello {{ $route.params.user }}</button>
       </div>
@@ -30,7 +30,8 @@
 
 <script>
 import { mdiSegment, mdiAlphaDBox, mdiAccountCircleOutline, mdiCashLock, mdiCashPlus, mdiCartPlus, mdiCashMinus, mdiCellphoneWireless, mdiArrowULeftTop } from '@mdi/js'
-import { ref } from '@vue/reactivity'
+import { computed, ref } from '@vue/reactivity'
+import { useRoute } from 'vue-router'
 const user = "moses"
 const menus = [
   {
@@ -72,13 +73,26 @@ const menus = [
 export default {
   name: "DashboardLayout",
   setup() {
-    const showSideBar = ref(true)
+    const showSideBar = ref(true);
+    
+    const route = useRoute()
+    const breadcrumb = computed(() => {
+      menus.forEach(menu => {
+        if(route.path === menu.path){
+          console.log(route.path, menu.path, menu.name)
+          return menu.name
+        }
+        return "Dashboard"
+      })
+    })
+    
     return {
       menus,
       mdiArrowULeftTop,
       mdiSegment,
       user,
-      showSideBar
+      showSideBar, 
+      breadcrumb, 
     }
   }
 }
