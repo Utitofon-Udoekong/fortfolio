@@ -136,7 +136,6 @@
 </template>
 
 <script>
-import { Icon } from '@iconify/vue';
 import { computed, reactive, ref } from '@vue/reactivity'
 import useVuelidate from '@vuelidate/core'
 import { required, email, helpers, sameAs } from '@vuelidate/validators'
@@ -144,7 +143,6 @@ import { mdiEye, mdiEyeOff } from '@mdi/js';
 
 export default {
     components: {
-        Icon,
     },
     setup() {
         const state = reactive({
