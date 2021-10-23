@@ -14,8 +14,8 @@
         <div
           class="parallax-slider-navigation absolute top-1/2 z-40 inset-x-1 sm:inset-x-0 m-auto flex justify-between h-0"
         >
-          <div class="h-10 sm:h-96 w-10 sm:w-20 rounded-full nav-indicator prevArrow">&blacktriangleleft;</div>
-          <div class="h-10 sm:h-96 w-10 sm:w-20 rounded-full nav-indicator nextArrow">&blacktriangleright;</div>
+          <div class="h-10 sm:h-96 w-10 sm:w-20 rounded-full sm:rounded-none nav-indicator prevArrow">&blacktriangleleft;</div>
+          <div class="h-10 sm:h-96 w-10 sm:w-20 rounded-full sm:rounded-none nav-indicator nextArrow">&blacktriangleright;</div>
         </div>
         <swiper-slide
         v-for="(plan, i) in plans"
