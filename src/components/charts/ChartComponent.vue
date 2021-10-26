@@ -1,103 +1,114 @@
 <template>
   <div class="flex flex-col w-auto my-7 mb-11 bg-white p-4 rounded-md">
-    <vue3-chart-js
-        :id="lineChart.id"
-        :type="lineChart.type"
-        :data="lineChart.data"
-        :options="lineChart.options"
-        class=""
-    ></vue3-chart-js>
+    <apexchart
+      type="area"
+      :options="chartOptions.options"
+      :series="chartOptions.series"
+      height="400"
+      width="100%"
+    ></apexchart>
     <p class="text-center font-extrabold tracking-wide py-4">INVESTMENT STATISTICS</p>
   </div>
 </template>
 
 <script>
-import Vue3ChartJs from '@j-t-mcc/vue3-chartjs'
-import dataLabels from "chartjs-plugin-datalabels";
-Vue3ChartJs.registerGlobalPlugins([dataLabels])
-
+import { onMounted } from '@vue/runtime-core';
+import dateRange from './dateLogic';
+import formatter from './formatNumber';
 export default {
-  name: 'App',
-  components: {
-    Vue3ChartJs,
-  },
-  setup () {
-    const lineChart = {
-      type: "line",
-      plugins: [dataLabels],
-      data: {
-        labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December",
-        ],
-        datasets: [
-          {
-            label: "Deposits",
-            data: [65, 59, 150, 81, 56, 55, 40, 30, 67, 90, 30, 21],
-            fill: false,
-            borderColor: "black",
-            backgroundColor: "black",
-          },
-          {
-            label: "Withdrawals",
-            data: [70, 25, 37, 90, 55, 60, 30, 230, 40, 78, 77, 87],
-            fill: false,
-            borderColor: "#03426D",
-            tension: 0.5,
-            backgroundColor: "#03426D",
-          },
-        ],
-      },
+  name: 'Chart',
+
+  setup() {
+    const dateInt = new Date();
+    // const itirator = chartOptions.series[0].data.length
+    const start = new Date().toISOString().substr(0, 10)
+    const dates = dateRange(start,dateInt.addDays(7));
+    onMounted(() => {
+      console.log(dates)
+      // console.log(itirator)
+    })
+    const chartOptions = {
       options: {
-        plugins: {
-          zoom: {
-            zoom: {
-              wheel: {
-                enabled: true,
-              },
-              pinch: {
-                enabled: true,
-              },
-              mode: "y",
-            },
+        chart: {
+          id: "vuechart",
+          width: "100%",
+          redrawOnWindowResize: true,
+          dropShadow: {
+            enabled: true,
+            top: 0,
+            left: 0,
+            blur: 3.5,
+            opacity: 0.2
           },
-          datalabels: {
-            backgroundColor: function (context) {
-              return context.dataset.backgroundColor;
-            },
-            borderRadius: 4,
-            color: "white",
-            font: {
-              weight: "bold",
-            },
-            formatter: Math.round,
-            padding: 6,
-          },
+          responsive: [
+            {breakpoint: 500, options: {
+              chart: {
+                height: '100%'
+              }
+            }},
+
+          ]
         },
+        dataLabels: {
+          formatter
+        },
+        stroke: {
+          curve: 'smooth',
+          width: 2.5
+        },
+        xaxis: {
+          type: 'datetime',
+          categories: dates
+        },
+        yaxis: [
+          {
+            axisTicks: {
+              show: true
+            },
+            axisBorder: {
+              show: true,
+              color: "#03426D"
+            },
+            labels: {
+              style: {
+                colors: "#03426D"
+              }
+            },
+          },
+          {
+            opposite: true,
+            axisTicks: {
+              show: true
+            },
+            axisBorder: {
+              show: true,
+              color: "#000"
+            },
+            labels: {
+              style: {
+                colors: "#000"
+              }
+            },
+          }
+        ],
+        colors: ["#03426D", "#09F4A2"]
       },
-    };
+      series: [
+        {
+          name: "Deposit",
+          data: [20, 29, 0, 36, 44, 45, 50, 58]
+        },
+        {
+          name: "Withdrawal",
+          data: [414, 322, 0, 150, 0, 0, 238, 400]
+        }
+      ]
+    }
 
     return {
-      lineChart,
-    };
-  },
+      chartOptions, dates
+    }
+  }
 }
 </script>
 
-
-            // backgroundColor: [
-            //   '#000091',
-            //   '#0f0ff0',
-            //   '#5d5df8',
-            //   '#3e3e5a'
-            // ],

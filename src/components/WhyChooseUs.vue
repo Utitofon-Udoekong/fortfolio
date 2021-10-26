@@ -4,7 +4,7 @@
         <h1
             class="text-brand-lightblue text-3xl md:text-5xl text-center font-extrabold pb-10"
         >SMART INVESTING WITH SMART IDEAS</h1>
-        <div class="flex md:flex-row items-center flex-col justify-center md:items-start">
+        <div class="flex md:flex-row items-center flex-col justify-evenly md:items-start">
             <div v-for="(choice, i) in choices" :key="i" class="text-center w-56 md:mx-1.5 mx-0" :class="choice[choice.length-1] ? 'mb-0' : 'mb-12'">
                 <div class="image mx-auto flex items-center justify-center bg-brand-blue w-24 h-24 rounded-full">
                     <img class="w-2/4 h-2/4 object-center" :src="require(`@/assets/images/chooseus/${choice.image}`)" :alt="choice.alt">
@@ -28,25 +28,19 @@ const choices = [
         image: "security.png",
         title: "SECURITY",
         alt: "security",
-        text: "With our deep expertise in investments, trading, and security, you'll be protected with our best practices in all three areas."
+        text: "With our deep expertise in investments, trading and fund management, we guarantee our clients safe keep of all their assets and funds."
     },
     {
         image: "money.png",
         title: "EARNING",
         alt: "EARNING",
-        text: "Sign up to earn from your investments at the convenience of your home. Our experienced workers will help you grow your money."
+        text: "Sign up to start earning from the comfort of your home while our experienced fund managers help you grow your portfolio."
     },
     {
         image: "loan.png",
         title: "ACCESS TO LOANS",
         alt: "LOAN",
-        text: "We're here to make borrowing easier by reducing the time and paperwork involved. There are no restrictions on who can apply, you name it."
-    },
-    {
-        image: "asset.png",
-        title: "ACCESS TO ASSET FINANCE",
-        alt: "ACCESS TO ASSET FINANCE",
-        text: "We provide the best prices and most competitive rates in the market with free and convenient set up at very low costs."
+        text: "We make borrowing easy and fast for our clients by reducing the hassle of going through numerous paper work and time."
     },
 ]
 export default {

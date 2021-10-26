@@ -1,68 +1,99 @@
 <template>
-  <div class="flex flex-col w-full h-full bg-white p-4 rounded-md">
-    <vue3-chart-js
-        :id="lineChart.id"
-        :type="lineChart.type"
-        :data="lineChart.data"
-        :options="lineChart.options"
-    ></vue3-chart-js>
+  <div class="flex flex-col w-auto my-7 mb-11 bg-white p-4 rounded-md">
+    <apexchart
+      type="area"
+      :options="chartOptions.options"
+      :series="chartOptions.series"
+    ></apexchart>
+    <p class="text-center font-extrabold tracking-wide pt-4">INVESTMENT STATISTICS</p>
   </div>
 </template>
 
 <script>
-import Vue3ChartJs from '@j-t-mcc/vue3-chartjs'
-
+import dateRange from "./dateLogic";
+import formatter from "./formatNumber";
 export default {
-  name: 'App',
-  components: {
-    Vue3ChartJs,
+  name: 'Chart',
+  props: {
+    investmentData: {
+      type: Array,
+      reuired: true
+    }
   },
-  setup () {
-    const lineChart = {
-      type: "line",
-      data: {
-        labels: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday"
-        ],
-        datasets: [
-          {
-            label: "Performance",
-            data: [65, 59, 150, 81, 56, 55, 40],
-            fill: false,
-            borderColor: "black",
-            backgroundColor: "black",
-            padding: 3
-          },
-        ],
-      },
+  setup(props) {
+    
+    const dateInt = new Date();
+    // const itirator = chartOptions.series[0].data.length
+    const start = new Date().toISOString().substr(0, 10)
+    const dates = dateRange(start, dateInt.addDays(6));
+    const chartOptions = {
       options: {
-        plugins: {
-         
-          datalabels: {
-            backgroundColor: function (context) {
-              return context.dataset.backgroundColor;
-            },
-            borderRadius: 4,
-            color: "white",
-            font: {
-              weight: "bold",
-            },
-            formatter: Math.round,
-            padding: 6,
+        chart: {
+          id: "vuechart",
+          width: "100%",
+          redrawOnWindowResize: true,
+          dropShadow: {
+            enabled: true,
+            top: 0,
+            left: 0,
+            blur: 3.5,
+            opacity: 0.2
+          },
+          responsive: [
+            {breakpoint: 500, options: {
+              chart: {
+                height: '100%'
+              }
+            }},
+
+          ]
+        },
+        xaxis: {
+          type: 'datetime',
+          categories: dates
+        },
+        stroke: {
+          curve: 'smooth',
+          width: 2.5
+        },
+        dataLabels: {
+          formatter
+        },
+        tooltip: {
+          x: {
+            format: 'dd/MM/yy HH:mm'
           },
         },
+        yaxis: [
+          {
+            axisTicks: {
+              show: true
+            },
+            axisBorder: {
+              show: true,
+              color: "#d626e2"
+            },
+            labels: {
+              style: {
+                colors: "#03426D"
+              }
+            }
+          },
+        ],
+        colors: ["#d626e2"],
       },
-    };
+      series: [
+        {
+          name: "Investment",
+          data: props.investmentData
+        },
+      ]
+    }
 
     return {
-      lineChart,
-    };
-  },
+      chartOptions, dates
+    }
+  }
 }
 </script>
+
