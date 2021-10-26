@@ -42,12 +42,6 @@ const choices = [
         alt: "LOAN",
         text: "We make borrowing easy and fast for our clients by reducing the hassle of going through numerous paper work and time."
     },
-    // {
-    //     image: "asset.png",
-    //     title: "ACCESS TO ASSET FINANCE",
-    //     alt: "ACCESS TO ASSET FINANCE",
-    //     text: "We provide the best prices and most competitive rates in the market with free and convenient set up at very low costs."
-    // },
 ]
 export default {
     components: {
