@@ -6,7 +6,7 @@
 //   if (user.email) {
 //     const adminUsers = admin.firestore().collection('adminUsers');
 //     const snapshot = await adminUsers.where('email', '==', user.email).get();
-//     const customClaims = snapshot.empty ? { player: true } : { admin: true };
+//     const customClaims = snapshot.empty ? { user: true } : { admin: true };
 //     return admin
 //       .auth()
 //       .setCustomUserClaims(user.uid, customClaims)
