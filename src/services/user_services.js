@@ -6,27 +6,27 @@ class UserServices {
     async signup(payload) {
         const auth = getAuth();
         try {
-            createUserWithEmailAndPassword(auth, payload.email, payload.password)
-            .then((userCredential) => {
-                return console.log(userCredential.user.uid)
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                return console.log(error, errorCode)
-            });
+            await createUserWithEmailAndPassword(auth, payload.email, payload.password)
+            // .then((userCredential) => {
+            //     console.log(userCredential.user.uid)
+            //     return userCredential
+            // })
+            // .catch((error) => {
+            //     const errorCode = error.code;
+            //     return console.log(error, errorCode)
+            // });
         } catch (error) {
             console.error(error)
         }
     }
     async login(payload) {
         const auth = getAuth();
-        signInWithEmailAndPassword(auth, payload.email, payload.password)
+        await signInWithEmailAndPassword(auth, payload.email, payload.password)
             .then((userCredential) => {
-                return console.log(userCredential.user.uid)
+                throw userCredential.user
             })
             .catch((error) => {
-                const errorCode = error.code;
-                return console.log(error, errorCode)
+                throw error
             });
     }
     async logout() {
@@ -38,7 +38,7 @@ class UserServices {
         });
     }
     async getUserDetails(uid) {
-        const docRef = doc(db, "roles", uid);
+        const docRef = doc(db, "users", uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
             const user = docSnap.data();
@@ -50,7 +50,7 @@ class UserServices {
     async updateDetails(uid, updatedDetails) {
         try {
             await runTransaction(db, async (transaction) => {
-                const docRef = doc(db, "roles", uid);
+                const docRef = doc(db, "users", uid);
                 const userDoc = await transaction.get(docRef);
                 if (!userDoc.exists()) {
                     throw "Document does not exist!";
@@ -62,12 +62,12 @@ class UserServices {
                 }
             });
         } catch (error) {
-
+            console.log(error)
         }
     }
     async addUser(userDetails) {
         try {
-            await addDoc(collection(db, "roles"), userDetails).then(user => {
+            await addDoc(collection(db, "users"), userDetails).then(user => {
                 return console.log("user added with id: ", user.id);
             }).catch(err => {
                 return console.error(err)
@@ -78,7 +78,7 @@ class UserServices {
     }
     async deleteUser(uid) {
         try {
-            await deleteDoc(doc(db, "roles", uid));
+            await deleteDoc(doc(db, "users", uid));
             return console.log("user gone")
         } catch (error) {
             return console.error(error)
@@ -86,4 +86,4 @@ class UserServices {
     }
 }
 
-export default UserServices;
+export default new UserServices();

@@ -28,7 +28,7 @@
                                     placeholder="Enter your email"
                                     aria-label="Email"
                                     id="emailText"
-                                    v-model="state.email"
+                                    v-model="user.email"
                                 />
                             </div>
                             <small v-if="v$.email.$error" class="text-red-600">{{v$.email.$errors[0].$message}}</small>
@@ -47,7 +47,7 @@
                                     placeholder="Password"
                                     aria-label="password"
                                     id="password"
-                                    v-model="state.password"
+                                    v-model="user.password"
                                 />
                                 <div>
                                     <svg viewBox="0 0 24 24" width="25" height="25" fill="#333" class="inline-block absolute right-2 top-2 cursor-pointer" @click="showPassword = !showPassword">
@@ -79,6 +79,9 @@
             </div>
         </div>
     </div>
+    <div v-if="loading" class="flex items-center justify-center fixed h-screen w-full inset-0 transition-opacity ease-linear duration-200 bg-black bg-opacity-75">
+            <div class="w-20 h-20 border-b-4 border-brand-lightblue rounded-full animate-spin"></div>
+        </div>
 </template>
 
 <script>
@@ -86,11 +89,12 @@ import { computed, reactive, ref } from '@vue/reactivity'
 import useVuelidate from '@vuelidate/core'
 import { required, email, helpers } from '@vuelidate/validators'
 import { mdiEye, mdiEyeOff } from '@mdi/js';
+import { useStore } from 'vuex';
 export default {
     components: {
     },
     setup() {
-        const state = reactive({
+        const user = reactive({
             email: "",
             password: ""
         })
@@ -105,14 +109,24 @@ export default {
 
         const showPassword = ref(false)
 
-        const v$ = useVuelidate(rules, state)
+        const v$ = useVuelidate(rules, user)
 
-        return { state, v$, mdiEye, mdiEyeOff, showPassword }
+        const store = useStore();
+        const login = () => {
+            store.commit("loading", true)
+            store.dispatch("login", user).catch(err => {
+                console.error(err)
+            })
+        }
+
+        return { user, v$, mdiEye, mdiEyeOff, showPassword, login, loading: computed(() => store.getters.loading) }
     },
     methods:{
         async submitForm(){
             await this.v$.$validate()
-            if(!this.v$.$error) this.$router.push("/dashboard/user")
+            if(!this.v$.$error) {
+                this.login();
+            }
             else console.log("error")
         }
     }

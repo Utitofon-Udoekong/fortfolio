@@ -37,7 +37,7 @@
           </svg>
           <p class="text-brand-blue text-xl font-semibold">{{breadcrumb}}</p>
         </div>
-        <button class="p-3 bg-brand-blue text-white text-sm rounded-md">Hello {{ $route.params.user }}</button>
+        <button class="p-3 bg-brand-blue text-white text-sm rounded-md">Hello {{ user.email }}</button>
       </div>
       <slot />
     </div>
@@ -48,49 +48,52 @@
 import { mdiClose, mdiSegment, mdiAlphaDBox, mdiAccountCircleOutline, mdiCashLock, mdiCashPlus, mdiCartPlus, mdiCashMinus, mdiCellphoneWireless, mdiArrowULeftTop } from '@mdi/js'
 import { computed, ref } from '@vue/reactivity'
 import { useRoute } from 'vue-router'
-const user = "moses"
-const menus = [
-  {
-    name: "Dashboard",
-    path: `/dashboard/${user}`,
-    icon: mdiAlphaDBox
-  },
-  {
-    name: "Profile",
-    path: `/dashboard/${user}/profile`,
-    icon: mdiAccountCircleOutline
-  },
-  {
-    name: "My Investment",
-    path: `/dashboard/${user}/investments`,
-    icon: mdiCashLock
-  },
-  {
-    name: "Investment Plans",
-    path: `/dashboard/${user}/plans`,
-    icon: mdiCartPlus
-  },
-  {
-    name: "Deposit Funds",
-    path: `/dashboard/${user}/deposit`,
-    icon: mdiCashPlus
-  },
-  {
-    name: "Request Payout",
-    path: `/dashboard/${user}/withdraw`,
-    icon: mdiCashMinus
-  },
-  {
-    name: "Transactions",
-    path: `/dashboard/${user}/transactions`,
-    icon: mdiCellphoneWireless
-  },
-]
+import { useStore } from 'vuex'
 export default {
   name: "DashboardLayout",
   setup() {
+    const user = computed(() => {
+      return store.state.user
+    })
+    const menus = [
+      {
+        name: "Dashboard",
+        path: `/dashboard/${user}`,
+        icon: mdiAlphaDBox
+      },
+      {
+        name: "Profile",
+        path: `/dashboard/${user}/profile`,
+        icon: mdiAccountCircleOutline
+      },
+      {
+        name: "My Investment",
+        path: `/dashboard/${user}/investments`,
+        icon: mdiCashLock
+      },
+      {
+        name: "Investment Plans",
+        path: `/dashboard/${user}/plans`,
+        icon: mdiCartPlus
+      },
+      {
+        name: "Deposit Funds",
+        path: `/dashboard/${user}/deposit`,
+        icon: mdiCashPlus
+      },
+      {
+        name: "Request Payout",
+        path: `/dashboard/${user}/withdraw`,
+        icon: mdiCashMinus
+      },
+      {
+        name: "Transactions",
+        path: `/dashboard/${user}/transactions`,
+        icon: mdiCellphoneWireless
+      },
+    ]
     const showSideBar = ref(true);
-    
+    const store = useStore()
     const route = useRoute()
     const breadcrumb = computed(() => {
       menus.forEach(menu => {
@@ -108,7 +111,6 @@ export default {
       mdiArrowULeftTop,
       mdiSegment,
       mdiClose,
-      user,
       showSideBar, 
       breadcrumb, 
     }

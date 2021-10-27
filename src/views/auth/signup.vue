@@ -1,5 +1,4 @@
 <template>
-
     <div class="h-screen w-full flex">
         <div class="hidden md:block bg-login-texture-f bg-cover bg-center w-1/2 h-full relative">
             <div
@@ -15,8 +14,11 @@
             <p
                 class="text-gray-600 tracking-wide pb-4"
             >Sign up For an investment account by entering your information below</p>
-            <form @submit.prevent="submitForm" class="w-full grid grid-cols-1 sm:grid-cols-2 auto-rows-auto gap-2">
-                <div class="mb-4">
+            <form
+                @submit.prevent="submitForm"
+                class="w-full grid grid-cols-1 sm:grid-cols-2 auto-rows-auto gap-2"
+            >
+                <!-- <div class="mb-4">
                     <label for="first" class="text-gray-700 font-semibold text-md">First Name</label>
                     <div
                         class="border-2 focus-within:border-brand-lightblue hover:border-brand-lightblue rounded-md"
@@ -25,7 +27,7 @@
                             class="text-md border-gray-300 appearance-none bg-transparent border-none w-full mr-3 py-3 px-2 leading-tight focus:outline-none"
                             type="text"
                             id="first"
-                            v-model="state.name.firstName"
+                            v-model="user.name.firstName"
                         />
                     </div>
                     <small v-if="v$.name.firstName.$error" class="text-red-600">{{v$.name.firstName.$errors[0].$message}}</small>
@@ -39,7 +41,7 @@
                             class="text-md border-gray-300 appearance-none bg-transparent border-none w-full mr-3 py-3 px-2 leading-tight focus:outline-none"
                             type="text"
                             id="last"
-                            v-model="state.name.lastName"
+                            v-model="user.name.lastName"
                         />
                     </div>
                     <small v-if="v$.name.lastName.$error" class="text-red-600">{{v$.name.lastName.$errors[0].$message}}</small>
@@ -53,11 +55,11 @@
                             class="text-md border-gray-300 appearance-none bg-transparent border-none w-full mr-3 py-3 px-2 leading-tight focus:outline-none"
                             type="text"
                             id="phone"
-                            v-model="state.phone"
+                            v-model="user.phone"
                         />
                     </div>
                     <small v-if="v$.phone.$error" class="text-red-600">{{v$.phone.$errors[0].$message}}</small>
-                </div>
+                </div>-->
                 <div class="mb-4">
                     <label for="email" class="text-gray-700 font-semibold text-md">Email Address</label>
                     <div
@@ -67,10 +69,13 @@
                             class="text-md border-gray-300 appearance-none bg-transparent border-none w-full mr-3 py-3 px-2 leading-tight focus:outline-none"
                             type="text"
                             id="email"
-                            v-model="state.email"
+                            v-model="user.email"
                         />
                     </div>
-                    <small v-if="v$.email.$error" class="text-red-600">{{v$.email.$errors[0].$message}}</small>
+                    <small
+                        v-if="v$.email.$error"
+                        class="text-red-600"
+                    >{{ v$.email.$errors[0].$message }}</small>
                 </div>
                 <div class="mb-4">
                     <label for="password" class="text-gray-700 font-semibold text-md">Password</label>
@@ -81,18 +86,32 @@
                             class="text-md border-gray-300 appearance-none bg-transparent border-none w-full mr-3 py-3 px-2 leading-tight focus:outline-none"
                             :type="showPassword ? 'text' : 'password'"
                             id="password"
-                            v-model="state.password.password"
+                            v-model="user.password"
                         />
-                        <div> <svg viewBox="0 0 24 24" width="25" height="25" fill="#333" class="inline-block absolute right-2 top-2 cursor-pointer" @click="showPassword = !showPassword" > <path :d="showPassword ? mdiEye : mdiEyeOff" /> </svg> </div>
+                        <div>
+                            <svg
+                                viewBox="0 0 24 24"
+                                width="25"
+                                height="25"
+                                fill="#333"
+                                class="inline-block absolute right-2 top-2 cursor-pointer"
+                                @click="showPassword = !showPassword"
+                            >
+                                <path :d="showPassword ? mdiEye : mdiEyeOff" />
+                            </svg>
+                        </div>
                     </div>
-                    <small v-if="v$.password.password.$error" class="text-red-600">{{v$.password.password.$errors[0].$message}}</small>
+                    <small
+                        v-if="v$.password.$error"
+                        class="text-red-600"
+                    >{{ v$.password.$errors[0].$message }}</small>
                 </div>
-                <div class="mb-4">
+                <!-- <div class="mb-4">
                     <label
                         for="confirm"
                         class="text-gray-700 font-semibold text-md"
                     >Confirm Password</label>
-                    <div class=" relative border-2 focus-within:border-brand-lightblue hover:border-brand-lightblue rounded-md" > <input class="text-md border-gray-300 appearance-none bg-transparent border-none w-full mr-3 py-3 px-2 leading-tight focus:outline-none" :type="showPassword ? 'text' : 'password'" id="confirm" v-model="state.password.confirm" /> <div> <svg viewBox="0 0 24 24" width="25" height="25" fill="#333" class="inline-block absolute right-2 top-2 cursor-pointer" @click="showPassword = !showPassword" > <path :d="showPassword ? mdiEye : mdiEyeOff" /> </svg> </div> </div>
+                    <div class=" relative border-2 focus-within:border-brand-lightblue hover:border-brand-lightblue rounded-md" > <input class="text-md border-gray-300 appearance-none bg-transparent border-none w-full mr-3 py-3 px-2 leading-tight focus:outline-none" :type="showPassword ? 'text' : 'password'" id="confirm" v-model="user.password.confirm" /> <div> <svg viewBox="0 0 24 24" width="25" height="25" fill="#333" class="inline-block absolute right-2 top-2 cursor-pointer" @click="showPassword = !showPassword" > <path :d="showPassword ? mdiEye : mdiEyeOff" /> </svg> </div> </div>
                     <small v-if="v$.password.confirm.$error" class="text-red-600">{{v$.password.confirm.$errors[0].$message}}</small>
                 </div>
                 <div class="mb-4">
@@ -104,10 +123,10 @@
                             class="text-md border-gray-300 appearance-none bg-transparent border-none w-full mr-3 py-3 px-2 leading-tight focus:outline-none"
                             type="text"
                             id="refCode"
-                            v-model="state.refCode"
+                            v-model="user.refCode"
                         />
                     </div>
-                </div>
+                </div>-->
             </form>
             <div class="mb-4">
                 <input type="checkbox" id="check" class="mr-2" />
@@ -132,67 +151,81 @@
                 <a href="/" class="text-brand-lightblue">Home</a>
             </p>
         </div>
+        <div v-if="loading" class="flex items-center justify-center fixed h-screen w-full inset-0 transition-opacity ease-linear duration-200 bg-black bg-opacity-75">
+            <div class="w-20 h-20 border-b-4 border-brand-lightblue rounded-full animate-spin"></div>
+        </div>
     </div>
 </template>
 
 <script>
 import { computed, reactive, ref } from '@vue/reactivity'
 import useVuelidate from '@vuelidate/core'
-import { required, email, helpers, sameAs } from '@vuelidate/validators'
+import { required, email, helpers } from '@vuelidate/validators'
 import { mdiEye, mdiEyeOff } from '@mdi/js';
+import { useStore } from 'vuex';
 
 export default {
     components: {
     },
     setup() {
-        const state = reactive({
-            name: {
-                firstName: "",
-                lastName: ""
-            },
-            phone: "",
+        const user = reactive({
+            // name: {
+            //     firstName: "",
+            //     lastName: ""
+            // },
+            // phone: "",
             email: "",
-            password: {
                 password: "",
-                confirm: ""
-            },
-            bankName: "",
-            bankAccountName: "",
-            bankAccountNumber: "",
-            refCode: ""
+            // password: {
+            //     // confirm: ""
+            // },
+            // bankName: "",
+            // bankAccountName: "",
+            // bankAccountNumber: "",
+            // refCode: ""
         })
         const rules = computed(() => {
             return {
-                name: {
-                    firstName: { required },
-                    lastName: { required }
-                },
-                phone: { required },
+                // name: {
+                //     firstName: { required },
+                //     lastName: { required }
+                // },
+                // phone: { required },
                 email: { required, email },
-                password: {
                     password: { required, alpha: helpers.withMessage(incorrectPasswordMessage, alpha) },
-                    confirm: { required, sameAs: sameAs(state.password.password) }
-                },
-                bankName: { required },
-                bankAccountName: { required },
-                bankAccountNumber: { required },
-                refCode: ""
+                // password: {
+                //     // confirm: { required, sameAs: sameAs(user.password.password) }
+                // },
+                // bankName: { required },
+                // bankAccountName: { required },
+                // bankAccountNumber: { required },
+                // refCode: ""
             }
         })
-        
+
         const alpha = helpers.regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/)
         const incorrectPasswordMessage = "Password must be atleast 8 characters, contain a number, a special character, and an uppercase letter."
         const showPassword = ref(false)
 
-        const v$ = useVuelidate(rules, state)
+        const v$ = useVuelidate(rules, user)
+
+        const store = useStore();
+        const signup = () => {
+            store.commit("loading", true)
+            store.dispatch("signup", user).catch(err => {
+                console.error(err)
+            })
+        }
         return {
-            state, v$, mdiEye, mdiEyeOff, showPassword
+            user, v$, mdiEye, mdiEyeOff, showPassword, signup, loading: computed(() => store.getters.loading)
         }
     },
     methods: {
         submitForm() {
-            this.v$.$validate()
-            if (!this.v$.$error) this.$router.push(`/dashboard/${this.state.name}`);
+            this.v$.$validate();
+            if (!this.v$.$error) {
+                this.signup()
+            }
             else console.log("error")
         }
     }
