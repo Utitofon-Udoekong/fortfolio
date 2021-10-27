@@ -1,4 +1,4 @@
-import db from '../firebase'
+import {db} from '../firebase'
 import { doc, getDoc, runTransaction, addDoc, collection, deleteDoc } from "firebase/firestore/lite";
 import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
@@ -23,7 +23,8 @@ class UserServices {
         const auth = getAuth();
         await signInWithEmailAndPassword(auth, payload.email, payload.password)
             .then((userCredential) => {
-                throw userCredential.user
+                const user = userCredential;
+                return user
             })
             .catch((error) => {
                 throw error

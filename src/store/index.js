@@ -1,7 +1,5 @@
-import { useRouter } from 'vue-router'
 import { createStore } from 'vuex'
 import UserServices from '../services/user_services'
-const route = useRouter()
 export default createStore({
   state: {
     user: {
@@ -22,13 +20,7 @@ export default createStore({
     login({commit}, payload){
       UserServices.login(payload).then(response => {
         commit("loading", false);
-        const {email, uid} = response;
-        const user = {
-          email,
-          uid
-        }
-        commit("setUser", user);
-        route.push({name: "dashboard-user-account"})
+        // commit("setUser", user);
         console.log(response);
       }).catch(error => {
         commit("loading", false);
