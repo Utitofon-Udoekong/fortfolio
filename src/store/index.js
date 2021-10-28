@@ -41,7 +41,7 @@ export default createStore({
       await UserServices.signup(payload).then(usercredential => {
         commit("loading", false);
         // commit("setUser", usercredential);
-        console.log(usercredential);
+        console.log(usercredential.user);
       }).catch(error => {
         commit("loading", false);
         commit("setError", error.code);

@@ -83,7 +83,7 @@
                         </div>
                         <p class="text-center text-gray-600 py-2 underline">
                             <a
-                                href="/signup"
+                                href="/forgotPassword"
                             >Forgot password?</a>
                         </p>
                         <button
@@ -167,7 +167,7 @@ export default {
             if (showAlert.value === true) {
                 setTimeout(() => {
                     showAlert.value = false
-                }, 5000)
+                }, 3000)
             }
         })
 

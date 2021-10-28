@@ -227,7 +227,7 @@ export default {
             if (showAlert.value === true) {
                 setTimeout(() => {
                     showAlert.value = false
-                }, 5000)
+                }, 3000)
             }
         })
         const error = computed(() => {
