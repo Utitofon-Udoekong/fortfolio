@@ -6,37 +6,22 @@ class UserServices {
     async signup(payload) {
         const auth = getAuth();
         try {
-            await createUserWithEmailAndPassword(auth, payload.email, payload.password)
-            // .then((userCredential) => {
-            //     console.log(userCredential.user.uid)
-            //     return userCredential
-            // })
-            // .catch((error) => {
-            //     const errorCode = error.code;
-            //     return console.log(error, errorCode)
-            // });
+            return createUserWithEmailAndPassword(auth, payload.email, payload.password)
         } catch (error) {
             console.error(error)
         }
     }
     async login(payload) {
         const auth = getAuth();
-        await signInWithEmailAndPassword(auth, payload.email, payload.password)
-            .then((userCredential) => {
-                const user = userCredential;
-                return user
-            })
-            .catch((error) => {
-                throw error
-            });
+        try {
+            return signInWithEmailAndPassword(auth, payload.email, payload.password)
+        } catch (error) {
+            console.error(error)
+        }
     }
     async logout() {
         const auth = getAuth();
-        signOut(auth).then(() => {
-            return console.log("logged out")
-        }).catch((error) => {
-            return console.error(error)
-        });
+        return signOut(auth);
     }
     async getUserDetails(uid) {
         const docRef = doc(db, "users", uid);

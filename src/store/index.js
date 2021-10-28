@@ -3,41 +3,58 @@ import UserServices from '../services/user_services'
 export default createStore({
   state: {
     user: {
+      firstName: "",
+      lastName: "",
+      phone: "",
       email: "",
-      uid: ""
+      bankName: "",
+      bankAccountName: "",
+      bankAccountNumber: "",
     },
+    error: "",
     loading: false
   },
   mutations: {
     setUser(state, payload){
-      state.user = payload
+      state.user = payload;
     },
     loading(state, payload){
-      state.loading = payload
+      state.loading = payload;
+    },
+    setError(state, payload){
+      state.error = payload;
     }
   },
   actions: {
-    login({commit}, payload){
-      UserServices.login(payload).then(response => {
+    async login({commit}, payload){
+      await UserServices.login(payload).then(usercredential => {
         commit("loading", false);
-        // commit("setUser", user);
-        console.log(response);
+        // commit("setUser", usercredential);
+        console.log(usercredential.user);
       }).catch(error => {
         commit("loading", false);
-        console.log(error);
+        commit("setError", error.code);
+        console.log(error.code);
       })
     },
-    signup({commit}, payload){
-      UserServices.signup(payload).then(response => {
+    async signup({commit}, payload){
+      await UserServices.signup(payload).then(usercredential => {
         commit("loading", false);
-        commit("setUser", response);
-        console.log(response);
+        // commit("setUser", usercredential);
+        console.log(usercredential);
+      }).catch(error => {
+        commit("loading", false);
+        commit("setError", error.code);
+        console.log(error.code);
       })
     },
   },
   getters: {
     loading(state){
       return state.loading;
-    }
+    },
+    error(state){
+      return state.error
+    },
   }
 })

@@ -1,4 +1,11 @@
 <template>
+    <div
+        v-if="showAlert"
+        class="fixed p-4 bg-red-600 text-white inset-x-2 md:inset-x-20 transition-all duration-500 top-9 alert flex justify-between items-center"
+    >
+        <p>{{ error }}</p>
+        <p class="text-2xl cursor-pointer" @click="toggleAlert">&xotime;</p>
+    </div>
     <div class="h-screen w-full flex">
         <div class="hidden md:block bg-login-texture-f bg-cover bg-center w-1/2 h-full relative">
             <div
@@ -27,10 +34,10 @@
                             class="text-md border-gray-300 appearance-none bg-transparent border-none w-full mr-3 py-3 px-2 leading-tight focus:outline-none"
                             type="text"
                             id="first"
-                            v-model="user.name.firstName"
+                            v-model="user.firstName"
                         />
                     </div>
-                    <small v-if="v$.name.firstName.$error" class="text-red-600">{{v$.name.firstName.$errors[0].$message}}</small>
+                    <small v-if="v$.firstName.$error" class="text-red-600">{{v$.firstName.$errors[0].$message}}</small>
                 </div>
                 <div class="mb-4">
                     <label for="last" class="text-gray-700 font-semibold text-md">Last Name</label>
@@ -41,10 +48,10 @@
                             class="text-md border-gray-300 appearance-none bg-transparent border-none w-full mr-3 py-3 px-2 leading-tight focus:outline-none"
                             type="text"
                             id="last"
-                            v-model="user.name.lastName"
+                            v-model="user.lastName"
                         />
                     </div>
-                    <small v-if="v$.name.lastName.$error" class="text-red-600">{{v$.name.lastName.$errors[0].$message}}</small>
+                    <small v-if="v$.lastName.$error" class="text-red-600">{{v$.lastName.$errors[0].$message}}</small>
                 </div>
                 <div class="mb-4">
                     <label for="phone" class="text-gray-700 font-semibold text-md">Phone Number</label>
@@ -111,8 +118,8 @@
                         for="confirm"
                         class="text-gray-700 font-semibold text-md"
                     >Confirm Password</label>
-                    <div class=" relative border-2 focus-within:border-brand-lightblue hover:border-brand-lightblue rounded-md" > <input class="text-md border-gray-300 appearance-none bg-transparent border-none w-full mr-3 py-3 px-2 leading-tight focus:outline-none" :type="showPassword ? 'text' : 'password'" id="confirm" v-model="user.password.confirm" /> <div> <svg viewBox="0 0 24 24" width="25" height="25" fill="#333" class="inline-block absolute right-2 top-2 cursor-pointer" @click="showPassword = !showPassword" > <path :d="showPassword ? mdiEye : mdiEyeOff" /> </svg> </div> </div>
-                    <small v-if="v$.password.confirm.$error" class="text-red-600">{{v$.password.confirm.$errors[0].$message}}</small>
+                    <div class=" relative border-2 focus-within:border-brand-lightblue hover:border-brand-lightblue rounded-md" > <input class="text-md border-gray-300 appearance-none bg-transparent border-none w-full mr-3 py-3 px-2 leading-tight focus:outline-none" :type="showPassword ? 'text' : 'password'" id="confirm" v-model="user.confirm" /> <div> <svg viewBox="0 0 24 24" width="25" height="25" fill="#333" class="inline-block absolute right-2 top-2 cursor-pointer" @click="showPassword = !showPassword" > <path :d="showPassword ? mdiEye : mdiEyeOff" /> </svg> </div> </div>
+                    <small v-if="v$.confirm.$error" class="text-red-600">{{v$.confirm.$errors[0].$message}}</small>
                 </div>
                 <div class="mb-4">
                     <label for="refCode" class="text-gray-700 font-semibold text-md">Referral Code(optional)</label>
@@ -151,7 +158,10 @@
                 <a href="/" class="text-brand-lightblue">Home</a>
             </p>
         </div>
-        <div v-if="loading" class="flex items-center justify-center fixed h-screen w-full inset-0 transition-opacity ease-linear duration-200 bg-black bg-opacity-75">
+        <div
+            v-if="loading"
+            class="flex items-center justify-center fixed h-screen w-full inset-0 transition-opacity ease-linear duration-200 bg-black bg-opacity-75"
+        >
             <div class="w-20 h-20 border-b-4 border-brand-lightblue rounded-full animate-spin"></div>
         </div>
     </div>
@@ -163,22 +173,19 @@ import useVuelidate from '@vuelidate/core'
 import { required, email, helpers } from '@vuelidate/validators'
 import { mdiEye, mdiEyeOff } from '@mdi/js';
 import { useStore } from 'vuex';
+import { watchEffect } from '@vue/runtime-core'
 
 export default {
     components: {
     },
     setup() {
         const user = reactive({
-            // name: {
             //     firstName: "",
-            //     lastName: ""
-            // },
+            //     lastName: "",
             // phone: "",
             email: "",
-                password: "",
-            // password: {
+            password: "",
             //     // confirm: ""
-            // },
             // bankName: "",
             // bankAccountName: "",
             // bankAccountNumber: "",
@@ -186,16 +193,12 @@ export default {
         })
         const rules = computed(() => {
             return {
-                // name: {
                 //     firstName: { required },
-                //     lastName: { required }
-                // },
+                //     lastName: { required },
                 // phone: { required },
                 email: { required, email },
-                    password: { required, alpha: helpers.withMessage(incorrectPasswordMessage, alpha) },
-                // password: {
-                //     // confirm: { required, sameAs: sameAs(user.password.password) }
-                // },
+                password: { required, alpha: helpers.withMessage(incorrectPasswordMessage, alpha) },
+                //     // confirm: { required, sameAs: sameAs(user.password.password) },
                 // bankName: { required },
                 // bankAccountName: { required },
                 // bankAccountNumber: { required },
@@ -212,12 +215,35 @@ export default {
         const store = useStore();
         const signup = () => {
             store.commit("loading", true)
-            store.dispatch("signup", user).catch(err => {
-                console.error(err)
+            store.dispatch("signup", user).then(() => {
+                toggleAlert();
             })
         }
+        const showAlert = ref(false);
+        const toggleAlert = () => {
+            showAlert.value = !showAlert.value
+        }
+        watchEffect(() => {
+            if (showAlert.value === true) {
+                setTimeout(() => {
+                    showAlert.value = false
+                }, 5000)
+            }
+        })
+        const error = computed(() => {
+            switch (store.getters.error) {
+                case "auth/network-request-failed":
+                    return "A network error occured. Check your connection and try again."
+                case "auth/user-not-found":
+                    return "This user does not exist. Try signing up."
+                case "auth/email-already-in-use":
+                    return "This email has already been used."
+                default:
+                    return "An error occured. Please contact support to find help."
+            }
+        })
         return {
-            user, v$, mdiEye, mdiEyeOff, showPassword, signup, loading: computed(() => store.getters.loading)
+            user, v$, mdiEye, mdiEyeOff, showPassword, signup, loading: computed(() => store.getters.loading), showAlert, toggleAlert, error
         }
     },
     methods: {
