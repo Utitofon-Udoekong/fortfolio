@@ -1,11 +1,6 @@
 <template>
-    <div
-        v-if="showAlert"
-        class="fixed p-4 bg-red-600 text-white inset-x-2 md:inset-x-20 transition-all duration-500 top-9 alert flex justify-between items-center"
-    >
-        <p>{{ error }}</p>
-        <p class="text-2xl cursor-pointer" @click="toggleAlert">&xotime;</p>
-    </div>
+    <SuccessAlert/>
+    <ErrorAlert/>
     <div class="h-screen w-full flex">
         <div class="hidden md:block bg-login-texture-f bg-cover bg-center w-1/2 h-full relative">
             <div
@@ -152,18 +147,14 @@
                     class="bg-brand-lightblue my-4 text-white text-lg font-semibold p-3 w-3/4 rounded-md"
                 >Sign Up</button>
             </div>
+           
             <p class="text-center text-gray-600 pb-10">
                 Already have an account?
                 <a href="/login" class="text-brand-lightblue">Login</a> or go
                 <a href="/" class="text-brand-lightblue">Home</a>
             </p>
         </div>
-        <div
-            v-if="loading"
-            class="flex items-center justify-center fixed h-screen w-full inset-0 transition-opacity ease-linear duration-200 bg-black bg-opacity-75"
-        >
-            <div class="w-20 h-20 border-b-4 border-brand-lightblue rounded-full animate-spin"></div>
-        </div>
+        <Loading/>
     </div>
 </template>
 
@@ -173,10 +164,15 @@ import useVuelidate from '@vuelidate/core'
 import { required, email, helpers } from '@vuelidate/validators'
 import { mdiEye, mdiEyeOff } from '@mdi/js';
 import { useStore } from 'vuex';
-import { watchEffect } from '@vue/runtime-core'
+import SuccessAlert from '../../components/alerts/SuccessAlert.vue';
+import ErrorAlert from '../../components/alerts/ErrorAlert.vue';
+import Loading from '../../components/alerts/Loading.vue';
 
 export default {
     components: {
+        SuccessAlert,
+        ErrorAlert,
+        Loading
     },
     setup() {
         const user = reactive({
@@ -215,35 +211,11 @@ export default {
         const store = useStore();
         const signup = () => {
             store.commit("loading", true)
-            store.dispatch("signup", user).then(() => {
-                toggleAlert();
-            })
+            store.dispatch("signup", user)
         }
-        const showAlert = ref(false);
-        const toggleAlert = () => {
-            showAlert.value = !showAlert.value
-        }
-        watchEffect(() => {
-            if (showAlert.value === true) {
-                setTimeout(() => {
-                    showAlert.value = false
-                }, 3000)
-            }
-        })
-        const error = computed(() => {
-            switch (store.getters.error) {
-                case "auth/network-request-failed":
-                    return "A network error occured. Check your connection and try again."
-                case "auth/user-not-found":
-                    return "This user does not exist. Try signing up."
-                case "auth/email-already-in-use":
-                    return "This email has already been used."
-                default:
-                    return "An error occured. Please contact support to find help."
-            }
-        })
+        
         return {
-            user, v$, mdiEye, mdiEyeOff, showPassword, signup, loading: computed(() => store.getters.loading), showAlert, toggleAlert, error
+            user, v$, mdiEye, mdiEyeOff, showPassword, signup
         }
     },
     methods: {

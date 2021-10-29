@@ -1,18 +1,37 @@
 import {db} from '../firebase'
 import { doc, getDoc, runTransaction, addDoc, collection, deleteDoc } from "firebase/firestore/lite";
-import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, 
+    signOut, 
+    createUserWithEmailAndPassword, 
+    signInWithEmailAndPassword, 
+    sendPasswordResetEmail, 
+    GoogleAuthProvider, 
+    signInWithPopup,
+    // updateProfile,
+    // sendEmailVerification
+} from "firebase/auth";
 
+const auth = getAuth();
 class UserServices {
+    // async extras(userDetails){
+    //     updateProfile
+    // }
     async signup(payload) {
-        const auth = getAuth();
         try {
             return createUserWithEmailAndPassword(auth, payload.email, payload.password)
         } catch (error) {
             console.error(error)
         }
     }
+    async googleSignin() {
+        const provider = new GoogleAuthProvider();
+        try {
+            return signInWithPopup(auth, provider)
+        } catch (error) {
+            console.error(error)
+        }
+    }
     async login(payload) {
-        const auth = getAuth();
         try {
             return signInWithEmailAndPassword(auth, payload.email, payload.password)
         } catch (error) {
@@ -20,8 +39,17 @@ class UserServices {
         }
     }
     async logout() {
-        const auth = getAuth();
+        
         return signOut(auth);
+    }
+    async resetPassword(email){
+        try {
+            return sendPasswordResetEmail(auth, email,{
+                url: 'http://localhost:8080/login'
+            })
+        } catch (error) {
+            console.error(error)
+        }
     }
     async getUserDetails(uid) {
         const docRef = doc(db, "users", uid);
