@@ -153,7 +153,6 @@ export default {
     const showPassword = ref(false);
 
     const v$ = useVuelidate(rules, user);
-
     const store = useStore();
     const login = () => {
       store.commit("loading", true);

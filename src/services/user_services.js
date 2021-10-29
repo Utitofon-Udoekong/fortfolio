@@ -1,5 +1,5 @@
 import {db} from '../firebase'
-import { doc, getDoc, runTransaction, addDoc, collection, deleteDoc } from "firebase/firestore/lite";
+import { doc, setDoc, runTransaction, deleteDoc, onSnapshot } from "firebase/firestore";
 import { getAuth, 
     signOut, 
     createUserWithEmailAndPassword, 
@@ -60,13 +60,13 @@ class UserServices {
     }
     async getUserDetails(uid) {
         const docRef = doc(db, "users", uid);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-            const user = docSnap.data();
-            return console.log(user)
-        } else {
-            return "No user like this exists";
-        }
+        return onSnapshot(docRef)
+        // if (docSnap.exists()) {
+        //     const user = docSnap.data();
+        //     return console.log(user)
+        // } else {
+        //     return "No user like this exists";
+        // }
     }
     async updateDetails(uid, updatedDetails) {
         try {
@@ -86,13 +86,9 @@ class UserServices {
             console.log(error)
         }
     }
-    async addUser(userDetails) {
+    async addUserDetails(userDetails, uid) {
         try {
-            await addDoc(collection(db, "users"), userDetails).then(user => {
-                return console.log("user added with id: ", user.id);
-            }).catch(err => {
-                return console.error(err)
-            })
+            await setDoc(doc(db, "users", uid), userDetails)
         } catch (error) {
             return console.error(error)
         }

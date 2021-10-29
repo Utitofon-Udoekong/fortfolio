@@ -13,8 +13,8 @@
 
 <script>
 import { onMounted } from '@vue/runtime-core';
-import dateRange from './dateLogic';
-import formatter from './formatNumber';
+import dateRange from '../../helpers/dateLogic';
+import formatter from '../../helpers/formatNumber';
 export default {
   name: 'Chart',
 

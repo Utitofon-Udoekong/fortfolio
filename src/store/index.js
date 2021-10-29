@@ -1,6 +1,7 @@
 import {  
   GoogleAuthProvider, 
 } from "firebase/auth";
+import router from "../router";
 import { createStore } from 'vuex'
 import UserServices from '../services/user_services'
 export default createStore({
@@ -47,6 +48,8 @@ export default createStore({
         commit("setSuccess", "Login successful");
         commit("toggleSuccess");
         const user = usercredential.user;
+        // commit("setUser", user);
+        router.push({name: "dashboard-user-account", params: {user: user.email}})
         console.log(user);
       }).catch(error => {
         commit("loading", false);
@@ -56,11 +59,18 @@ export default createStore({
       })
     },
     async signup({commit, state}, payload){
-      await UserServices.signup(payload).then(async usercredential=> {
+      const auth = {email: payload.email, password: payload.password}
+      await UserServices.signup(auth).then(async usercredential=> {
         commit("loading", false);
         commit("setSuccess", "Registration successful, A verification link has been sent to your email address");
         commit("toggleSuccess");
-        await UserServices.verifyEmail();
+        await UserServices.verifyEmail().then(() => {
+          UserServices.addUserDetails(payload).catch((error) => {
+            console.log(error)
+          })
+        }).catch((error) => {
+          console.log(error)
+        })
         state.user.email = usercredential.user.email;
         console.log(usercredential.user);
       }).catch(error => {
@@ -105,6 +115,9 @@ export default createStore({
     }
   },
   getters: {
+    email(state){
+      return state.user.email
+    },
     loading(state){
       return state.loading;
     },

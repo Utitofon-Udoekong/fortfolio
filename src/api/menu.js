@@ -1,32 +1,35 @@
-const menu = [
+const store = useStore();
+const user = store.state.user.email;
+
+const menus = [
     {
       name: "Dashboard",
-      path: "/dashboard",
+      path: `/dashboard/${user}`,
     },
     {
       name: "Profile",
-      path: "/dashboard/profile",
+      path: `/dashboard/${user}/profile`,
     },
     {
-      name: "My Investment",
-      path: "/dashboard/investments",
+      name: "Investments",
+      path: `/dashboard/${user}/investments`,
     },
     {
       name: "Investment Plans",
-      path: "/dashboard/plans",
+      path: `/dashboard/${user}/plans`,
     },
     {
       name: "Deposit Funds",
-      path: "/dashboard/deposit",
+      path: `/dashboard/${user}/deposit`,
     },
     {
       name: "Request Payout",
-      path: "/dashboard/withdraw",
+      path: `/dashboard/${user}/withdraw`,
     },
     {
       name: "Transactions",
-      path: "/dashboard/transactions",
+      path: `/dashboard/${user}/transactions`,
     },
 ]
 
-export default menu
+export default menus
