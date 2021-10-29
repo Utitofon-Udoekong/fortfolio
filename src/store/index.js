@@ -1,7 +1,5 @@
 import {  
   GoogleAuthProvider, 
-  // updateProfile,
-  // sendEmailVerification
 } from "firebase/auth";
 import { createStore } from 'vuex'
 import UserServices from '../services/user_services'
@@ -48,19 +46,22 @@ export default createStore({
         commit("loading", false);
         commit("setSuccess", "Login successful");
         commit("toggleSuccess");
-        console.log(usercredential.user);
+        const user = usercredential.user;
+        console.log(user);
       }).catch(error => {
         commit("loading", false);
-        commit("setError", error.code.replace("auth/",""));
+        commit("setError", error.code);
         commit("toggleError");
         console.log(error.code);
       })
     },
-    async signup({commit}, payload){
-      await UserServices.signup(payload).then(usercredential => {
+    async signup({commit, state}, payload){
+      await UserServices.signup(payload).then(async usercredential=> {
         commit("loading", false);
-        commit("setSuccess", "Registration successful");
-        commit("toggleSuccess")
+        commit("setSuccess", "Registration successful, A verification link has been sent to your email address");
+        commit("toggleSuccess");
+        await UserServices.verifyEmail();
+        state.user.email = usercredential.user.email;
         console.log(usercredential.user);
       }).catch(error => {
         commit("loading", false);
@@ -75,7 +76,7 @@ export default createStore({
         // const token = credential.accessToken;
         const user = result.user;
         commit("loading", false);
-        commit("setSuccess", "Registration successful");
+        commit("setSuccess", "Login successful");
         commit("toggleSuccess")
         console.log(user, credential);
         // ...

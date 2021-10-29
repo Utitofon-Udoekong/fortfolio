@@ -157,7 +157,7 @@ export default {
     const store = useStore();
     const login = () => {
       store.commit("loading", true);
-      store.dispatch("login", user);
+      store.dispatch("login", user)
     };
 
     return { user, v$, mdiEye, mdiEyeOff, showPassword, login, googleSignin: () => store.dispatch("googleSignin") };

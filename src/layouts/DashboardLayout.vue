@@ -37,7 +37,7 @@
           </svg>
           <p class="text-brand-blue text-xl font-semibold">{{breadcrumb}}</p>
         </div>
-        <button class="p-3 bg-brand-blue text-white text-sm rounded-md">Hello {{ user.email }}</button>
+        <button class="p-3 bg-brand-blue text-white text-sm rounded-md">Hello {{ user }}</button>
       </div>
       <slot />
     </div>
@@ -52,9 +52,7 @@ import { useStore } from 'vuex'
 export default {
   name: "DashboardLayout",
   setup() {
-    const user = computed(() => {
-      return store.state.user
-    })
+    
     const menus = [
       {
         name: "Dashboard",
@@ -94,6 +92,9 @@ export default {
     ]
     const showSideBar = ref(true);
     const store = useStore()
+    const user = computed(() => {
+      return store.state.user.email
+    })
     const route = useRoute()
     const breadcrumb = computed(() => {
       menus.forEach(menu => {

@@ -8,7 +8,7 @@ import { getAuth,
     GoogleAuthProvider, 
     signInWithPopup,
     // updateProfile,
-    // sendEmailVerification
+    sendEmailVerification
 } from "firebase/auth";
 
 const auth = getAuth();
@@ -47,6 +47,13 @@ class UserServices {
             return sendPasswordResetEmail(auth, email,{
                 url: 'http://localhost:8080/login'
             })
+        } catch (error) {
+            console.error(error)
+        }
+    }
+    async verifyEmail(){
+        try {
+            return sendEmailVerification(auth.currentUser)
         } catch (error) {
             console.error(error)
         }
