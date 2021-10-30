@@ -40,7 +40,7 @@ const routes = [
   {
     path: '/dashboard',
     name: 'dashboard-user-account',
-    component: () => import('../views/dashboard/_user/index.vue'),
+    component: () => import('../views/dashboard/index.vue'),
     meta: {
       layout: 'DashboardLayout'
     }
@@ -48,7 +48,7 @@ const routes = [
   {
     path: '/dashboard/profile',
     name: 'dashboard-user-profile',
-    component: () => import('../views/dashboard/_user/profile.vue'),
+    component: () => import('../views/dashboard/profile.vue'),
     meta: {
       layout: 'DashboardLayout'
     }
@@ -56,7 +56,7 @@ const routes = [
   {
     path: '/dashboard/investments',
     name: 'dashboard-user-investment',
-    component: () => import('../views/dashboard/_user/investment.vue'),
+    component: () => import('../views/dashboard/investment.vue'),
     meta: {
       layout: 'DashboardLayout'
     }
@@ -64,7 +64,7 @@ const routes = [
   {
     path: '/dashboard/plans',
     name: 'dashboard-user-plans',
-    component: () => import('../views/dashboard/_user/plans.vue'),
+    component: () => import('../views/dashboard/plans.vue'),
     meta: {
       layout: 'DashboardLayout'
     }
@@ -72,7 +72,7 @@ const routes = [
   {
     path: '/dashboard/deposit',
     name: 'dashboard-user-deposit',
-    component: () => import('../views/dashboard/_user/deposit.vue'),
+    component: () => import('../views/dashboard/deposit.vue'),
     meta: {
       layout: 'DashboardLayout'
     }
@@ -80,7 +80,7 @@ const routes = [
   {
     path: '/dashboard/withdraw',
     name: 'dashboard-user-withdraw',
-    component: () => import('../views/dashboard/_user/withdraw.vue'),
+    component: () => import('../views/dashboard/withdraw.vue'),
     meta: {
       layout: 'DashboardLayout'
     }
@@ -88,7 +88,7 @@ const routes = [
   {
     path: '/dashboard/transactions',
     name: 'dashboard-user-transactions',
-    component: () => import('../views/dashboard/_user/transactions.vue'),
+    component: () => import('../views/dashboard/transactions.vue'),
     meta: {
       layout: 'DashboardLayout'
     }

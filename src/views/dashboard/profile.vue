@@ -204,9 +204,9 @@
 import { computed, ref } from '@vue/reactivity'
 import { mdiClose,mdiAccountCircleOutline } from '@mdi/js';
 import { useStore } from 'vuex';
-import Loading from '../../../components/alerts/Loading.vue';
-import ErrorAlert from '../../../components/alerts/ErrorAlert.vue';
-import SuccessAlert from '../../../components/alerts/SuccessAlert.vue';
+import Loading from '../../components/alerts/Loading.vue';
+import ErrorAlert from '../../components/alerts/ErrorAlert.vue';
+import SuccessAlert from '../../components/alerts/SuccessAlert.vue';
 export default {
   components: { Loading, ErrorAlert, SuccessAlert },
   setup() {

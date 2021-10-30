@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import { onMounted } from '@vue/runtime-core';
 import dateRange from '../../helpers/dateLogic';
 import formatter from '../../helpers/formatNumber';
 export default {
@@ -23,10 +22,7 @@ export default {
     // const itirator = chartOptions.series[0].data.length
     const start = new Date().toISOString().substr(0, 10)
     const dates = dateRange(start,dateInt.addDays(7));
-    onMounted(() => {
-      console.log(dates)
-      // console.log(itirator)
-    })
+    
     const chartOptions = {
       options: {
         chart: {

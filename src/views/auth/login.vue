@@ -97,7 +97,7 @@
               <button
                 @click.prevent="googleSignin"
                 type="submit"
-                class="bg-white flex justify-around border-black border my-4 text-black text-lg font-semibold p-3 w-full rounded-md"
+                class="bg-white flex justify-around border-black border my-2 text-black text-lg font-semibold p-3 md:w-2/3 m-auto w-full rounded-md"
               >
                 <img src="@/assets/images/google.png" alt="" /> Sign in with
                 Google

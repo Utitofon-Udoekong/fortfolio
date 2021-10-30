@@ -105,7 +105,7 @@
 </template>
 
 <script>
-import ChartComponent from "../../../components/charts/ChartComponent.vue"
+import ChartComponent from "../../components/charts/ChartComponent.vue"
 const activities = [
   {
     amount: '50,000',

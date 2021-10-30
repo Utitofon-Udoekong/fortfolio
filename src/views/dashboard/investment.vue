@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import ProgressBar from "../../../components/ProgressBar.vue";
-import ComparisonCharts from "../../../components/charts/ComparisonCharts.vue";
+import ProgressBar from "../../components/ProgressBar.vue";
+import ComparisonCharts from "../../components/charts/ComparisonCharts.vue";
 const investments = [
   {
     name: "Fort Dollar",

@@ -144,8 +144,8 @@
             <p>{{ menu.name }}</p>
           </router-link>
         </div>
-        <div class="w-full">
-          <router-link @click="logout" class=" w-full flex items-center text-brand-blue text-md p-3 hover:bg-brand-blue hover:text-white " >
+        <div @click="logout" class="w-full cursor-pointer">
+          <a class=" w-full flex items-center text-brand-blue text-md p-3 hover:bg-brand-blue hover:text-white " >
             <div class="icon mr-4">
               <svg
                 viewBox="0 0 24 24"
@@ -157,7 +157,7 @@
               </svg>
             </div>
             <p>Logout</p>
-          </router-link>
+          </a>
         </div>
       </div>
     </div>
@@ -221,9 +221,12 @@ export default {
     });
     const breadcrumb = computed(() => {
       menus.forEach(menu => {
-        if(menu.path === route.path) return menu.name;
+        if(menu.path === route.path) {
+          return menu.name;
+        }
         else return "Dashboard"
       })
+      return "Dashboard"
     });
     const logout = () => {
       store.commit("loading", true)

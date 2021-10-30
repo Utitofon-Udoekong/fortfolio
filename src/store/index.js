@@ -1,6 +1,6 @@
-import {  
-  GoogleAuthProvider, 
-} from "firebase/auth";
+// import {  
+//   GoogleAuthProvider, 
+// } from "firebase/auth";
 import router from "../router";
 import { createStore } from 'vuex'
 import UserServices from '../services/user_services'
@@ -51,7 +51,7 @@ export default createStore({
           console.log(docSnap.data())
           const user = docSnap.data();
           commit("setUser", user);
-          router.push({name: "dashboard-user-account", params: {user: user.email}})
+          router.push("/dashboard")
         }).catch(err => {
           console.error(err)
         })
@@ -86,19 +86,23 @@ export default createStore({
       })
     },
     async googleSignin({commit}){
-      await UserServices.googleSignin().then((result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
+      await UserServices.googleSignin().then(async (result) => {
+        // const credential = GoogleAuthProvider.credentialFromResult(result);
         // const token = credential.accessToken;
         const user = result.user;
         commit("loading", false);
         commit("setSuccess", "Login successful");
         commit("toggleSuccess")
-        console.log(user, credential);
-        // ...
+        await UserServices.getUserDetails(user.uid).then(docSnap => {
+          const user = docSnap.data();
+          commit("setUser", user);
+          router.push("/dashboard")
+        }).catch(err => {
+          console.error(err)
+        })
       }).catch((error) => {
         const errorCode = error.code.replace("auth/", "");
         const errorMessage = error.message;
-        // const email = error.email;
         // const credential = GoogleAuthProvider.credentialFromError(error);
         commit("loading", false);
         commit("setError", errorCode);
