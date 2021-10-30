@@ -20,7 +20,7 @@
                 @submit.prevent="submitForm"
                 class="w-full grid grid-cols-1 sm:grid-cols-2 auto-rows-auto gap-2"
             >
-                <!-- <div class="mb-4">
+                <div class="mb-4">
                     <label for="first" class="text-gray-700 font-semibold text-md">First Name</label>
                     <div
                         class="border-2 focus-within:border-brand-lightblue hover:border-brand-lightblue rounded-md"
@@ -61,7 +61,7 @@
                         />
                     </div>
                     <small v-if="v$.phone.$error" class="text-red-600">{{v$.phone.$errors[0].$message}}</small>
-                </div>-->
+                </div>
                 <div class="mb-4">
                     <label for="email" class="text-gray-700 font-semibold text-md">Email Address</label>
                     <div
@@ -108,7 +108,7 @@
                         class="text-red-600"
                     >{{ v$.password.$errors[0].$message }}</small>
                 </div>
-                <!-- <div class="mb-4">
+                <div class="mb-4">
                     <label
                         for="confirm"
                         class="text-gray-700 font-semibold text-md"
@@ -128,7 +128,7 @@
                             v-model="user.refCode"
                         />
                     </div>
-                </div>-->
+                </div>
             </form>
             <div class="mb-4">
                 <input type="checkbox" id="check" class="mr-2" />
@@ -161,7 +161,7 @@
 <script>
 import { computed, reactive, ref } from '@vue/reactivity'
 import useVuelidate from '@vuelidate/core'
-import { required, email, helpers } from '@vuelidate/validators'
+import { required, email, helpers, sameAs } from '@vuelidate/validators'
 import { mdiEye, mdiEyeOff } from '@mdi/js';
 import { useStore } from 'vuex';
 import SuccessAlert from '../../components/alerts/SuccessAlert.vue';
@@ -176,29 +176,25 @@ export default {
     },
     setup() {
         const user = reactive({
-            //     firstName: "",
-            //     lastName: "",
-            // phone: "",
+            firstName: "",
+            lastName: "",
+            phone: "",
             email: "",
             password: "",
-            //     // confirm: ""
-            // bankName: "",
-            // bankAccountName: "",
-            // bankAccountNumber: "",
+            confirm: "",
+            bankName: "",
+            bankAccountName: "",
+            bankAccountNumber: "",
             // refCode: ""
         })
         const rules = computed(() => {
             return {
-                //     firstName: { required },
-                //     lastName: { required },
-                // phone: { required },
+                firstName: { required },
+                lastName: { required },
+                phone: { required },
                 email: { required, email },
                 password: { required, alpha: helpers.withMessage(incorrectPasswordMessage, alpha) },
-                //     // confirm: { required, sameAs: sameAs(user.password.password) },
-                // bankName: { required },
-                // bankAccountName: { required },
-                // bankAccountNumber: { required },
-                // refCode: ""
+                confirm: { required, sameAs: sameAs(user.password) },
             }
         })
 

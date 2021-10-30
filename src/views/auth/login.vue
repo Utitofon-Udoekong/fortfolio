@@ -20,7 +20,7 @@
           </a>
         </div>
       </div>
-      <div class="bg-white md:w-1/3 w-11/12 p-8 shadow-xl">
+      <div class="bg-white md:w-1/2 w-11/12 p-8 shadow-xl">
         <p class="text-brand-lightblue text-3xl">Welcome to Fortfolio</p>
         <p class="text-gray-600 pb-4">
           Sign In by entering your information below

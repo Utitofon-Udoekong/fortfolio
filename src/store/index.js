@@ -7,13 +7,13 @@ import UserServices from '../services/user_services'
 export default createStore({
   state: {
     user: {
-      firstName: "",
-      lastName: "",
-      phone: "",
-      email: "",
-      bankName: "",
-      bankAccountName: "",
-      bankAccountNumber: "",
+      firstName: "firstname",
+      lastName: "lastname",
+      phone: "+123456789",
+      email: "user@mail.com",
+      bankName: "Bank Name",
+      bankAccountName: "Account Name",
+      bankAccountNumber: "Account Number",
     },
     errorText: "",
     successText: "",
@@ -43,41 +43,46 @@ export default createStore({
   },
   actions: {
     async login({commit}, payload){
-      await UserServices.login(payload).then(usercredential => {
+      await UserServices.login(payload).then(async usercredential => {
         commit("loading", false);
         commit("setSuccess", "Login successful");
         commit("toggleSuccess");
-        const user = usercredential.user;
-        // commit("setUser", user);
-        router.push({name: "dashboard-user-account", params: {user: user.email}})
-        console.log(user);
+        await UserServices.getUserDetails(usercredential.user.uid).then(docSnap => {
+          console.log(docSnap.data())
+          const user = docSnap.data();
+          commit("setUser", user);
+          router.push({name: "dashboard-user-account", params: {user: user.email}})
+        }).catch(err => {
+          console.error(err)
+        })
       }).catch(error => {
         commit("loading", false);
-        commit("setError", error.code);
+        commit("setError", error.code.replace("auth/", ""));
         commit("toggleError");
-        console.log(error.code);
       })
     },
-    async signup({commit, state}, payload){
+    async signup({commit}, payload){
       const auth = {email: payload.email, password: payload.password}
       await UserServices.signup(auth).then(async usercredential=> {
         commit("loading", false);
         commit("setSuccess", "Registration successful, A verification link has been sent to your email address");
         commit("toggleSuccess");
-        await UserServices.verifyEmail().then(() => {
-          UserServices.addUserDetails(payload).catch((error) => {
+        await UserServices.verifyEmail().then(async () => {
+          delete payload.confirm;
+          await UserServices.addUserDetails(payload, usercredential.user.uid).then(() => {
+            commit("setUser", payload)
+            router.push("/login")
+          }).catch((error) => {
             console.log(error)
           })
         }).catch((error) => {
           console.log(error)
         })
-        state.user.email = usercredential.user.email;
-        console.log(usercredential.user);
       }).catch(error => {
         commit("loading", false);
         commit("setError", error.code.replace("auth/",""));
         commit("toggleError");
-        console.log(error.code);
+        router.push("/login")
       })
     },
     async googleSignin({commit}){
@@ -112,9 +117,24 @@ export default createStore({
         commit("setError", error.code.replace("auth/",""));
         console.log(error);
       })
+    },
+    async updateProfile({commit}, payload){
+      await UserServices.updateDetails(payload).then(() => {
+        commit("loading", false);
+        commit("toggleSuccess");
+        commit("setSuccess", `Profile updated successfully`)
+      }).catch(error => {
+        commit("loading", false);
+        commit("toggleError")
+        commit("setError", error.code.replace("auth/",""));
+        console.log(error);
+      })
     }
   },
   getters: {
+    user(state){
+      return state.user;
+    },
     email(state){
       return state.user.email
     },

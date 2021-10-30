@@ -38,7 +38,7 @@ const routes = [
     component: () => import('../views/TermsAndConditions.vue')
   },
   {
-    path: '/dashboard/:user',
+    path: '/dashboard',
     name: 'dashboard-user-account',
     component: () => import('../views/dashboard/_user/index.vue'),
     meta: {
@@ -46,7 +46,7 @@ const routes = [
     }
   },
   {
-    path: '/dashboard/:user/profile',
+    path: '/dashboard/profile',
     name: 'dashboard-user-profile',
     component: () => import('../views/dashboard/_user/profile.vue'),
     meta: {
@@ -54,7 +54,7 @@ const routes = [
     }
   },
   {
-    path: '/dashboard/:user/investments',
+    path: '/dashboard/investments',
     name: 'dashboard-user-investment',
     component: () => import('../views/dashboard/_user/investment.vue'),
     meta: {
@@ -62,7 +62,7 @@ const routes = [
     }
   },
   {
-    path: '/dashboard/:user/plans',
+    path: '/dashboard/plans',
     name: 'dashboard-user-plans',
     component: () => import('../views/dashboard/_user/plans.vue'),
     meta: {
@@ -70,7 +70,7 @@ const routes = [
     }
   },
   {
-    path: '/dashboard/:user/deposit',
+    path: '/dashboard/deposit',
     name: 'dashboard-user-deposit',
     component: () => import('../views/dashboard/_user/deposit.vue'),
     meta: {
@@ -78,7 +78,7 @@ const routes = [
     }
   },
   {
-    path: '/dashboard/:user/withdraw',
+    path: '/dashboard/withdraw',
     name: 'dashboard-user-withdraw',
     component: () => import('../views/dashboard/_user/withdraw.vue'),
     meta: {
@@ -86,7 +86,7 @@ const routes = [
     }
   },
   {
-    path: '/dashboard/:user/transactions',
+    path: '/dashboard/transactions',
     name: 'dashboard-user-transactions',
     component: () => import('../views/dashboard/_user/transactions.vue'),
     meta: {

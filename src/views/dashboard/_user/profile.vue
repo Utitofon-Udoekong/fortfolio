@@ -1,4 +1,7 @@
 <template>
+<loading/>
+<error-alert/>
+<success-alert/>
   <div class="overflow-y-scroll h-5/6">
     <form class="p-4">
       <div class="flex justify-between mb-4">
@@ -11,7 +14,7 @@
         <button
           class="bg-brand-blue text-white p-3 rounded-md"
           @click.prevent="toggleModal = !toggleModal"
-        >Edit Details</button>
+        >user Details</button>
       </div>
       <div class="mb-4 flex flex-col sm:flex-row w-full items-start sm:items-center">
         <label for="first" class="w-full sm:w-2/12 text-gray-700 font-semibold text-md">First Name</label>
@@ -21,7 +24,7 @@
             class="text-md appearance-none text-black bg-white border-none w-full sm:w-full py-1 px-2 focus:outline-none"
             type="text"
             disabled
-            v-model="state.name.firstName"
+            v-model="user.name.firstName"
           />
         </div>
       </div>
@@ -33,7 +36,7 @@
             class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2 focus:outline-none"
             type="text"
             disabled
-            v-model="state.name.lastName"
+            v-model="user.name.lastName"
           />
         </div>
       </div>
@@ -45,7 +48,7 @@
             class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2 focus:outline-none"
             type="text"
             disabled
-            v-model="state.phone"
+            v-model="user.phone"
           />
         </div>
       </div>
@@ -57,7 +60,7 @@
             class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2 focus:outline-none"
             type="text"
             disabled
-            v-model="state.email"
+            v-model="user.email"
           />
         </div>
       </div>
@@ -69,7 +72,7 @@
             class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2 focus:outline-none"
             type="text"
             disabled
-            v-model="state.bankName"
+            v-model="user.bankName"
           />
         </div>
       </div>
@@ -81,7 +84,7 @@
             class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2 focus:outline-none"
             type="text"
             disabled
-            v-model="state.bankAccountName"
+            v-model="user.bankAccountName"
           />
         </div>
       </div>
@@ -93,7 +96,7 @@
             class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2 focus:outline-none"
             type="text"
             disabled
-            v-model="state.bankAccountNumber"
+            v-model="user.bankAccountNumber"
           />
         </div>
       </div>
@@ -118,7 +121,7 @@
                 class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2"
                 type="text"
                 id="first"
-                v-model="edit.name.firstName"
+                v-model="user.name.firstName"
               />
             </div>
           </div>
@@ -129,7 +132,7 @@
                 class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2"
                 type="text"
                 id="last"
-                v-model="edit.name.lastName"
+                v-model="user.name.lastName"
               />
             </div>
           </div>
@@ -140,7 +143,7 @@
                 class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2"
                 type="text"
                 id="phone"
-                v-model="edit.phone"
+                v-model="user.phone"
               />
             </div>
           </div>
@@ -151,7 +154,7 @@
                 class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2"
                 type="text"
                 id="email"
-                v-model="edit.email"
+                v-model="user.email"
               />
             </div>
           </div>
@@ -162,7 +165,7 @@
                 class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2"
                 type="text"
                 id="bank"
-                v-model="edit.bankName"
+                v-model="user.bankName"
               />
             </div>
           </div>
@@ -173,7 +176,7 @@
                 class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2"
                 type="text"
                 id="accName"
-                v-model="edit.bankAccountName"
+                v-model="user.bankAccountName"
               />
             </div>
           </div>
@@ -184,11 +187,11 @@
                 class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2"
                 type="text"
                 id="accNum"
-                v-model="edit.bankAccountNumber"
+                v-model="user.bankAccountNumber"
               />
             </div>
           </div>
-          <button class="bg-green-600 rounded-md mr-3 text-sm text-white p-3" @click="toggleModal = !toggleModal">SAVE</button>
+          <button class="bg-green-600 rounded-md mr-3 text-sm text-white p-3" @click="saveProfile">SAVE</button>
           <button class="bg-red-500 rounded-md text-sm text-white p-3" @click="toggleModal = !toggleModal">CANCEL</button>
         </form>
       </div>
@@ -198,46 +201,38 @@
 </template>
 
 <script>
-import { computed, reactive, ref } from '@vue/reactivity'
+import { computed, ref } from '@vue/reactivity'
 import { mdiClose,mdiAccountCircleOutline } from '@mdi/js';
+import { useStore } from 'vuex';
+import Loading from '../../../components/alerts/Loading.vue';
+import ErrorAlert from '../../../components/alerts/ErrorAlert.vue';
+import SuccessAlert from '../../../components/alerts/SuccessAlert.vue';
 export default {
+  components: { Loading, ErrorAlert, SuccessAlert },
   setup() {
-    const state = computed(() => {
+    const store = useStore();
+    const user = computed(() => {
       return {
         name: {
-          firstName: "muna",
-          lastName: "mina"
+          firstName: store.state.user.firstName,
+          lastName: store.state.user.lastName
         },
-        phone: "1234567890",
-        email: "dfg@yghjk.ghjk",
-        password: {
-          password: "3465tgRTYU!@",
-        },
-        bankName: "pola",
-        bankAccountName: "moses pola",
-        bankAccountNumber: "3456542",
-        refCode: ""
+        phone: store.state.user.phone,
+        email: store.state.user.email,
+        bankName: store.state.user.bankName,
+        bankAccountName: store.state.user.bankAccountName,
+        bankAccountNumber: store.state.user.bankAccountNumber,
+        // refCode: ""
       }
     })
-    const edit = reactive({
-      name: {
-        firstName: "",
-        lastName: ""
-      },
-      phone: "",
-      email: "",
-      password: {
-        password: "",
-      },
-      bankName: "",
-      bankAccountName: "",
-      bankAccountNumber: "",
-      refCode: ""
-    })
-    const toggleModal = ref(false)
+    const toggleModal = ref(false);
+    const saveProfile = () => {
+      store.commit("loading", true)
+      store.dispatch("updateProfile", user)
+    }
 
     return {
-      state, toggleModal, edit, mdiAccountCircleOutline, mdiClose
+      user, toggleModal, mdiAccountCircleOutline, mdiClose, saveProfile
     }
   }
 }

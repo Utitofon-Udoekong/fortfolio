@@ -1,6 +1,6 @@
-import {db} from '../firebase'
-import { doc, setDoc, runTransaction, deleteDoc, onSnapshot } from "firebase/firestore";
-import { getAuth, 
+import {db, auth} from '../firebase'
+import { doc, setDoc, runTransaction, deleteDoc, getDoc } from "firebase/firestore/lite";
+import { 
     signOut, 
     createUserWithEmailAndPassword, 
     signInWithEmailAndPassword, 
@@ -10,8 +10,6 @@ import { getAuth,
     // updateProfile,
     sendEmailVerification
 } from "firebase/auth";
-
-const auth = getAuth();
 class UserServices {
     // async extras(userDetails){
     //     updateProfile
@@ -60,13 +58,7 @@ class UserServices {
     }
     async getUserDetails(uid) {
         const docRef = doc(db, "users", uid);
-        return onSnapshot(docRef)
-        // if (docSnap.exists()) {
-        //     const user = docSnap.data();
-        //     return console.log(user)
-        // } else {
-        //     return "No user like this exists";
-        // }
+        return getDoc(docRef);
     }
     async updateDetails(uid, updatedDetails) {
         try {
