@@ -1,5 +1,5 @@
 <template>
-  <div class="p-8">
+  <div class="p-10">
     <div v-if="showAlert" class="fixed p-4 bg-brand-blue text-white inset-x-2 md:inset-x-20 transition-all duration-500  top-9 alert flex justify-between items-center">
       <p>Withdrawal request of {{state.amount}} sent</p>
       <p class="text-2xl cursor-pointer" @click="toggleAlert">&xotime;</p>

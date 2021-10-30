@@ -14,14 +14,14 @@
         <button
           class="bg-brand-blue text-white p-3 rounded-md"
           @click.prevent="toggleModal = !toggleModal"
-        >user Details</button>
+        >Edit User Details</button>
       </div>
       <div class="mb-4 flex flex-col sm:flex-row w-full items-start sm:items-center">
         <label for="first" class="w-full sm:w-2/12 text-gray-700 font-semibold text-md">First Name</label>
         <div class="border-2 rounded-md w-full sm:w-10/12">
           <input
           id="first"
-            class="text-md appearance-none text-black bg-white border-none w-full sm:w-full py-1 px-2 focus:outline-none"
+            class="text-md appearance-none text-black bg-white border-none w-full sm:w-full p-2 focus:outline-none"
             type="text"
             disabled
             v-model="user.name.firstName"
@@ -33,7 +33,7 @@
         <div class="border-2 rounded-md w-full sm:w-10/12">
           <input
           id="last"
-            class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2 focus:outline-none"
+            class="text-md appearance-none text-black bg-white border-none w-full p-2 focus:outline-none"
             type="text"
             disabled
             v-model="user.name.lastName"
@@ -45,7 +45,7 @@
         <div class="border-2 rounded-md w-full sm:w-10/12">
           <input
           id="phone"
-            class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2 focus:outline-none"
+            class="text-md appearance-none text-black bg-white border-none w-full p-2 focus:outline-none"
             type="text"
             disabled
             v-model="user.phone"
@@ -57,7 +57,7 @@
         <div class="border-2 rounded-md w-full sm:w-10/12">
           <input
           id="email"
-            class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2 focus:outline-none"
+            class="text-md appearance-none text-black bg-white border-none w-full p-2 focus:outline-none"
             type="text"
             disabled
             v-model="user.email"
@@ -69,7 +69,7 @@
         <div class="border-2 rounded-md w-full sm:w-10/12">
           <input
           id="bankname"
-            class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2 focus:outline-none"
+            class="text-md appearance-none text-black bg-white border-none w-full p-2 focus:outline-none"
             type="text"
             disabled
             v-model="user.bankName"
@@ -81,7 +81,7 @@
         <div class="border-2 rounded-md w-full sm:w-10/12">
           <input
           id="accname"
-            class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2 focus:outline-none"
+            class="text-md appearance-none text-black bg-white border-none w-full p-2 focus:outline-none"
             type="text"
             disabled
             v-model="user.bankAccountName"
@@ -93,7 +93,7 @@
         <div class="border-2 rounded-md w-full sm:w-10/12">
           <input
           id="accnum"
-            class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2 focus:outline-none"
+            class="text-md appearance-none text-black bg-white border-none w-full p-2 focus:outline-none"
             type="text"
             disabled
             v-model="user.bankAccountNumber"
@@ -118,7 +118,7 @@
             <label for="first" class="text-gray-700 font-semibold text-md">First Name</label>
             <div class="border-2 rounded-md">
               <input
-                class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2"
+                class="text-md appearance-none text-black bg-white border-none w-full p-2"
                 type="text"
                 id="first"
                 v-model="user.name.firstName"
@@ -129,7 +129,7 @@
             <label for="last" class="text-gray-700 font-semibold text-md">Last Name</label>
             <div class="border-2 rounded-md">
               <input
-                class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2"
+                class="text-md appearance-none text-black bg-white border-none w-full p-2"
                 type="text"
                 id="last"
                 v-model="user.name.lastName"
@@ -140,7 +140,7 @@
             <label for="phone" class="text-gray-700 font-semibold text-md">Phone</label>
             <div class="border-2 rounded-md">
               <input
-                class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2"
+                class="text-md appearance-none text-black bg-white border-none w-full p-2"
                 type="text"
                 id="phone"
                 v-model="user.phone"
@@ -151,7 +151,7 @@
             <label for="email" class="text-gray-700 font-semibold text-md">Email</label>
             <div class="border-2 rounded-md">
               <input
-                class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2"
+                class="text-md appearance-none text-black bg-white border-none w-full p-2"
                 type="text"
                 id="email"
                 v-model="user.email"
@@ -162,7 +162,7 @@
             <label for="bank" class="text-gray-700 font-semibold text-md">Bank Name</label>
             <div class="border-2 rounded-md">
               <input
-                class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2"
+                class="text-md appearance-none text-black bg-white border-none w-full p-2"
                 type="text"
                 id="bank"
                 v-model="user.bankName"
@@ -173,7 +173,7 @@
             <label for="accName" class="text-gray-700 font-semibold text-md">Account Name</label>
             <div class="border-2 rounded-md">
               <input
-                class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2"
+                class="text-md appearance-none text-black bg-white border-none w-full p-2"
                 type="text"
                 id="accName"
                 v-model="user.bankAccountName"
@@ -184,14 +184,14 @@
             <label for="accNum" class="text-gray-700 font-semibold text-md">Account Number</label>
             <div class="border-2 rounded-md">
               <input
-                class="text-md appearance-none text-black bg-white border-none w-full py-1 px-2"
+                class="text-md appearance-none text-black bg-white border-none w-full p-2"
                 type="text"
                 id="accNum"
                 v-model="user.bankAccountNumber"
               />
             </div>
           </div>
-          <button class="bg-green-600 rounded-md mr-3 text-sm text-white p-3" @click="saveProfile">SAVE</button>
+          <button class="bg-green-600 rounded-md mr-3 text-sm text-white p-3" @click.prevent="saveProfile">SAVE</button>
           <button class="bg-red-500 rounded-md text-sm text-white p-3" @click="toggleModal = !toggleModal">CANCEL</button>
         </form>
       </div>
@@ -227,7 +227,8 @@ export default {
     })
     const toggleModal = ref(false);
     const saveProfile = () => {
-      store.commit("loading", true)
+      store.commit("loading", true);
+      toggleModal.value = false
       store.dispatch("updateProfile", user)
     }
 

@@ -82,7 +82,6 @@ export default createStore({
         commit("loading", false);
         commit("setError", error.code.replace("auth/",""));
         commit("toggleError");
-        router.push("/login")
       })
     },
     async googleSignin({commit}){

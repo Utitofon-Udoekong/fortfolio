@@ -1,7 +1,7 @@
 <template>
-<error-alert/>
-<success-alert/>
-<loading/>
+  <error-alert />
+  <success-alert />
+  <loading />
   <div class="flex w-full h-screen relative">
     <div
       class="
@@ -145,7 +145,16 @@
           </router-link>
         </div>
         <div @click="logout" class="w-full cursor-pointer">
-          <a class=" w-full flex items-center text-brand-blue text-md p-3 hover:bg-brand-blue hover:text-white " >
+          <a
+            class="
+              w-full
+              flex
+              items-center
+              text-brand-blue text-md
+              p-3
+              hover:bg-brand-blue hover:text-white
+            "
+          >
             <div class="icon mr-4">
               <svg
                 viewBox="0 0 24 24"
@@ -187,9 +196,38 @@
           </svg>
           <p class="text-brand-blue text-xl font-semibold">{{ breadcrumb }}</p>
         </div>
-        <button class="p-3 bg-brand-blue text-white text-sm rounded-md">
-          Hello {{ user }}
-        </button>
+        <div class="relative">
+          <button class=" p-3 bg-brand-blue text-white text-sm rounded-md" >
+            Hello {{ user }}
+            <span class="icon" @click="showProfileCard = !showProfileCard" >
+              <svg viewBox="0 0 24 24" width="25" height="25" class="inline-block fill-current" >
+                <path :d="mdiMenuDown" />
+              </svg>
+            </span>
+          </button>
+          <div v-if="showProfileCard" class="absolute z-20 translate-y-full text-white bg-brand-blue p-4 w-52 right-2 rounded-md shadow-xl bg-opacity-95 -bottom-1 transform transition-all ease-linear duration-300" >
+            <div v-for="(profile, i) in profiles" :key="i" class="p-1 hover:bg-white hover:text-brand-blue">
+              <router-link @click="showProfileCard = !showProfileCard" :to="profile.path" class="w-full flex items-center mb-2" >
+                <div class="icon mr-4">
+                  <svg viewBox="0 0 24 24" width="25" height="25" class="inline-block fill-current" >
+                    <path :d="profile.icon" />
+                  </svg>
+                </div>
+                <p>{{ profile.name }}</p>
+              </router-link>
+            </div>
+            <div class="p-1 hover:bg-white hover:text-brand-blue">
+              <a href="" class="flex w-full items-center">
+                <div class="icon mr-4">
+                  <svg viewBox="0 0 24 24" width="25" height="25" class="inline-block fill-current" >
+                    <path :d="mdiArrowULeftTop" />
+                  </svg>
+                </div>
+                <p>Logout</p>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
       <slot />
     </div>
@@ -197,41 +235,38 @@
 </template>
 
 <script>
-import {
-  mdiClose,
-  mdiSegment,
-  mdiArrowULeftTop,
-} from "@mdi/js";
+import { mdiClose, mdiSegment, mdiArrowULeftTop, mdiMenuDown } from "@mdi/js";
 import { computed, ref } from "@vue/reactivity";
 import { useStore } from "vuex";
 import menus from "../api/menu";
-import { useRoute } from 'vue-router';
-import ErrorAlert from '../components/alerts/ErrorAlert.vue';
-import SuccessAlert from '../components/alerts/SuccessAlert.vue';
-import Loading from '../components/alerts/Loading.vue';
+import profiles from "../api/profile";
+import { useRoute } from "vue-router";
+import ErrorAlert from "../components/alerts/ErrorAlert.vue";
+import SuccessAlert from "../components/alerts/SuccessAlert.vue";
+import Loading from "../components/alerts/Loading.vue";
 export default {
   components: { ErrorAlert, SuccessAlert, Loading },
   name: "DashboardLayout",
   setup() {
     const showSideBar = ref(true);
+    const showProfileCard = ref(false);
     const store = useStore();
     const route = useRoute();
     const user = computed(() => {
-      return store.getters.user.email;
+      return store.getters.user.firstName;
     });
     const breadcrumb = computed(() => {
-      menus.forEach(menu => {
-        if(menu.path === route.path) {
+      menus.forEach((menu) => {
+        if (menu.path === route.path) {
           return menu.name;
-        }
-        else return "Dashboard"
-      })
-      return "Dashboard"
+        } else return "Dashboard";
+      });
+      return "Dashboard";
     });
     const logout = () => {
-      store.commit("loading", true)
+      store.commit("loading", true);
       store.dispatch("logout");
-    }
+    };
     return {
       logout,
       breadcrumb,
@@ -241,6 +276,9 @@ export default {
       mdiClose,
       showSideBar,
       user,
+      profiles,
+      mdiMenuDown,
+      showProfileCard
     };
   },
 };

@@ -86,20 +86,16 @@
             <p class="text-center text-gray-600 py-2 underline">
               <a href="/forgotPassword">Forgot password?</a>
             </p>
-            <button
-              @click.prevent="submitForm"
-              type="submit"
-              class="bg-brand-lightblue text-white text-lg font-semibold p-3 w-full rounded-md"
-            >
-              Login
-            </button>
+            <div class="w-full flex justify-center">
+                <input @click.prevent="submitForm" type="submit" value="Sign Up" :disabled="v$.$invalid" :class=" v$.$invalid ? 'bg-blue-400 text-gray-600 text-lg font-semibold p-3 w-full rounded-md cursor-not-allowed' : 'bg-brand-lightblue text-white text-lg font-semibold p-3 w-full rounded-md cursor-pointer' ">
+            </div>
             <p class="text-center py-1">or</p>
               <button
                 @click.prevent="googleSignin"
                 type="submit"
-                class="bg-white flex justify-around border-black border my-2 text-black text-lg font-semibold p-3 md:w-2/3 m-auto w-full rounded-md"
+                class="bg-white flex justify-center border-black border my-2 text-black text-lg font-semibold p-3 md:w-2/3 m-auto w-full rounded-md"
               >
-                <img src="@/assets/images/google.png" alt="" /> Sign in with
+                <img src="@/assets/images/google.png" class="pr-4" alt="" /> Sign in with
                 Google
               </button>
             <p class="text-center text-gray-600 pt-4">

@@ -131,7 +131,7 @@
                 </div>
             </form>
             <div class="mb-4">
-                <input type="checkbox" id="check" class="mr-2" />
+                <input type="checkbox" id="check" v-model="user.check" class="mr-2" />
                 <label for="check" class="text-gray-700 text-md">
                     I agree to the
                     <a
@@ -141,11 +141,7 @@
                 </label>
             </div>
             <div class="w-full flex justify-center">
-                <button
-                    @click.prevent="submitForm"
-                    type="submit"
-                    class="bg-brand-lightblue my-4 text-white text-lg font-semibold p-3 w-3/4 rounded-md"
-                >Sign Up</button>
+                <input @click.prevent="submitForm" type="submit" value="Sign Up" :disabled="v$.$invalid" :class=" v$.$invalid ? 'bg-blue-400 my-4 text-gray-600 text-lg font-semibold p-3 w-3/4 rounded-md cursor-not-allowed' : 'bg-brand-lightblue my-4 text-white text-lg font-semibold p-3 w-3/4 rounded-md cursor-pointer' ">
             </div>
            
             <p class="text-center text-gray-600 pb-10">
@@ -185,6 +181,7 @@ export default {
             bankName: "",
             bankAccountName: "",
             bankAccountNumber: "",
+            check: false
             // refCode: ""
         })
         const rules = computed(() => {
@@ -195,9 +192,9 @@ export default {
                 email: { required, email },
                 password: { required, alpha: helpers.withMessage(incorrectPasswordMessage, alpha) },
                 confirm: { required, sameAs: sameAs(user.password) },
+                check: {required}
             }
         })
-
         const alpha = helpers.regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/)
         const incorrectPasswordMessage = "Password must be atleast 8 characters, contain a number, a special character, and an uppercase letter."
         const showPassword = ref(false)
