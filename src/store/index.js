@@ -106,6 +106,18 @@ export default createStore({
         console.log(errorCode, errorMessage);
       });
     },
+    async logout({commit}){
+      await UserServices.logout().then(() => {
+        commit("loading", false);
+        commit("setSuccess", "Logged out successfully");
+        commit("toggleSuccess")
+      }).catch((error) => {
+        const errorCode = error.code.replace("auth/", "");
+        commit("loading", false);
+        commit("setError", errorCode);
+        commit("toggleError");
+      });
+    },
     async resetPassword({commit},email){
       await UserServices.resetPassword(email).then(() => {
         commit("loading", false);

@@ -1,4 +1,7 @@
 <template>
+<error-alert/>
+<success-alert/>
+<loading/>
   <div class="flex w-full h-screen relative">
     <div
       class="
@@ -142,17 +145,7 @@
           </router-link>
         </div>
         <div class="w-full">
-          <router-link
-            to="/login"
-            class="
-              w-full
-              flex
-              items-center
-              text-brand-blue text-md
-              p-3
-              hover:bg-brand-blue hover:text-white
-            "
-          >
+          <router-link @click="logout" class=" w-full flex items-center text-brand-blue text-md p-3 hover:bg-brand-blue hover:text-white " >
             <div class="icon mr-4">
               <svg
                 viewBox="0 0 24 24"
@@ -213,7 +206,11 @@ import { computed, ref } from "@vue/reactivity";
 import { useStore } from "vuex";
 import menus from "../api/menu";
 import { useRoute } from 'vue-router';
+import ErrorAlert from '../components/alerts/ErrorAlert.vue';
+import SuccessAlert from '../components/alerts/SuccessAlert.vue';
+import Loading from '../components/alerts/Loading.vue';
 export default {
+  components: { ErrorAlert, SuccessAlert, Loading },
   name: "DashboardLayout",
   setup() {
     const showSideBar = ref(true);
@@ -227,9 +224,13 @@ export default {
         if(menu.path === route.path) return menu.name;
         else return "Dashboard"
       })
-    })
-
+    });
+    const logout = () => {
+      store.commit("loading", true)
+      store.dispatch("logout");
+    }
     return {
+      logout,
       breadcrumb,
       menus,
       mdiArrowULeftTop,

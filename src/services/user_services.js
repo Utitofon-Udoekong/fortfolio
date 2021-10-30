@@ -37,7 +37,6 @@ class UserServices {
         }
     }
     async logout() {
-        
         return signOut(auth);
     }
     async resetPassword(email){
