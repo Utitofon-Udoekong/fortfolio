@@ -18,8 +18,8 @@
             class="text-center text-sm"
           ></p>
           <button
-            :class="plan.active ? 'text-white text-md border-white' : 'text-brand-blue text-sm border-brand-blue'"
-            class="w-full absolute inset-x-0 bottom-0 rounded-md border-2 border-solid p-2"
+            :class="plan.active ? 'text-white text-md border-white bg-brand-blue' : 'text-brand-blue text-sm border-brand-blue'"
+            class="w-full absolute inset-x-0 bottom-0 rounded-md border-2 border-solid p-2 bg-white"
           >INVEST NOW</button>
         </div>
       </div>

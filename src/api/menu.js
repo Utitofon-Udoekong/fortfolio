@@ -1,35 +1,49 @@
-const store = useStore();
-const user = store.state.user.email;
+import {
+  mdiAlphaDBox,
+  mdiAccountCircleOutline,
+  mdiCashLock,
+  mdiCashPlus,
+  mdiCartPlus,
+  mdiCashMinus,
+  mdiCellphoneWireless,
+} from "@mdi/js";
 
 const menus = [
-    {
-      name: "Dashboard",
-      path: `/dashboard/${user}`,
-    },
-    {
-      name: "Profile",
-      path: `/dashboard/${user}/profile`,
-    },
-    {
-      name: "Investments",
-      path: `/dashboard/${user}/investments`,
-    },
-    {
-      name: "Investment Plans",
-      path: `/dashboard/${user}/plans`,
-    },
-    {
-      name: "Deposit Funds",
-      path: `/dashboard/${user}/deposit`,
-    },
-    {
-      name: "Request Payout",
-      path: `/dashboard/${user}/withdraw`,
-    },
-    {
-      name: "Transactions",
-      path: `/dashboard/${user}/transactions`,
-    },
-]
+  {
+    name: "Dashboard",
+    path: "/dashboard",
+    icon: mdiAlphaDBox,
+  },
+  {
+    name: "Profile",
+    path: "/dashboard/profile",
+    icon: mdiAccountCircleOutline,
+  },
+  {
+    name: "My Investment",
+    path: "/dashboard/investments",
+    icon: mdiCashLock,
+  },
+  {
+    name: "Investment Plans",
+    path: "/dashboard/plans",
+    icon: mdiCartPlus,
+  },
+  {
+    name: "Deposit Funds",
+    path: "/dashboard/deposit",
+    icon: mdiCashPlus,
+  },
+  {
+    name: "Request Payout",
+    path: "/dashboard/withdraw",
+    icon: mdiCashMinus,
+  },
+  {
+    name: "Transactions",
+    path: "/dashboard/transactions",
+    icon: mdiCellphoneWireless,
+  },
+];
 
 export default menus

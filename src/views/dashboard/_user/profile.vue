@@ -9,7 +9,7 @@
           <svg viewBox="0 0 24 24" width="25" height="25" class="inline-block fill-current mr-3" >
             <path :d="mdiAccountCircleOutline" />
           </svg>
-          <p class="capitalize text-3xl font-bold">{{ $route.params.user }}</p>
+          <p class="capitalize text-3xl font-bold">{{ user.name.firstName }}</p>
         </div>
         <button
           class="bg-brand-blue text-white p-3 rounded-md"

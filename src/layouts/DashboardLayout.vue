@@ -207,66 +207,30 @@
 import {
   mdiClose,
   mdiSegment,
-  mdiAlphaDBox,
-  mdiAccountCircleOutline,
-  mdiCashLock,
-  mdiCashPlus,
-  mdiCartPlus,
-  mdiCashMinus,
-  mdiCellphoneWireless,
   mdiArrowULeftTop,
 } from "@mdi/js";
 import { computed, ref } from "@vue/reactivity";
 import { useStore } from "vuex";
-
+import menus from "../api/menu";
+import { useRoute } from 'vue-router';
 export default {
   name: "DashboardLayout",
   setup() {
-    const menus = [
-      {
-        name: "Dashboard",
-        path: `/dashboard/${user}`,
-        icon: mdiAlphaDBox,
-      },
-      {
-        name: "Profile",
-        path: `/dashboard/${user}/profile`,
-        icon: mdiAccountCircleOutline,
-      },
-      {
-        name: "My Investment",
-        path: `/dashboard/${user}/investments`,
-        icon: mdiCashLock,
-      },
-      {
-        name: "Investment Plans",
-        path: `/dashboard/${user}/plans`,
-        icon: mdiCartPlus,
-      },
-      {
-        name: "Deposit Funds",
-        path: `/dashboard/${user}/deposit`,
-        icon: mdiCashPlus,
-      },
-      {
-        name: "Request Payout",
-        path: `/dashboard/${user}/withdraw`,
-        icon: mdiCashMinus,
-      },
-      {
-        name: "Transactions",
-        path: `/dashboard/${user}/transactions`,
-        icon: mdiCellphoneWireless,
-      },
-    ];
     const showSideBar = ref(true);
     const store = useStore();
+    const route = useRoute();
     const user = computed(() => {
-      return store.getters.email;
+      return store.getters.user.email;
     });
-    
+    const breadcrumb = computed(() => {
+      menus.forEach(menu => {
+        if(menu.path === route.path) return menu.name;
+        else return "Dashboard"
+      })
+    })
 
     return {
+      breadcrumb,
       menus,
       mdiArrowULeftTop,
       mdiSegment,

@@ -135,9 +135,6 @@ export default createStore({
     user(state){
       return state.user;
     },
-    email(state){
-      return state.user.email
-    },
     loading(state){
       return state.loading;
     },
