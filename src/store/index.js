@@ -1,9 +1,8 @@
-// import {  
-//   GoogleAuthProvider, 
-// } from "firebase/auth";
 import router from "../router";
 import { createStore } from 'vuex'
-import UserServices from '../services/user_services'
+import UserServices from '../services/user_services';
+// import {auth} from "../firebase"
+// const userid = auth.currentUser.uid;
 export default createStore({
   state: {
     user: {
@@ -144,6 +143,17 @@ export default createStore({
         commit("setError", error.code.replace("auth/",""));
         console.log(error);
       })
+    },
+    async deposit(payload){
+      await UserServices.updateDetails(payload)        
+      //   if (!userDoc.exists()) {
+      //     throw "Document does not exist!";
+      // } else {
+      //     console.table(userDoc, updatedDetails)
+      //     // transaction to update user details
+      //     // const newCodes = userDoc.data().oneMonthCodes.slice(1)
+      //     // transaction.update(docRef, updatedDetails);
+      // }
     }
   },
   getters: {

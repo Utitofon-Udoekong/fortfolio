@@ -1,10 +1,12 @@
 <template>
-  <div class="text-center my-14 sm:my-28 px-6" id="plans">
-    <p class="text-brand-lightblue text-lg md:text-xl">Get Started Now</p>
+  <div id="plans">
+    <div v-if="showText">
+      <p class="text-brand-lightblue text-lg md:text-xl">Get Started Now</p>
     <h1 class="text-brand-blue text-3xl md:text-5xl font-extrabold py-4">OUR INVESTMENT PLANS</h1>
     <p
       class="text-brand-lightblue text-md md:text-xl max-w-2xl mx-auto pb-8"
     >Start your journey with us to earn huge interests every day in your business. We accept Investment from all over the world</p>
+    </div>
     <div class="md:flex hidden justify-center items-center">
       <div
         :class="plan.active ? 'bg-brand-blue w-64 h-102 shadow-xl' : 'bg-white w-56 h-101 shadow-inner border-2 border-solid border-brand-blue'"
@@ -37,7 +39,7 @@
         class="w-full h-full"
         :space-between="3"
         :speed="500"
-        :autoplay="true"
+        :autoplay="autoplay"
         :breakpoints="swiperOptions.breakpoints"
         :centered-slides="true"
         :loop="true"
@@ -123,6 +125,16 @@ import "swiper/swiper.scss"
 SwiperCore.use([Autoplay]);
 
 export default {
+  props: {
+    showText: {
+      type: Boolean,
+      default: true
+    },
+    autoplay: {
+      type: Boolean,
+      default: true
+    }
+  },
   components: {
     Swiper,
     SwiperSlide,

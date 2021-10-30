@@ -59,7 +59,7 @@ class UserServices {
         const docRef = doc(db, "users", uid);
         return getDoc(docRef);
     }
-    async updateDetails(uid, updatedDetails) {
+    async updateDetails(uid) {
         try {
             await runTransaction(db, async (transaction) => {
                 const docRef = doc(db, "users", uid);

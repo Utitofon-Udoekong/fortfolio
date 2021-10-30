@@ -5,7 +5,7 @@ import store from './store'
 import './index.css'
 import VueApexCharts from "vue3-apexcharts";
 import AppLayout from '@/layouts/AppLayout.vue'
-import {auth} from "./firebase"
+import {auth} from "./firebase";
 
 let app;
 auth.onAuthStateChanged(() => {

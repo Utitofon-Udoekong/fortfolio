@@ -194,25 +194,25 @@
           >
             <path :d="mdiSegment" />
           </svg>
-          <p class="text-brand-blue text-xl font-semibold">{{ breadcrumb }}</p>
+          <p class="text-brand-blue text-base md:text-xl font-semibold">{{ breadcrumb }}</p>
         </div>
         <div class="relative">
-          <button class=" p-3 bg-brand-blue text-white text-sm rounded-md" >
+          <button @click="showProfileCard = !showProfileCard"  class="p-2 md:p-3 bg-brand-blue text-white text-xs md:text-sm rounded-md" >
             Hello {{ user }}
-            <span class="icon" @click="showProfileCard = !showProfileCard" >
+            <span class="icon" >
               <svg viewBox="0 0 24 24" width="25" height="25" class="inline-block fill-current" >
                 <path :d="mdiMenuDown" />
               </svg>
             </span>
           </button>
           <div v-if="showProfileCard" class="absolute z-20 translate-y-full text-white bg-brand-blue p-4 w-52 right-2 rounded-md shadow-xl bg-opacity-95 -bottom-1 transform transition-all ease-linear duration-300" >
-            <div v-for="(profile, i) in profiles" :key="i" class="p-1 hover:bg-white hover:text-brand-blue">
+            <div v-for="(profile, i) in profiles" :key="i" class="rounded-r-lg p-1 hover:bg-white hover:text-brand-blue">
               <router-link @click="showProfileCard = !showProfileCard" :to="profile.path" class="w-full flex items-center mb-2" >
-                <div class="icon mr-4">
+                <span class="icon mr-4">
                   <svg viewBox="0 0 24 24" width="25" height="25" class="inline-block fill-current" >
                     <path :d="profile.icon" />
                   </svg>
-                </div>
+                </span>
                 <p>{{ profile.name }}</p>
               </router-link>
             </div>

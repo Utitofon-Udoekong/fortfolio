@@ -181,7 +181,10 @@ export default {
             bankName: "",
             bankAccountName: "",
             bankAccountNumber: "",
-            check: false
+            check: false,
+            // deposits: [],
+            // withdrawals: [],
+            // investments: {}
             // refCode: ""
         })
         const rules = computed(() => {

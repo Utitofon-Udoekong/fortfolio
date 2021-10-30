@@ -17,4 +17,4 @@ const dateRange = (startDate, endDate, steps = 1) => {
     return dateArray;
 }
 
-export default dateRange;
+export default dateRange; 
