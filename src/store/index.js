@@ -1,10 +1,12 @@
 import router from "../router";
 import { createStore } from 'vuex'
 import UserServices from '../services/user_services';
-// import {auth} from "../firebase"
-// const userid = auth.currentUser.uid;
+
 export default createStore({
   state: {
+    shadowuser: {
+      id: ""
+    },
     user: {
       firstName: "firstname",
       lastName: "lastname",
@@ -21,6 +23,9 @@ export default createStore({
     showError: false
   },
   mutations: {
+    setShadow(state, payload){
+      state.shadowuser.id = payload;
+    },
     setUser(state, payload){
       state.user = payload;
     },
@@ -46,9 +51,11 @@ export default createStore({
         commit("loading", false);
         commit("setSuccess", "Login successful");
         commit("toggleSuccess");
-        await UserServices.getUserDetails(usercredential.user.uid).then(docSnap => {
+        const uid = usercredential.user.uid
+        await UserServices.getUserDetails(uid).then(docSnap => {
           console.log(docSnap.data())
           const user = docSnap.data();
+          commit("setShadow", uid )
           commit("setUser", user);
           router.push("/dashboard")
         }).catch(err => {
@@ -132,11 +139,13 @@ export default createStore({
         console.log(error);
       })
     },
-    async updateProfile({commit}, payload){
-      await UserServices.updateDetails(payload).then(() => {
+    async updateProfile({commit, getters}, payload){
+      const uid = getters.shadowUser;
+      await UserServices.updateDetails(uid,payload).then((change)=> {
         commit("loading", false);
         commit("toggleSuccess");
-        commit("setSuccess", `Profile updated successfully`)
+        commit("setSuccess", `Profile updated successfully`);
+        console.log(change)
       }).catch(error => {
         commit("loading", false);
         commit("toggleError")
@@ -174,6 +183,9 @@ export default createStore({
     },
     showError(state){
       return state.showError
+    },
+    shadowUser(state){
+      return state.shadowuser.id
     },
   }
 })

@@ -115,7 +115,7 @@
 import { computed, reactive, ref } from "@vue/reactivity";
 import useVuelidate from "@vuelidate/core";
 import { required, email, helpers } from "@vuelidate/validators";
-import { mdiEye, mdiEyeOff } from "@mdi/js";
+import { mdiEye, mdiEyeOff, mdiFormatClear } from "@mdi/js";
 import { useStore } from "vuex";
 import SuccessAlert from "../../components/alerts/SuccessAlert.vue";
 import ErrorAlert from "../../components/alerts/ErrorAlert.vue";
@@ -155,7 +155,7 @@ export default {
       store.dispatch("login", user)
     };
 
-    return { user, v$, mdiEye, mdiEyeOff, showPassword, login, googleSignin: () => store.dispatch("googleSignin") };
+    return { user, v$, mdiEye, mdiEyeOff, showPassword, login, googleSignin: () => store.dispatch("googleSignin"), mdiFormatClear };
   },
   methods: {
     async submitForm() {

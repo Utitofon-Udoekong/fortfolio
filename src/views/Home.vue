@@ -4,7 +4,7 @@
     <IntroBanner />
     <AboutSection />
     <HowToInvest />
-    <InvestmentPlans class="text-center my-14 sm:my-28 px-6" />
+    <InvestmentPlans />
     <OfferSection />
     <WhyChooseUs />
     <Recommendations />

@@ -1,5 +1,5 @@
 import {db, auth} from '../firebase'
-import { doc, setDoc, runTransaction, deleteDoc, getDoc } from "firebase/firestore/lite";
+import { doc, setDoc, deleteDoc, getDoc, updateDoc } from "firebase/firestore/lite";
 import { 
     signOut, 
     createUserWithEmailAndPassword, 
@@ -59,23 +59,25 @@ class UserServices {
         const docRef = doc(db, "users", uid);
         return getDoc(docRef);
     }
-    async updateDetails(uid) {
-        try {
-            await runTransaction(db, async (transaction) => {
-                const docRef = doc(db, "users", uid);
-                const userDoc = await transaction.get(docRef);
-                if (!userDoc.exists()) {
-                    throw "Document does not exist!";
-                } else {
-                    console.table(userDoc, updatedDetails)
-                    // transaction to update user details
-                    // const newCodes = userDoc.data().oneMonthCodes.slice(1)
-                    // transaction.update(docRef, updatedDetails);
-                }
-            });
-        } catch (error) {
-            console.log(error)
-        }
+    async updateDetails(uid,userdetails) {
+        const docRef = doc(db, "users", uid);
+        return updateDoc(docRef,userdetails)
+        // try {
+        //     await runTransaction(db, async (transaction) => {
+        //         const docRef = doc(db, "users", uid);
+        //         const userDoc = await transaction.get(docRef);
+        //         if (!userDoc.exists()) {
+        //             throw "Document does not exist!";
+        //         } else {
+        //             console.table(userDoc, updatedDetails)
+        //             // transaction to update user details
+        //             // const newCodes = userDoc.data().oneMonthCodes.slice(1)
+        //             // transaction.update(docRef, updatedDetails);
+        //         }
+        //     });
+        // } catch (error) {
+        //     console.log(error)
+        // }
     }
     async addUserDetails(userDetails, uid) {
         try {
