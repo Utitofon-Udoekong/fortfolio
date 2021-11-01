@@ -154,7 +154,7 @@ export default createStore({
       })
     },
     async deposit(payload){
-      await UserServices.updateDetails(payload)        
+      await UserServices.updateDetails(payload)      
       //   if (!userDoc.exists()) {
       //     throw "Document does not exist!";
       // } else {

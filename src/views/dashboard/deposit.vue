@@ -11,9 +11,10 @@
             <div class="mb-4 flex flex-col md:flex-row w-full items-start md:items-center">
                 <label
                     for="last"
-                    class="w-full md:w-2/12 text-gray-800 font-semibold text-lg"
+                    class="w-full text-gray-800 font-semibold text-lg"
                 >Amount to Deposit</label>
-                <div class="border-2 rounded-md w-full md:w-10/12">
+                <p>{{}}</p>
+                <!-- <div class="border-2 rounded-md w-full md:w-10/12">
                     <input
                         id="last"
                         class="text-md appearance-none shadow-md text-black bg-white border-none w-full p-2"
@@ -21,12 +22,14 @@
                         v-model="state.amount"
                         placeholder="Enter amount here"
                     />
-                </div>
+                </div> -->
             </div>
             <button class="p-4 rounded-md text-white bg-brand-blue" @click.prevent="deposit">Continue to Deposit</button>
         </form>
+
         <div class="sm:px-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="bankTransfer bg-white p-4 rounded-md w-full hover:shadow-xl cursor-pointer">
+
+            <!-- <div class="bankTransfer bg-white p-4 rounded-md w-full hover:shadow-xl cursor-pointer">
                 <p class="text-xl font-bold pb-3">Pay via Bank Transfer</p>
                 <p>Transfer the Amount to deposit into the following account details</p>
                 <p>
@@ -50,7 +53,7 @@
                     class="pb-2"
                 >Transfer the corresponding USD value (400 NGN/USD) to deposit to BTC wallet address:</p>
                 <p class="pb-3 select-all font-semibold">1Br6XZA3uJxsvWCA2BsbbcfgURrcBtDTNP</p>
-            </div>
+            </div> -->
         </div>
         <p class="p-8">
             After making payment, send a screenshot via Whatsapp to contact number:

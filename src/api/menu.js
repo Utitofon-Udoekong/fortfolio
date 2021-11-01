@@ -6,6 +6,7 @@ import {
   mdiCartPlus,
   mdiCashMinus,
   mdiCellphoneWireless,
+  mdiBankTransfer
 } from "@mdi/js";
 
 const menus = [
@@ -43,6 +44,11 @@ const menus = [
     name: "Transactions",
     path: "/dashboard/transactions",
     icon: mdiCellphoneWireless,
+  },
+  {
+    name: "Loans",
+    path: "/dashboard/loans",
+    icon: mdiBankTransfer,
   },
 ];
 

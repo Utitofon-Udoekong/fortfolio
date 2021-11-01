@@ -10,6 +10,7 @@ import {
     // updateProfile,
     sendEmailVerification
 } from "firebase/auth";
+// const store = useS
 class UserServices {
     // async extras(userDetails){
     //     updateProfile
@@ -59,9 +60,9 @@ class UserServices {
         const docRef = doc(db, "users", uid);
         return getDoc(docRef);
     }
-    async updateDetails(uid,userdetails) {
+    async updateDetails(uid, userdetails) {
         const docRef = doc(db, "users", uid);
-        return updateDoc(docRef,userdetails)
+        return updateDoc(docRef, userdetails)
         // try {
         //     await runTransaction(db, async (transaction) => {
         //         const docRef = doc(db, "users", uid);
@@ -93,6 +94,9 @@ class UserServices {
         } catch (error) {
             return console.error(error)
         }
+    }
+    async addInvestment(){
+
     }
 }
 

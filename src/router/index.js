@@ -93,6 +93,14 @@ const routes = [
       layout: 'DashboardLayout'
     }
   },
+  {
+    path: '/dashboard/loans',
+    name: 'dashboard-user-loans',
+    component: () => import('../views/dashboard/loans.vue'),
+    meta: {
+      layout: 'DashboardLayout'
+    }
+  },
 ]
 
 const router = createRouter({

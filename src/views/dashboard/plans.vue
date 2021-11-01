@@ -1,25 +1,9 @@
 <template>
   <div class="h-5/6 text-center p-4" id="plans">
   <div class="md:flex hidden justify-center items-center">
-    <div
-      :class="
-        plan.active
-          ? 'bg-brand-blue w-64 h-102 shadow-xl'
-          : 'bg-white w-56 h-101 shadow-inner border-2 border-solid border-brand-blue'
-      "
-      class="plan p-8 py-5 rounded-md mx-1.5"
-      v-for="(plan, i) in plans"
-      :key="i"
-    >
+    <div :class=" plan.active ? 'bg-brand-blue w-64 h-102 shadow-xl' : 'bg-white w-56 h-101 shadow-inner border-2 border-solid border-brand-blue' " class="plan p-8 py-5 rounded-md mx-1.5" v-for="(plan, i) in plans" :key="i" >
       <div class="relative h-full">
-        <h1
-          :class="
-            plan.active
-              ? 'text-white text-4xl pb-5'
-              : 'text-brand-blue text-3xl pb-3'
-          "
-          class="text-center font-bold"
-        >
+        <h1 :class=" plan.active ? 'text-white text-4xl pb-5' : 'text-brand-blue text-3xl pb-3' " class="text-center font-bold" >
           {{ plan.title }}
         </h1>
         <p
@@ -28,23 +12,13 @@
           class="text-center text-sm"
         ></p>
         <button
+        @click="invest(plan)"
           :class="
             plan.active
               ? 'hover:text-white text-md border-white hover:bg-transparent bg-white text-black'
               : 'hover:text-brand-blue text-sm border-brand-blue bg-brand-blue hover:bg-white text-white'
           "
-          class="
-            w-full
-            absolute
-            inset-x-0
-            bottom-0
-            rounded-md
-            border-2 border-solid
-            p-2
-            ease-linear
-            transition-all
-            duration-150
-          "
+          class=" w-full absolute inset-x-0 bottom-0 rounded-md border-2 border-solid p-2 ease-linear transition-all duration-150 "
         >
           INVEST NOW
         </button>
@@ -91,23 +65,13 @@
             class="text-center text-sm"
           ></p>
           <button
+          @click="invest(plan)"
             :class="
               plan.active
                 ? 'hover:text-white text-md border-white hover:bg-transparent bg-white text-black'
                 : 'hover:text-brand-blue text-sm border-brand-blue bg-brand-blue hover:bg-white text-white'
             "
-            class="
-              w-full
-              absolute
-              inset-x-0
-              bottom-0
-              rounded-md
-              border-2 border-solid
-              p-2
-              ease-linear
-              transition-all
-              duration-150
-            "
+            class=" w-full absolute inset-x-0 bottom-0 rounded-md border-2 border-solid p-2 ease-linear transition-all duration-150 "
           >
             INVEST NOW
           </button>
@@ -124,7 +88,7 @@ import SwiperCore, { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import "swiper/swiper.scss"
 import plans from "../../api/plans"
-delete plans.path
+import { useRouter } from 'vue-router';
 SwiperCore.use([Autoplay]);
 
 export default {
@@ -134,7 +98,7 @@ export default {
     SwiperSlide,
   },
   setup() {
-    
+    const router = useRouter()
     const swiperOptions = {
       breakpoints: {
         320: {
@@ -152,9 +116,13 @@ export default {
         
       }
     }
+    const invest = (plan) => {
+      router.push({path: "/dashboard/deposit", query: {name: plan.title, minPrice: plan.minPrice, maxPrice: plan.maxPrice}})
+    }
     return {
       plans,
-      swiperOptions
+      swiperOptions,
+      invest
     }
   }
 }
