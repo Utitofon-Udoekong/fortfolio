@@ -8,27 +8,36 @@
             <p class="text-2xl cursor-pointer" @click="toggleAlert">&xotime;</p>
         </div>
         <form class="sm:px-8 mb-4" @submit.prevent="deposit">
+            <p>Minimum amount to deposit {{ $route.query.minPrice }}</p>
             <div class="mb-4 flex flex-col md:flex-row w-full items-start md:items-center">
                 <label
                     for="last"
-                    class="w-full text-gray-800 font-semibold text-lg"
-                >Amount to Deposit</label>
-                <p>{{}}</p>
-                <!-- <div class="border-2 rounded-md w-full md:w-10/12">
+                    class="w-full text-gray-800 font-semibold text-lg md:w-2/12"
+                >Deposit</label>
+                <div class="border-2 rounded-md w-full md:w-10/12">
                     <input
+                        :minlength="$route.query.minPrice"
+                        :maxlength="$route.query.maxPrice"
                         id="last"
                         class="text-md appearance-none shadow-md text-black bg-white border-none w-full p-2"
                         type="text"
                         v-model="state.amount"
                         placeholder="Enter amount here"
                     />
-                </div> -->
+                </div>
+                <small v-if="v$.amount.$error" class="text-red-600">
+                    {{
+                        v$.amount.$errors[0].$message
+                    }}
+                </small>
             </div>
-            <button class="p-4 rounded-md text-white bg-brand-blue" @click.prevent="deposit">Continue to Deposit</button>
+            <button
+                class="p-4 rounded-md text-white bg-brand-blue"
+                @click.prevent="deposit"
+            >Continue to Deposit</button>
         </form>
 
         <div class="sm:px-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-
             <!-- <div class="bankTransfer bg-white p-4 rounded-md w-full hover:shadow-xl cursor-pointer">
                 <p class="text-xl font-bold pb-3">Pay via Bank Transfer</p>
                 <p>Transfer the Amount to deposit into the following account details</p>
@@ -53,7 +62,7 @@
                     class="pb-2"
                 >Transfer the corresponding USD value (400 NGN/USD) to deposit to BTC wallet address:</p>
                 <p class="pb-3 select-all font-semibold">1Br6XZA3uJxsvWCA2BsbbcfgURrcBtDTNP</p>
-            </div> -->
+            </div>-->
         </div>
         <p class="p-8">
             After making payment, send a screenshot via Whatsapp to contact number:
@@ -66,13 +75,16 @@
 </template>
 
 <script>
-import { ref } from '@vue/reactivity'
+import { computed, reactive, ref } from '@vue/reactivity'
 import { watchEffect } from '@vue/runtime-core'
+import useVuelidate from "@vuelidate/core";
+import { required} from "@vuelidate/validators";
+// import { useRoute } from 'vue-router';
 export default {
     setup() {
-        const state = {
+        const state = reactive({
             amount: "",
-        }
+        })
         const showAlert = ref(false);
         const toggleAlert = () => {
             showAlert.value = !showAlert.value
@@ -80,6 +92,17 @@ export default {
         const deposit = () => {
             toggleAlert();
         }
+        // const route = useRoute();
+        const rules = computed(() => {
+            return {
+                amount: {
+                    required,
+                    // minValue: route.query.minPrice,
+                    // maxValue: route.query.maxPrice
+                }
+            };
+        });
+        const v$ = useVuelidate(rules, state);
         watchEffect(() => {
             if (showAlert.value === true) {
                 setTimeout(() => {
@@ -91,7 +114,8 @@ export default {
             state,
             deposit,
             showAlert,
-            toggleAlert
+            toggleAlert,
+            v$
         }
     }
 }

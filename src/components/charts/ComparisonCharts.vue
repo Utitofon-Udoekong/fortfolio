@@ -10,14 +10,14 @@
 </template>
 
 <script>
-import dateRange from "../../helpers/dateLogic";
+import dateRange2 from "../../helpers/dateLogic2";
 import formatter from "../../helpers/formatNumber";
 export default {
   name: 'Chart',
   props: {
     investmentData: {
       type: Array,
-      reuired: true
+      required: true
     }
   },
   setup(props) {
@@ -25,7 +25,7 @@ export default {
     const dateInt = new Date();
     // const itirator = chartOptions.series[0].data.length
     const start = new Date().toISOString().substr(0, 10)
-    const dates = dateRange(start, dateInt.addDays(6));
+    const dates = dateRange2(start, dateInt.addDays(6));
     const chartOptions = {
       options: {
         chart: {

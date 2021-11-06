@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import dateRange from '../../helpers/dateLogic';
+import dateRange2 from '../../helpers/dateLogic2';
 import formatter from '../../helpers/formatNumber';
 export default {
   name: 'Chart',
@@ -21,7 +21,7 @@ export default {
     const dateInt = new Date();
     // const itirator = chartOptions.series[0].data.length
     const start = new Date().toISOString().substr(0, 10)
-    const dates = dateRange(start,dateInt.addDays(7));
+    const dates = dateRange2(start,dateInt.addDays(7));
     
     const chartOptions = {
       options: {
