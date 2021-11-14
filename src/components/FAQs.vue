@@ -8,14 +8,6 @@
             <div class="text-md sm:text-lg">
                 <p>We have everyone in mind that is why we have different packages to suit all intending investors regardless what you earn.</p>
                 <p>Our packages ranges from 50,0000 - 1,000,000 upwards.</p>
-                <p>Below are some of the fort packages</p>
-                <ul class="list-disc list-inside">
-                    <li>Fort - 50k minimum</li>
-                    <li>Fort growth – 100k</li>
-                    <li>Forth star – 200k</li>
-                    <li>Forth boss – 500k</li>
-                    <li>Fort Chairman – 1m and above</li>
-                </ul>
             </div>
         </div>
         <div>
