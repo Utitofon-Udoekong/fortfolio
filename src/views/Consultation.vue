@@ -1,11 +1,11 @@
 <template>
     <header>
-        <img src="assets/logo.png" alt="logo" />
+        <img src="@/assets/logo.png" alt="logo" />
     </header>
     <main>
         <section>
             <div class="image">
-                <img src="assets/chart.svg" alt="chart" />
+                <img src="@/assets/images/chart.svg" alt="chart" />
             </div>
             <div class="col">
                 <p>
@@ -43,7 +43,7 @@
                 </p>
             </div>
             <div class="image">
-                <img src="assets/analytics.svg" alt="wallet" />
+                <img src="@/assets/images/analytics.svg" alt="wallet" />
             </div>
         </section>
         <div class="fortform">
