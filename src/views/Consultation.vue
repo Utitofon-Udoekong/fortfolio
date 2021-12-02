@@ -1,61 +1,98 @@
 <template>
-    <header>
-        <img src="@/assets/logo.png" alt="logo" />
-    </header>
-    <main>
-        <section>
-            <div class="image">
-                <img src="@/assets/images/chart.svg" alt="chart" />
+    <div
+        class="h-screen w-full bg-network-texture bg-brand-blue bg-no-repeat bg-cover bg-center bg-blend-overlay md:bg-fixed"
+    >
+        <header
+            class="flex w-full items-center justify-between md:justify-around text-gray-700 py-2 px-4 z-10 shadow-xl h-1/6 bg-white"
+        >
+            <div class="logo sm:w-28 w-16 h-full">
+                <a href="/" class="w-full h-full">
+                    <img src="@/assets/images/logo.png" class="w-full h-full" alt="logo" />
+                </a>
             </div>
-            <div class="col">
-                <p>
-                    A breakdown by google trends shows that Nigerians have relied on Search to
-                    get most of the answers they require. The top inquiries made include “How to
-                    make money online?” “What is a computer?” and “how much is the dollar to
-                    naira?” amongst others.
-                    This literally means 9 out of 10 persons are looking for ways to maximize their
-                    assets for gains in this failing economy, and while that may seem easy for
-                    some, it is hell for others. Yet 5 out of every 7 persons have difficulties
-                    managing their fund in unique ways to get value from it.
-                    Without doubt, effectively managing your assets is not an easy journey
-                    without the appropriate fund management plan. You might say to yourself
-                    ‘Why do I need fund management for my hard-earned money’ or ‘I'd rather
-                    meet my sister in law and join her weekly contribution group’ or ‘I'd rather work
-                    hard and save my funds with my bank.
-                </p>
-                <p>
-                    <b>Is there really a need to know about assets management?</b>
-                </p>
+        </header>
+        <main class="flex items-center justify-center text-center h-5/6">
+            <div class="container mx-auto max-w-full sm:max-w-3xl px-4 sm:px-1">
+                <h1
+                    class="text-white tracking-wider pb-3 font-extrabold text-2xl sm:text-4xl"
+                >Are you looking for an investment and asset management professional to guide you through how to manage your funds?</h1>
+                <p
+                    class="text-white text-lg py-5"
+                >Signup to schedule a free consultation with our industry experts – ranging from real estate, private equity, venture capital, cryptocurrency and investment banking.</p>
+                <button
+                    class="border-2 rounded-md ease-linear transition-all duration-150 border-solid border-white bg-transparent text-white hover:bg-white hover:text-black font-semibold p-3 sm:w-40"
+                >
+                    <a href="/signup">SIGN UP NOW</a>
+                </button>
             </div>
-        </section>
-        <section>
-            <div class="col">
-                <p>
-                    A 5-year-old child knows the Nigerian economy is on the verge of collapse.
-                    How do you position and properly manage your assets, funds and job
-                    security? Whatever stage you're in right now, you must have an excellent plan
-                    for personal finance management. Having an excellent knowledge of the
-                    economic landscape, personal finance management and industry positioning
-                    is essentially how you can thrive
-                    Enter your details below for a FREE consultation from industry experts
-                    ranging across real estate, skilled immigration, private equity, venture capital
-                    and Investment banking.
-                </p>
+        </main>
+    </div>
+    <div class="container py-4 introbanner mx-auto">
+        <div
+            class="column flex w-full p-3 items-center shadow-lg rounded-md hover:shadow-2xl"
+            v-for="(intro, i) in intros"
+            :key="i"
+        >
+            <div class="w-32 h-auto">
+                <img
+                    class="w-full"
+                    :src="require(`@/assets/images/intro/${intro.image}`)"
+                    :alt="intro.alt"
+                />
             </div>
-            <div class="image">
-                <img src="@/assets/images/analytics.svg" alt="wallet" />
+            <div class="text block p-2">
+                <h1 class="text-blue-500 font-semibold text-xl uppercase">{{ intro.title }}</h1>
+                <p class="text-sm">{{ intro.text }}</p>
             </div>
-        </section>
-        <div class="fortform">
-            <!-- <script async data-uid="93a73bf28a" src="https://motivated-hustler-6203.ck.page/93a73bf28a/index.js"></script> -->
         </div>
-        <div class="end">
-            <p>Fortfolio is a fund management company that is well vested in diverse investment plans and products to sustain and ensure profitable management of our client’s funds to secure their financial goals.</p>
+    </div>
+    <div>
+        <div
+            class="titlebar h-32 bg-brand-lightblue px-6 sm:px-28 justify-center flex items-center"
+        >
+            <h1 class="text-4xl md:text-5xl text-white inline-block font-extrabold">ABOUT FORTFOLIO</h1>
         </div>
-    </main>
+        <div class="container p-8 md:flex justify-center items-center">
+            <div class="p-6 sm:p-8 sm:max-w-md w-full">
+                <p class="text-base font-medium text-gray-800">At Fortfolio Limited, we pride ourselves in offering our clients responsive, competent and excellent services. Our clients are the most important part of our business, and we work tirelessly to ensure your complete satisfaction.</p>
+            </div>
+            <div class="shadow-2xl p-6 sm:p-10 sm:max-w-xl w-full">
+                <p
+                    class="pb-3 text-brand-lightblue text-3xl font-bold"
+                >Sign up to request to speak with our consultant</p>
+                <div class="fortform"></div>
+            </div>
+        </div>
+    </div>
 </template>
 <script>
 import { onMounted } from "@vue/runtime-core"
+const intros = [
+    {
+        image: "jigsaw.png",
+        title: "Sustainable Solutions",
+        text: " We have a track record of going the extra mile to ensure our client’s welfare",
+        alt: "Sustainable Solutions"
+    },
+    {
+        image: "flag.png",
+        title: "PROFESSIONAL TEAM",
+        text: "We have certified and dedicated experts in each industry willing to provide a valuable and free consultation.",
+        alt: "PROFESSIONAL TEAM"
+    },
+    {
+        image: "stacks.png",
+        title: "Growth Mindset",
+        text: " Growth is an integral part of our values.",
+        alt: "DIVERSE APPROACH"
+    },
+    {
+        image: "clipboard.png",
+        title: "Progress Report",
+        text: "Regular and detailed update on your growth is an essential component of our service.",
+        alt: "PROGRESS REPORT"
+    },
+]
 export default {
     setup() {
         onMounted(() => {
@@ -65,133 +102,31 @@ export default {
             formscript.setAttribute("data-uid", "93a73bf28a")
             fortform.appendChild(formscript)
         })
+        return {
+            intros
+        }
     }
 }
 
 </script>
 
-<style lang="scss" scoped>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
+<style scoped lang="scss">
+.introbanner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 2rem;
 }
-body {
-    font-size: 16px;
-    header {
-        width: 100%;
-        height: 150px;
-        display: flex;
-        justify-content: center;
-        img {
-            width: auto;
-            height: 100%;
-        }
+.fortform {
+    display: flex;
+    justify-content: center;
+    form {
+        max-width: 100% !important;
     }
-    main {
-        width: 100%;
-        section {
-            scroll-snap-align: start;
-            display: flex;
-            align-items: center;
-            height: 100vh;
-            .image {
-                width: 50%;
-                height: 100%;
-                img {
-                    width: 100%;
-                    height: 100%;
-                }
-            }
-            .col {
-                padding: 0 50px;
-                width: 50%;
-                p {
-                    line-height: 2rem;
-                    font-size: 1.1rem;
-                    letter-spacing: 0.08rem;
-                }
-            }
-        }
-        .fortform {
-            display: flex;
-            justify-content: center;
-            form {
-                width: 100%;
-            }
-        }
-        .end {
-            max-width: 800px;
-            margin: 0 auto;
-            p {
-                text-align: center;
-                line-height: 2rem;
-                font-size: 1.1rem;
-                letter-spacing: 0.08rem;
-            }
-        }
-    }
+}
+.bg-brand-blue {
+    --tw-bg-opacity: 1;
+    background-color: rgba(1, 44, 73,var(--tw-bg-opacity));
 }
 
-@media screen and (max-width: 800px) {
-    body {
-        main {
-            section {
-                .col {
-                    p {
-                        line-height: 1.4rem;
-                        font-size: 0.85rem;
-                        letter-spacing: 0.03rem;
-                    }
-                }
-            }
-            .end p {
-                line-height: 1.4rem;
-                font-size: 0.85rem;
-                letter-spacing: 0.03rem;
-            }
-        }
-    }
-}
-@media screen and (max-width: 500px) {
-    body {
-        main {
-            section {
-                flex-direction: column;
-                height: 100%;
-                &:nth-of-type(2) {
-                    flex-direction: column-reverse;
-                }
-                .image {
-                    width: 100%;
-                }
-                .col {
-                    width: 100%;
-                }
-            }
-            .fortform {
-                padding: 20px;
-                form {
-                    max-width: 100% !important;
-                }
-            }
-            .end {
-                max-width: 100%;
-                padding: 20px;
-            }
-        }
-    }
-}
-@media screen and (max-width: 800px) {
-    body {
-        main {
-            section {
-                .col {
-                    padding: 0 20px;
-                }
-            }
-        }
-    }
-}
 </style>
