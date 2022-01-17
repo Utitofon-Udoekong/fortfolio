@@ -81,15 +81,6 @@ const plans = [
     path: '/signup'
   },
   {
-    title: "FORT SOCIAL",
-    text: `
-        <p class="pb-2">Invest with as low as Fifty Thousand Naira (N50,000) </p>
-        <p class="pb-2">Get entitled to a monthly data subscription. </p>
-        <p class="pb-2">Get 30% interest annually</p>
-      `,
-    path: '/signup'
-  },
-  {
     active: true,
     title: "FORT SHIELD",
     text: `
@@ -100,19 +91,11 @@ const plans = [
     path: '/signup'
   },
   {
-    title: "FORT BONUS",
+    title: "FORT SOCIAL",
     text: `
-        <p class="pb-2">Invest a minimum of Five Hundred Thousand Naira (N500,000)</p>
-        <p class="pb-2">And get free assets like Mobile Phones, Television, Blender, Fan and many more.</p>
-      `,
-    path: '/signup'
-  },
-  {
-    title: "FORT SPECIAL",
-    text: `
-        <p class="pb-2">Invest a minimum of One Hundred Thousand Naira (N100,000)</p>
-        <p class="pb-2">and receive 40% Interest,</p>
-        <p class="pb-2">With Half of your interest paid immediately</p>
+        <p class="pb-2">Invest with as low as Fifty Thousand Naira (N50,000) </p>
+        <p class="pb-2">Get entitled to a monthly data subscription. </p>
+        <p class="pb-2">Get 30% interest annually</p>
       `,
     path: '/signup'
   },
