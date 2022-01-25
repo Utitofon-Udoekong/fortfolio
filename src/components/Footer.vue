@@ -40,7 +40,7 @@
                     <h1 class="font-semibold text-xl pb-4">CONTACT</h1>
                     <ul class="text-md leading-8">
                         <li><a href="mailto:support@fortfolio.info">support@fortfolio.info</a></li>
-                        <li><a href="tel:+2348070738825">+2348070738825</a></li>
+                        <li><a href="tel:+2349073177243">+2349073177243</a></li>
                         <li>Lagos, Nigeria</li>
                     </ul>
                 </div>

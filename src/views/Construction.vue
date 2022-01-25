@@ -6,7 +6,7 @@
             >Oops, sorry this feature is not yet available on the website.</h1>
             <p class="text-lg pb-10">
                 Contact
-                <a href="tel:+234 807 073 8825" class="text-brand-blue">+234 807 073 8825</a> to process your request.
+                <a href="tel:+2349073177243" class="text-brand-blue">+2349073177243</a> to process your request.
             </p>
             <button class="text-white p-4 rounded-md">
                 <a href="https://wa.link/rpdo9m" target="_blank">Chat us on WhatsApp</a>
