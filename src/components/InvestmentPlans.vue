@@ -74,9 +74,9 @@ const plans = [
   {
     title: "FORT DOLLAR",
     text: `
-        <p class="pb-2">Invest Nigerian currency,</p>
-        <p class="pb-2">have it converted to foreign currencies (Dollar, Euros, Pounds) </p>
-        <p class="pb-2">Earn an additional 30% interest annually in your desired currency</p>
+        <p class="pb-2">Invest Nigerian currency(Naira),</p>
+        <p class="pb-2">and have it converted to Dollar. </p>
+        <p class="pb-2">You earn 30% ROI annually in Dollars, paid out to you in your desired currency.</p>
       `,
     path: '/signup'
   },
@@ -91,11 +91,12 @@ const plans = [
     path: '/signup'
   },
   {
-    title: "FORT SOCIAL",
+    title: "FORT CRYPTO",
     text: `
-        <p class="pb-2">Invest with as low as Fifty Thousand Naira (N50,000) </p>
-        <p class="pb-2">Get entitled to a monthly data subscription. </p>
-        <p class="pb-2">Get 30% interest annually</p>
+     
+        <p class="pb-2">Invest a minimum of $1000</p>
+        <p class="pb-2">(or its equivalent in supported Crypto asset) </p>
+        <p class="pb-2">Receive upto 15% ROI annually.</p>
       `,
     path: '/signup'
   },

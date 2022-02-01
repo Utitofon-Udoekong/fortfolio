@@ -1,0 +1,5 @@
+{
+    "projectId": "5bkvbf",
+    "testFiles": "**/*.spec.js",
+    "componentFolder": "src"
+}

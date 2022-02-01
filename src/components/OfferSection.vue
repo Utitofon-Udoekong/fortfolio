@@ -30,25 +30,17 @@
 <script>
 const plans = [
   {
-    img: "fortspecial.jpg",
-    alt: "fortspecial"
-  },
-  {
     img: "fortdollar.jpg",
     alt: "fortdollar"
-  },
-  {
-    img: "fortbonus.jpg",
-    alt: "fortbonus"
   },
   {
     img: "fortshield.jpg",
     alt: "fortshield"
   },
-  {
-    img: "fortsocial.jpg",
-    alt: "fortsocial"
-  },
+  // {
+  //   img: null,
+  //   alt: "fortcrypto"
+  // },
 ]
 import SwiperCore, { Navigation, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';

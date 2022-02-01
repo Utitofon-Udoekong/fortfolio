@@ -15,10 +15,16 @@
             <div class="container mx-auto max-w-full sm:max-w-3xl px-4 sm:px-1">
                 <h1
                     class="text-white tracking-wider pb-3 font-extrabold text-xl sm:text-4xl"
-                >Are you looking for an investment and asset management professional to guide you through how to manage your funds?</h1>
+                >The global economy was shaken in the last 2 years but High net worth individuals (HNIs) increased their net worth by over 10%</h1>
                 <p
                     class="text-white text-md py-3"
-                >Signup to schedule a free consultation with our industry experts – ranging from real estate, private equity, venture capital, cryptocurrency and investment banking.</p>
+                >Master the art of investing and growing wealth like HNIs in startups, crypto, stock market, forex, real estate with little capital for free in less than a month.</p>
+                <p
+                    class="text-white text-md py-3"
+                >Gain access to leading investment experts by signing up to $200 worth of training with our industry experts for FREE today. </p>
+                <p
+                    class="text-white text-md py-3"
+                >Limited slots available, offer last till February 28th.</p>
                 <button
                     class="border-2 rounded-md ease-linear transition-all duration-150 border-solid border-white bg-transparent text-white hover:bg-white hover:text-black font-semibold p-2 sm:p-3 sm:w-40"
                 >
