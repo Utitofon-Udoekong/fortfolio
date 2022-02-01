@@ -1,5 +1,5 @@
 import { mount } from '@cypress/vue'
-import Counter from '../../src/components/Counter.vue'
+import Counter from '@/components/Counter.vue'
 
 it('shows the Counter', () => {
   mount(Counter)
