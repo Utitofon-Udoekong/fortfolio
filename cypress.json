@@ -1,6 +1,6 @@
 {
     "projectId": "5bkvbf",
-    "testFiles": "cypress/integration/*.spec.js",
+    "testFiles": "**/*.spec.ct.{js,ts,jsx,tsx}",
     "component": {
         "testFiles": "**/*.spec.ct.{js,ts,jsx,tsx}",
         "componentFolder": "src"
