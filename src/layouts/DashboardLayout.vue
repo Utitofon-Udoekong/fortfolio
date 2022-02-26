@@ -170,6 +170,7 @@
         </div>
       </div>
     </div>
+    <!-- sidebar ends -->
     <div
       class="h-full bg-gray-200 ease-linear transition-all duration-300"
       :class="showSideBar ? 'md:w-10/12 w-full' : 'w-full'"
