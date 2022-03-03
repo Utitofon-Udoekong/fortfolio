@@ -38,7 +38,7 @@
                   <tr v-for="(activity, index) in activities" :key="index">
                     <td class="px-6 py-4 whitespace-nowrap">
                       <div class="flex items-center">
-                        <div class="flex-shrink-0 h-10 w-10">
+                        <div class="">
                           <p>{{index + 1}}</p>
                         </div>
                       </div>
