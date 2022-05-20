@@ -26,7 +26,7 @@
                             <a href="#plans">Services</a>
                         </li>
                         <li>
-                            <a href="/consultation">Contact Us</a>
+                            <a href="/consultation" target="_blank">Contact Us</a>
                         </li>
                         <li>
                             <a href="#faq">FAQs</a>
