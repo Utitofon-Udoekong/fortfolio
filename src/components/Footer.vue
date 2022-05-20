@@ -26,7 +26,7 @@
                             <a href="#plans">Services</a>
                         </li>
                         <li>
-                            <a href="#footer">Contact Us</a>
+                            <a href="/consultation">Contact Us</a>
                         </li>
                         <li>
                             <a href="#faq">FAQs</a>
@@ -41,7 +41,7 @@
                     <ul class="text-md leading-8">
                         <li><a href="mailto:support@fortfolio.info">support@fortfolio.info</a></li>
                         <li><a href="tel:+2349073177243">+2349073177243</a></li>
-                        <li>Lagos, Nigeria</li>
+                        <li>Suite J269, road 5, ikota shopping complex. VGC, Ajah Lagos</li>
                     </ul>
                 </div>
                 <div class="max-w-xs">

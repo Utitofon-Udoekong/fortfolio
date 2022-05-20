@@ -11,10 +11,12 @@
     <FAQs />
     <CallUsSection />
     <Footer />
+    <div class="cwu"></div>
   </div>
 </template>
 
 <script>
+import { onMounted } from "@vue/runtime-core"
 import HeadSection from "../components/HeadSection.vue";
 import IntroBanner from "../components/IntroBanner.vue";
 import AboutSection from "../components/AboutSection.vue";
@@ -41,6 +43,18 @@ export default {
     CallUsSection,
     Footer
   },
+  setup(){
+    onMounted(() => {
+       const fortform = document.querySelector(".cwu");
+        const formscript = document.createElement("script")
+        formscript.setAttribute("src", "//js-eu1.hs-scripts.com/25881000.js")
+        formscript.setAttribute("id","hs-script-loader")
+        formscript.setAttribute("type", "text/javascript")
+        formscript.setAttribute("defer", "")
+        formscript.setAttribute("async", "")
+        fortform.appendChild(formscript)
+    })
+  }
 
 }
 </script>

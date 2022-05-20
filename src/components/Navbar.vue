@@ -115,7 +115,7 @@ const navigation = [
     { name: 'How to Invest', href: '#steps' },
     { name: 'Plans', href: '#plans' },
     { name: 'FAQs', href: '#faq' },
-    { name: 'Contact us', href: '#footer' },
+    { name: 'Contact us', href: '/consultation' },
 ]
 export default {
     setup() {
