@@ -1,7 +1,7 @@
 Date.prototype.addDays = function (days) {
     let date = new Date();
     date.setDate(date.getDate() + days);
-    return date.toISOString().substr(0, 10);
+    return date.toISOString().substring(0,10);
 };
 const dateRange = (startDate, endDate, steps = 1) => {
     const dateArray = [];
