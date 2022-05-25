@@ -7,7 +7,7 @@
             <hr class="border-none h-1 bg-brand-blue mb-5" />
             <div class="text-md sm:text-lg">
                 <p>We have everyone in mind that is why we have different packages to suit all intending investors regardless what you earn.</p>
-                <p>Our packages ranges from 50,0000 - 1,000,000 upwards.</p>
+                <p>Our packages ranges from 600,00-1,000,000.</p>
             </div>
         </div>
         <div>
@@ -57,7 +57,7 @@ const faqs = [
     },
     {
         q: "What is the minimum amount to invest?",
-        a: "The minimum investment is 50,000 naira",
+        a: "The minimum investment is 500,000 naira",
         id: "tab-single-six"
     },
 
