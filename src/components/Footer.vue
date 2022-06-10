@@ -75,11 +75,7 @@ export default {
     components: {
         Icon,
     },
-    setup() {
-        return {
-
-        }
-    }
+   
 }
 </script>
 
