@@ -31,7 +31,7 @@
             <button
                 class="ease-linear transition-all duration-150 hover:bg-blue-400 hidden md:block bg-transparent bg-brand-blue text-white rounded-md text-md px-8 p-3"
             >
-                <a href="/signup">Sign Up</a>
+                <a target="_blank" href="https://forms.gle/nE1cvErokQKajWNN7">Sign Up</a>
             </button>
         </div>
         <button class="mr-2 block md:hidden" aria-label="Open Menu" @click="drawer">
