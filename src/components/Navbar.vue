@@ -97,7 +97,7 @@
                     class="flex justify-center items-center p-4 text-white bg-brand-blue hover:bg-brand-lightblue w-full"
                 >
                     <span>
-                        <a href="/signup">Sign Up</a>
+                        <a target="_blank" href="https://forms.gle/nE1cvErokQKajWNN7">Sign Up</a>
                     </span>
                 </button>
             </div>
