@@ -6,7 +6,7 @@
           <h1 class="text-white tracking-wider pb-3 font-extrabold text-2xl sm:text-5xl">INVEST SMARTLY WITH THE FORTFOLIO COMMUNITY</h1>
           <p class="text-white text-lg pb-5">We are keen on demistyfying the mode of operation in the cryptocurrency market by leveraging the knowledge, experience and expertise of the industry.</p>
           <button class="border-2 rounded-md ease-linear transition-all duration-150 border-solid border-white bg-transparent text-white hover:bg-white hover:text-black font-semibold p-3 sm:w-40">
-            <a href="/signup">GET STARTED</a>
+            <a href="https://forms.gle/nE1cvErokQKajWNN7" target="_blank">GET STARTED</a>
           </button>
         </div>
       </main>
