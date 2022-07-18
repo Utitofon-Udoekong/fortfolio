@@ -32,32 +32,32 @@ import { onMounted } from '@vue/runtime-core'
 const faqs = [
     {
         q: "Is the company regulated?",
-        a: "We are registered under CAC RC:1742448",
+        a: "We are registered by the Corporate Affairs Commision(CAC). View our registration status using -  RC1742448",
         id: "tab-single-one"
     },
     {
         q: "Do you give loans",
-        a: "No we don't give loans but we give our investors a free asset finance",
+        a: "No, we do not offer loans. Our investors are only offered free asset finance.",
         id: "tab-single-two"
     },
     {
         q: "How does the company generate its profit?",
-        a: "Fortfolio generate their income from the businesses that we do which are; cryptocurrency trading, car windshield, e-commerce, POS services, real estate, social media management and Shortlets",
+        a: "Fortfolio generates its income from speculation on the financial markets, real estate, fintech innovation, car windshield and agriculture.",
         id: "tab-single-three"
     },
     {
         q: "Do you have a Physical Office?",
-        a: "Yes, Suite 269 Road 5 Ikota shopping complex lagos",
+        a: "Yes, our office is located at Suite J269, Road 5, ikota shopping complex, VGC, Ajah, Lagos state. More branches will be established in various locations nationwide.",
         id: "tab-single-four"
     },
     {
         q: "What is the Minimum investment tenure?",
-        a: "6 months",
+        a: "You need to invest for at least 6 months to be able to profit from our investment packages.",
         id: "tab-single-five"
     },
     {
         q: "What is the minimum amount to invest?",
-        a: "The minimum investment is 500,000 naira",
+        a: "The least amount one can invest is ₦500,000 or a $1,000 .",
         id: "tab-single-six"
     },
 
